@@ -1,0 +1,22 @@
+stages:
+  - linting
+
+variables:
+  LC_ALL: "en_US.UTF-8"
+  LANG: "en_US.UTF-8"
+
+lint:
+  stage: linting
+  tags:
+    - iOS
+  script:
+    - swiftlint --reporter junit > swiftlint.xml
+  allow_failure: false
+  artifacts:
+    name: "core-lint-$CI_COMMIT_TAG"
+    paths:
+      - swiftlint.xml
+    reports:
+      junit:
+        - swiftlint.xml
+    expire_in: 20 days
