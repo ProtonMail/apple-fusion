@@ -11,9 +11,9 @@ Pod::Spec.new do |spec|
     spec.ios.deployment_target = "10.0"
   
     spec.source       = { :git => ".", :commit => "" }
-    spec.source_files  = "PMTestAutomationUITests/*.swift", "PMTestAutomationUITests/**/*.swift", "PMTestAutomationUITests/**/**/*.swift"
+    spec.source_files  =  "PMTestAutomation/**/*.swift"
+    spec.frameworks = 'XCTest'
     spec.dependency 'SwiftOTP'
     spec.static_framework = true
   
   end
-
