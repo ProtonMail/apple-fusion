@@ -18,7 +18,6 @@
 		473D54CB25D2E8BC008F498E /* CallStackParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0F566B25C9EF4200DE7892 /* CallStackParser.swift */; };
 		473D54D025D2E8C2008F498E /* Wait.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0F566E25C9EF4200DE7892 /* Wait.swift */; };
 		8A0F563F25C9EC9B00DE7892 /* PMTestAutomation.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A0F563D25C9EC9B00DE7892 /* PMTestAutomation.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8AA49C4D25CB5E4B00B9B365 /* Podfile in Sources */ = {isa = PBXBuildFile; fileRef = 8AA49C4C25CB5E4B00B9B365 /* Podfile */; };
 		8AD7092625CC28100000C78F /* PMTestAutomation.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 8AD7092525CC28100000C78F /* PMTestAutomation.podspec */; };
 		C8C43952444C2AF956CC1D48 /* Pods_PMTestAutomation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46D83FC9BC72CC9D884C0244 /* Pods_PMTestAutomation.framework */; };
 /* End PBXBuildFile section */
@@ -263,7 +262,6 @@
 				473D54C125D2E8B6008F498E /* UiElement.swift in Sources */,
 				473D54CA25D2E8BC008F498E /* DateUtils.swift in Sources */,
 				473D54CB25D2E8BC008F498E /* CallStackParser.swift in Sources */,
-				8AA49C4D25CB5E4B00B9B365 /* Podfile in Sources */,
 				473D54C225D2E8B6008F498E /* Elements.swift in Sources */,
 				473D54C825D2E8BC008F498E /* StringUtils.swift in Sources */,
 				473D54C925D2E8BC008F498E /* CwlDemangle.swift in Sources */,
