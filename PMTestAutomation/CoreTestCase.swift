@@ -14,7 +14,7 @@ var issueDescription = "\n\nStart →\n"
 /**
  Parent class for all test classes.
 */
-public class CoreTestCase: XCTestCase {
+open class CoreTestCase: XCTestCase {
 
     let app = XCUIApplication()
 
