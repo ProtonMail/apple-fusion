@@ -23,7 +23,7 @@
 import Foundation
 import XCTest
 
-class Wait {
+open class Wait {
 
     private let defaultTimeout = 10.00
 
@@ -35,27 +35,27 @@ class Wait {
     }
 
     @discardableResult
-    func forElement(_ element: XCUIElement, _ file: StaticString = #file, _ line: UInt = #line, _ timeout: TimeInterval = 10) -> XCUIElement {
+    open func forElement(_ element: XCUIElement, _ file: StaticString = #file, _ line: UInt = #line, _ timeout: TimeInterval = 10) -> XCUIElement {
         waitSoftForCondition(element, Condition.exist, file, line, timeout)
         return element
     }
 
-    func forElementExistance(_ element: XCUIElement, _ file: StaticString = #file, _ line: UInt = #line, _ timeout: TimeInterval = 10) -> Bool {
+    open func forElementExistance(_ element: XCUIElement, _ file: StaticString = #file, _ line: UInt = #line, _ timeout: TimeInterval = 10) -> Bool {
         return waitSoftForCondition(element, Condition.exist, file, line, timeout)
     }
 
     @discardableResult
-    func forElementToBeEnabled(_ element: XCUIElement, _ file: StaticString = #file, _ line: UInt = #line) -> XCUIElement {
+    open func forElementToBeEnabled(_ element: XCUIElement, _ file: StaticString = #file, _ line: UInt = #line) -> XCUIElement {
         return waitForCondition(element, Condition.enabled, file, line)
     }
 
     @discardableResult
-    func forElementToBeHittable(_ element: XCUIElement, _ file: StaticString = #file, _ line: UInt = #line) -> XCUIElement {
+    open func forElementToBeHittable(_ element: XCUIElement, _ file: StaticString = #file, _ line: UInt = #line) -> XCUIElement {
         return waitForCondition(element, Condition.hittable, file, line)
     }
 
     @discardableResult
-    func forElementToDisappear(_ element: XCUIElement, _ file: StaticString = #file, _ line: UInt = #line) -> XCUIElement {
+    open func forElementToDisappear(_ element: XCUIElement, _ file: StaticString = #file, _ line: UInt = #line) -> XCUIElement {
         return waitForCondition(element, Condition.doesNotExist, file, line)
     }
 
