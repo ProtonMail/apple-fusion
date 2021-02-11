@@ -16,14 +16,12 @@ var issueDescription = "\n\nStart →\n"
 */
 open class CoreTestCase: XCTestCase {
 
-    let app = XCUIApplication()
-
-    public override func setUp() {
+    open override func setUp() {
         super.setUp()
         _ = handleInterruption()
     }
 
-    public override func record(_ issue: XCTIssue) {
+    open override func record(_ issue: XCTIssue) {
         var myIssue = issue
         if shouldRecordStacktrace {
             issueDescription.append("→ Failure\n")
@@ -33,7 +31,7 @@ open class CoreTestCase: XCTestCase {
         super.record(myIssue)
     }
 
-    public override func tearDown() {
+    open override func tearDown() {
         XCUIApplication().terminate()
         issueDescription = "\n\nStart →\n"
         super.tearDown()

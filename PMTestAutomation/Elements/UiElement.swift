@@ -15,7 +15,7 @@ internal var shouldRecordStacktrace = true
  By default each XCUIElement that is referenced by this class already has a wait functionality in place except check functions or checkDoesNotExist() function.
  Check functions assume that element was already located before check is called. checkDoesNotExist() function shouldn't wait for the element.
  */
-internal class UiElement {
+public class UiElement {
 
     init(_ query: XCUIElementQuery) {
         self.uiElementQuery = query
