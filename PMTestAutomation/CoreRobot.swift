@@ -8,4 +8,8 @@
 
 import SwiftOTP
 
-open class CoreRobot: Elements {}
+open class CoreRobot: Elements {
+    public override init() {
+        super.init()
+    }
+}

@@ -12,6 +12,8 @@ import XCTest
  Collection of all XCUIElement types that can be used in UI testing.
  */
 open class Elements {
+    
+    public init() {}
 
     public func acttivityIndicator() -> UiElement { UiElement(XCUIApplication().activityIndicators) }
     public func acttivityIndicator(_ identifier: String) -> UiElement { UiElement(identifier, XCUIApplication().activityIndicators) }
