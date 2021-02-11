@@ -39,7 +39,7 @@
 		8A0F56D225C9F53100DE7892 /* Elements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Elements.swift; sourceTree = "<group>"; };
 		8A0F56DB25C9F56F00DE7892 /* UiElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UiElement.swift; sourceTree = "<group>"; };
 		8A0F56EA25C9F79E00DE7892 /* XCUIElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCUIElement.swift; sourceTree = "<group>"; };
-		8AA49C4C25CB5E4B00B9B365 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		8AA49C4C25CB5E4B00B9B365 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		8AD7092525CC28100000C78F /* PMTestAutomation.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = PMTestAutomation.podspec; sourceTree = "<group>"; };
 		95C004DFE50A5004486D085B /* Pods_PMTestAutomationUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PMTestAutomationUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		99A327C24969C44035336E05 /* Pods-PMTestAutomation.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PMTestAutomation.debug.xcconfig"; path = "Target Support Files/Pods-PMTestAutomation/Pods-PMTestAutomation.debug.xcconfig"; sourceTree = "<group>"; };

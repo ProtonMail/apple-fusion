@@ -15,7 +15,7 @@ internal var shouldRecordStacktrace = true
  By default each XCUIElement that is referenced by this class already has a wait functionality in place except check functions or checkDoesNotExist() function.
  Check functions assume that element was already located before check is called. checkDoesNotExist() function shouldn't wait for the element.
  */
-public class UiElement {
+open class UiElement {
 
     init(_ query: XCUIElementQuery) {
         self.uiElementQuery = query
@@ -63,67 +63,67 @@ public class UiElement {
     }
 
     /// Locator by index
-    func byIndex(_ index: Int) -> UiElement {
+    public func byIndex(_ index: Int) -> UiElement {
         self.index = index
         return self
     }
 
     /// Actions
-    func clearText() -> UiElement {
+    public func clearText() -> UiElement {
         Wait().forElement(uiElement()).clearText()
         return self
     }
 
     @discardableResult
-    func doubleTap() -> UiElement {
+    public func doubleTap() -> UiElement {
         Wait().forElement(uiElement()).doubleTap()
         return self
     }
 
     @discardableResult
-    func longPress() -> UiElement {
+    public func longPress() -> UiElement {
         Wait().forElement(uiElement()).press(forDuration: 2)
         return self
     }
 
     @discardableResult
-    func swipeDown() -> UiElement {
+    public func swipeDown() -> UiElement {
         Wait().forElement(uiElement()).swipeDown()
         return self
     }
 
     @discardableResult
-    func swipeLeft() -> UiElement {
+    public func swipeLeft() -> UiElement {
         Wait().forElement(uiElement()).swipeLeft()
         return self
     }
 
     @discardableResult
-    func swipeRight() -> UiElement {
+    public func swipeRight() -> UiElement {
         Wait().forElement(uiElement()).swipeRight()
         return self
     }
 
     @discardableResult
-    func swipeUp() -> UiElement {
+    public func swipeUp() -> UiElement {
         Wait().forElement(uiElement()).swipeUp()
         return self
     }
 
     @discardableResult
-    func tap() -> UiElement {
+    public func tap() -> UiElement {
         Wait().forElement(uiElement()).tap()
         return self
     }
 
     @discardableResult
-    func typeText(_ text: String) -> UiElement {
+    public func typeText(_ text: String) -> UiElement {
         Wait().forElement(uiElement()).typeText(text)
         return self
     }
 
     @discardableResult
-    func swipeUpUntilVisible(maxAttempts: Int = 5) -> UiElement {
+    public func swipeUpUntilVisible(maxAttempts: Int = 5) -> UiElement {
         var eventCount = 0
         let table = app.tables.element
 
@@ -135,7 +135,7 @@ public class UiElement {
     }
 
     @discardableResult
-    func swipeDownUntilVisible(maxAttempts: Int = 5) -> UiElement {
+    public func swipeDownUntilVisible(maxAttempts: Int = 5) -> UiElement {
         var eventCount = 0
         let table = app.tables.element
 
@@ -147,51 +147,51 @@ public class UiElement {
     }
 
     /// Allow actions on childs / descendants
-    func onChild(_ childElement: UiElement) -> UiElement {
+    public func onChild(_ childElement: UiElement) -> UiElement {
         self.childElement = childElement
         return self
     }
 
-    func onDescendant(_ descendantElement: UiElement) -> UiElement {
+    public func onDescendant(_ descendantElement: UiElement) -> UiElement {
         self.descendantElement = descendantElement
         return self
     }
 
     /// Checks
     @discardableResult
-    func checkExists() -> UiElement {
+    public func checkExists() -> UiElement {
         XCTAssertTrue(uiElement().exists, "Button element \(uiElement().debugDescription) does not exist.", file: #file, line: #line)
         return self
     }
 
     @discardableResult
-    func checkIsHittable() -> UiElement {
+    public func checkIsHittable() -> UiElement {
         XCTAssertTrue(uiElement().isHittable, "Button element \(uiElement().debugDescription) does not exist.", file: #file, line: #line)
         return self
     }
 
     @discardableResult
-    func checkDoesNotExist() -> UiElement {
+    public func checkDoesNotExist() -> UiElement {
         XCTAssertFalse(uiElement().exists, "Cell element \(uiElement().debugDescription) exists but it should not.", file: #file, line: #line)
         return self
     }
 
     @discardableResult
-    func checkHasChild(_ childElement: UiElement) -> UiElement {
+    public func checkHasChild(_ childElement: UiElement) -> UiElement {
         let locatedElement = uiElement().child(childElement)
         XCTAssertTrue(locatedElement.exists, "Expected to have StaticText element with identifier: \"\(String(describing: identifier))\" but found nothing.")
         return self
     }
 
     @discardableResult
-    func checkHasDescendant(_ descendantElement: UiElement) -> UiElement {
+    public func checkHasDescendant(_ descendantElement: UiElement) -> UiElement {
         let locatedElement = uiElement().descendant(descendantElement)
         XCTAssertTrue(locatedElement.exists, "Expected to have descendant element with identifier: \"\(String(describing: identifier))\" but found nothing.")
         return self
     }
 
     @discardableResult
-    func checkHasLabel(_ text: String) -> UiElement {
+    public func checkHasLabel(_ text: String) -> UiElement {
         guard let label = uiElement().label as? String else {
             XCTFail("Element doesn't have text label.")
             return self
@@ -201,7 +201,7 @@ public class UiElement {
     }
 
     @discardableResult
-    func checkHasValue(_ value: String) -> UiElement {
+    public func checkHasValue(_ value: String) -> UiElement {
         guard let stringValue = uiElement().value as? String else {
             XCTFail("Element doesn't have text value.")
             return self
@@ -212,25 +212,25 @@ public class UiElement {
 
     /// Waits
     @discardableResult
-    func wait() -> UiElement {
+    public func wait() -> UiElement {
         Wait().forElement(uiElement())
         return self
     }
 
     @discardableResult
-    func waitForHittable() -> UiElement {
+    public func waitForHittable() -> UiElement {
         Wait().forElementToBeHittable(uiElement())
         return self
     }
 
     @discardableResult
-    func waitForEnabled() -> UiElement {
+    public func waitForEnabled() -> UiElement {
         Wait().forElementToBeEnabled(uiElement())
         return self
     }
 
     @discardableResult
-    func waitUntilGone() -> UiElement {
+    public func waitUntilGone() -> UiElement {
         Wait().forElementToDisappear(uiElement())
         return self
     }
