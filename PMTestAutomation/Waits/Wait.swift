@@ -27,6 +27,8 @@ open class Wait {
 
     private let defaultTimeout = 10.00
 
+    public init() { }
+
     struct Condition {
         static let enabled = "isEnabled == true"
         static let hittable = "hittable == true"
