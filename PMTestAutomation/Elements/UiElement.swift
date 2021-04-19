@@ -212,8 +212,8 @@ open class UiElement {
 
     /// Waits
     @discardableResult
-    public func wait() -> UiElement {
-        Wait().forElement(uiElement())
+    public func wait(time: TimeInterval = 10.0) -> UiElement {
+        Wait(time: time).forElement(uiElement())
         return self
     }
 
