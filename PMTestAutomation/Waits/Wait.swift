@@ -25,9 +25,11 @@ import XCTest
 
 open class Wait {
 
-    private let defaultTimeout = 10.00
+    private let defaultTimeout: TimeInterval
 
-    public init() { }
+    public init(time: TimeInterval = 10.00) {
+        defaultTimeout = time
+    }
 
     struct Condition {
         static let enabled = "isEnabled == true"
