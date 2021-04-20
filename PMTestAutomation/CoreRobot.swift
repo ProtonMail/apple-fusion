@@ -9,7 +9,7 @@
 import SwiftOTP
 
 open class CoreRobot: Elements {
-    public override init() {
+    public override required init() {
         super.init()
     }
 }
