@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		473D54A025D2E818008F498E /* CoreTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0F56B125C9F48800DE7892 /* CoreTestCase.swift */; };
-		473D54A125D2E818008F498E /* CoreRobot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0F567525C9EF4200DE7892 /* CoreRobot.swift */; };
+		473D54A125D2E818008F498E /* CoreElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0F567525C9EF4200DE7892 /* CoreElements.swift */; };
 		473D54C125D2E8B6008F498E /* UiElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0F56DB25C9F56F00DE7892 /* UiElement.swift */; };
 		473D54C225D2E8B6008F498E /* Elements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0F56D225C9F53100DE7892 /* Elements.swift */; };
 		473D54C325D2E8B6008F498E /* XCUIElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0F56EA25C9F79E00DE7892 /* XCUIElement.swift */; };
@@ -18,6 +18,7 @@
 		473D54CB25D2E8BC008F498E /* CallStackParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0F566B25C9EF4200DE7892 /* CallStackParser.swift */; };
 		473D54D025D2E8C2008F498E /* Wait.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0F566E25C9EF4200DE7892 /* Wait.swift */; };
 		8A0F563F25C9EC9B00DE7892 /* PMTestAutomation.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A0F563D25C9EC9B00DE7892 /* PMTestAutomation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8AB883652649B44C00EDFCCB /* Predicate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB883642649B44C00EDFCCB /* Predicate.swift */; };
 		C8C43952444C2AF956CC1D48 /* Pods_PMTestAutomation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46D83FC9BC72CC9D884C0244 /* Pods_PMTestAutomation.framework */; };
 /* End PBXBuildFile section */
 
@@ -34,12 +35,13 @@
 		8A0F566B25C9EF4200DE7892 /* CallStackParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CallStackParser.swift; sourceTree = "<group>"; };
 		8A0F566C25C9EF4200DE7892 /* DateUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateUtils.swift; sourceTree = "<group>"; };
 		8A0F566E25C9EF4200DE7892 /* Wait.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wait.swift; sourceTree = "<group>"; };
-		8A0F567525C9EF4200DE7892 /* CoreRobot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreRobot.swift; sourceTree = "<group>"; };
+		8A0F567525C9EF4200DE7892 /* CoreElements.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreElements.swift; sourceTree = "<group>"; };
 		8A0F56B125C9F48800DE7892 /* CoreTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreTestCase.swift; sourceTree = "<group>"; };
 		8A0F56D225C9F53100DE7892 /* Elements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Elements.swift; sourceTree = "<group>"; };
 		8A0F56DB25C9F56F00DE7892 /* UiElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UiElement.swift; sourceTree = "<group>"; };
 		8A0F56EA25C9F79E00DE7892 /* XCUIElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCUIElement.swift; sourceTree = "<group>"; };
 		8AA49C4C25CB5E4B00B9B365 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		8AB883642649B44C00EDFCCB /* Predicate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Predicate.swift; sourceTree = "<group>"; };
 		8AD7092525CC28100000C78F /* PMTestAutomation.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = PMTestAutomation.podspec; sourceTree = "<group>"; };
 		95C004DFE50A5004486D085B /* Pods_PMTestAutomationUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PMTestAutomationUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		99A327C24969C44035336E05 /* Pods-PMTestAutomation.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PMTestAutomation.debug.xcconfig"; path = "Target Support Files/Pods-PMTestAutomation/Pods-PMTestAutomation.debug.xcconfig"; sourceTree = "<group>"; };
@@ -94,7 +96,7 @@
 				8A0F566F25C9EF4200DE7892 /* Elements */,
 				8A0F566625C9EF4200DE7892 /* Utils */,
 				8A0F566D25C9EF4200DE7892 /* Waits */,
-				8A0F567525C9EF4200DE7892 /* CoreRobot.swift */,
+				8A0F567525C9EF4200DE7892 /* CoreElements.swift */,
 				8A0F56B125C9F48800DE7892 /* CoreTestCase.swift */,
 				8A0F563D25C9EC9B00DE7892 /* PMTestAutomation.h */,
 				8A0F563E25C9EC9B00DE7892 /* Info.plist */,
@@ -125,6 +127,7 @@
 			isa = PBXGroup;
 			children = (
 				8A0F566E25C9EF4200DE7892 /* Wait.swift */,
+				8AB883642649B44C00EDFCCB /* Predicate.swift */,
 			);
 			path = Waits;
 			sourceTree = "<group>";
@@ -254,7 +257,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				473D54A125D2E818008F498E /* CoreRobot.swift in Sources */,
+				8AB883652649B44C00EDFCCB /* Predicate.swift in Sources */,
+				473D54A125D2E818008F498E /* CoreElements.swift in Sources */,
 				473D54C325D2E8B6008F498E /* XCUIElement.swift in Sources */,
 				473D54A025D2E818008F498E /* CoreTestCase.swift in Sources */,
 				473D54C125D2E8B6008F498E /* UiElement.swift in Sources */,

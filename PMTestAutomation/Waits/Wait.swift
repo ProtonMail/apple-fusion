@@ -31,47 +31,39 @@ open class Wait {
         defaultTimeout = time
     }
 
-    struct Condition {
-        static let enabled = "isEnabled == true"
-        static let hittable = "hittable == true"
-        static let doesNotExist = "exists == false"
-        static let exist = "exists == true"
-    }
-
     @discardableResult
     open func forElement(_ element: XCUIElement, _ file: StaticString = #file, _ line: UInt = #line, _ timeout: TimeInterval = 10) -> XCUIElement {
-        waitSoftForCondition(element, Condition.exist, file, line, timeout)
+        waitSoftForCondition(element, Predicate.exists, file, line, timeout)
         return element
     }
 
     open func forElementExistance(_ element: XCUIElement, _ file: StaticString = #file, _ line: UInt = #line, _ timeout: TimeInterval = 10) -> Bool {
-        return waitSoftForCondition(element, Condition.exist, file, line, timeout)
+        return waitSoftForCondition(element, Predicate.exists, file, line, timeout)
     }
 
     @discardableResult
     open func forElementToBeEnabled(_ element: XCUIElement, _ file: StaticString = #file, _ line: UInt = #line) -> XCUIElement {
-        return waitForCondition(element, Condition.enabled, file, line)
+        return waitForCondition(element, Predicate.enabled, file, line)
     }
 
     @discardableResult
     open func forElementToBeHittable(_ element: XCUIElement, _ file: StaticString = #file, _ line: UInt = #line) -> XCUIElement {
-        return waitForCondition(element, Condition.hittable, file, line)
+        return waitForCondition(element, Predicate.hittable, file, line)
     }
 
     @discardableResult
     open func forElementToDisappear(_ element: XCUIElement, _ file: StaticString = #file, _ line: UInt = #line) -> XCUIElement {
-        return waitForCondition(element, Condition.doesNotExist, file, line)
+        return waitForCondition(element, Predicate.doesNotExist, file, line)
     }
 
     /**
-     Waits for the condition and fails the test when it is not met.
+     Waits for the condition and fails the test when condition is not met.
      */
-    private func waitForCondition(_ element: XCUIElement, _ expression: String, _ file: StaticString = #file, _ line: UInt = #line) -> XCUIElement {
-        let condition = NSPredicate(format: expression)
-        let expectation = XCTNSPredicateExpectation(predicate: condition, object: element)
+    private func waitForCondition(_ element: XCUIElement, _ predicate: NSPredicate, _ file: StaticString = #file, _ line: UInt = #line) -> XCUIElement {
+        let expectation = XCTNSPredicateExpectation(predicate: predicate, object: element)
         let result = XCTWaiter().wait(for: [expectation], timeout: defaultTimeout)
         if result != .completed {
-            let message = "Condition: \(expression) was not met for Element: \(element) after \(defaultTimeout) seconds timeout."
+            let message = "Condition: \(predicate.predicateFormat) was not met for Element: \(element) after \(defaultTimeout) seconds timeout."
             XCTFail(message, file: file, line: line)
         }
         return element
@@ -81,9 +73,8 @@ open class Wait {
      Waits for the condition but don't fail the test.
      */
     @discardableResult
-    private func waitSoftForCondition(_ element: XCUIElement, _ expression: String, _ file: StaticString = #file, _ line: UInt = #line, _ timeout: TimeInterval = 5) -> Bool {
-        let condition = NSPredicate(format: expression)
-        let expectation = XCTNSPredicateExpectation(predicate: condition, object: element)
+    private func waitSoftForCondition(_ element: XCUIElement, _ predicate: NSPredicate, _ file: StaticString = #file, _ line: UInt = #line, _ timeout: TimeInterval = 5) -> Bool {
+        let expectation = XCTNSPredicateExpectation(predicate: predicate, object: element)
         let result = XCTWaiter().wait(for: [expectation], timeout: timeout)
         if result == .completed {
             return true
