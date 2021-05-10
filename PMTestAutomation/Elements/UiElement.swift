@@ -8,7 +8,7 @@
 import Foundation
 import XCTest
 
-internal var shouldRecordStacktrace = true
+internal var shouldRecordStacktrace = false
 
 /**
  Represents single XCUIElement and provides an interface for performing actions or checks.
@@ -45,9 +45,16 @@ open class UiElement {
     private var locatedElement: XCUIElement?
     private var index: Int?
     private var identifier: String?
-    private var predicate: NSPredicate?
     private var childElement: UiElement?
     private var descendantElement: UiElement?
+    private var enabled: Bool?
+    private var disabled: Bool?
+    private var hittable: Bool?
+    private var predicate: NSPredicate?
+    private var matchedPredicate: NSPredicate?
+    private var labelPreidcate: NSPredicate?
+    private var titlePreidcate: NSPredicate?
+    private var valuePreidcate: NSPredicate?
 
     internal func getType() -> XCUIElement.ElementType {
         return self.uiElement().elementType
@@ -62,9 +69,56 @@ open class UiElement {
         return self.identifier!
     }
 
-    /// Locator by index
+    /// Locators
     public func byIndex(_ index: Int) -> UiElement {
         self.index = index
+        return self
+    }
+    
+    public func isEnabled() -> UiElement {
+        self.enabled = true
+        return self
+    }
+    
+    public func isDisabled() -> UiElement {
+        self.disabled = true
+        return self
+    }
+    
+    public func isHittable() -> UiElement {
+        self.hittable = true
+        return self
+    }
+    
+    public func matchesPredicate(_ matchedPredicate: NSPredicate) -> UiElement {
+        self.matchedPredicate = matchedPredicate
+        return self
+    }
+    
+    public func hasLabel(_ label: String) -> UiElement {
+        return hasLabel(Predicate.labelEquals(label))
+    }
+    
+    public func hasTitle(_ title: String) -> UiElement {
+        return hasTitle(Predicate.titleEquals(title))
+    }
+    
+    public func hasValue(_ value: String) -> UiElement {
+        return hasValue(Predicate.valueEquals(value))
+    }
+    
+    public func hasLabel(_ labelPredicate: NSPredicate) -> UiElement {
+        self.labelPreidcate = labelPredicate
+        return self
+    }
+    
+    public func hasTitle(_ titlePredicate: NSPredicate) -> UiElement {
+        self.titlePreidcate = titlePredicate
+        return self
+    }
+    
+    public func hasValue(_ valuePredicate: NSPredicate) -> UiElement {
+        self.valuePreidcate = valuePredicate
         return self
     }
 
@@ -209,6 +263,22 @@ open class UiElement {
         XCTAssertTrue(stringValue == value, "Expected Element text value to be: \"\(value)\", but found: \"\(stringValue)\"")
         return self
     }
+    
+    @discardableResult
+    public func checkHasTitle(_ title: String) -> UiElement {
+        guard let stringValue = uiElement().title as? String else {
+            XCTFail("Element doesn't have title value.")
+            return self
+        }
+        XCTAssertTrue(stringValue == title, "Expected Element title to be: \"\(title)\", but found: \"\(stringValue)\"")
+        return self
+    }
+    
+    @discardableResult
+    public func checkSelected() -> UiElement {
+        XCTAssertTrue(uiElement().isSelected == true, "Expected Element to be selected, but it is not")
+        return self
+    }
 
     /// Waits
     @discardableResult
@@ -218,20 +288,20 @@ open class UiElement {
     }
 
     @discardableResult
-    public func waitForHittable() -> UiElement {
-        Wait().forElementToBeHittable(uiElement())
+    public func waitForHittable(time: TimeInterval = 10.0) -> UiElement {
+        Wait(time: time).forElementToBeHittable(uiElement())
         return self
     }
 
     @discardableResult
-    public func waitForEnabled() -> UiElement {
-        Wait().forElementToBeEnabled(uiElement())
+    public func waitForEnabled(time: TimeInterval = 10.0) -> UiElement {
+        Wait(time: time).forElementToBeEnabled(uiElement())
         return self
     }
 
     @discardableResult
-    public func waitUntilGone() -> UiElement {
-        Wait().forElementToDisappear(uiElement())
+    public func waitUntilGone(time: TimeInterval = 10.0) -> UiElement {
+        Wait(time: time).forElementToDisappear(uiElement())
         return self
     }
 
@@ -246,24 +316,67 @@ open class UiElement {
             XCTFail("Unable to locate an element when its identifier and element index is nil.", file: #file, line: #line)
         }
 
-        /// Locate element based on identifier, predicate or index value provided.
+        /// Filer out XCUIElementQuery based on identifier or predicate value provided.
         if identifier != nil {
-            locatedElement = uiElementQuery![identifier!]
+            uiElementQuery = uiElementQuery!.matching(identifier: identifier!)
         } else if predicate != nil {
-            locatedElement = uiElementQuery!.element(matching: predicate!)
-        } else {
-            locatedElement = uiElementQuery!.element(boundBy: index!)
+            uiElementQuery = uiElementQuery!.matching(predicate!)
         }
-
-        /// Locates child element based on UiElement instance provided.
+        
+        /// Fail test if both disabled and enbaled parameters were used.
+        if disabled == true && enabled == true {
+            XCTFail("Only one isDisabled() or isEnabled() function can be applied to query the element.", file: #file, line: #line)
+        }
+        
+        /// Filer out XCUIElementQuery based on isEnabled / isDisabled state.
+        if disabled == true {
+            uiElementQuery = uiElementQuery?.matching(Predicate.disabled)
+        } else if enabled == true {
+            uiElementQuery = uiElementQuery?.matching(Predicate.enabled)
+        }
+        
+        /// Filer out XCUIElementQuery based on element label predicate.
+        if labelPreidcate != nil {
+            uiElementQuery = uiElementQuery?.matching(labelPreidcate!)
+        }
+        
+        /// Filer out XCUIElementQuery based on element title predicate.
+        if titlePreidcate != nil {
+            uiElementQuery = uiElementQuery?.matching(titlePreidcate!)
+        }
+        
+        /// Filer out XCUIElementQuery based on element value predicate.
+        if valuePreidcate != nil {
+            uiElementQuery = uiElementQuery?.matching(valuePreidcate!)
+        }
+        
+        /// Filer out XCUIElementQuery based on provided predicate.
+        if matchedPredicate != nil {
+            uiElementQuery = uiElementQuery?.matching(matchedPredicate!)
+        }
+        
+        /// Filer out XCUIElementQuery based on isHittable state.
+        if hittable == true {
+            uiElementQuery = uiElementQuery?.matching(Predicate.hittable)
+        }
+        
+        /// Return element from XCUIElementQuery based on its index.
+        if index != nil {
+             return uiElementQuery!.element(boundBy: index!)
+        }
+        
+        /// Return child element based on UiElement instance provided.
         if childElement != nil {
-            return locatedElement!.child(childElement!)
+            return uiElementQuery!.element.child(childElement!)
         }
 
-        /// Locates descendant element based on UiElement instance provided.
+        /// Return descendant element based on UiElement instance provided.
         if descendantElement != nil {
-            return locatedElement!.descendant(descendantElement!)
+            return uiElementQuery!.element.descendant(descendantElement!)
         }
+        
+        locatedElement = uiElementQuery!.element
+        
         return locatedElement!
     }
 
