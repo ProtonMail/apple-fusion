@@ -10,7 +10,7 @@ import Foundation
 
 public struct StringUtils {
 
-    public func randomEmailString(length: Int = 5) -> String {
+    public static func randomEmailString(length: Int = 5) -> String {
         let allowedChars = "abcdefghijklmnopqrstuuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!#$%&*+-=?^`{|}~"
         let allowedCharsCount = UInt32(allowedChars.count)
         var randomString = randomAlphanumericString(length: 1) /// needed to avoid special char at the first place
@@ -24,7 +24,7 @@ public struct StringUtils {
         return randomString
     }
 
-    public func randomAlphanumericString(length: Int = 10) -> String {
+    public static func randomAlphanumericString(length: Int = 10) -> String {
         let allowedChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"
         let allowedCharsCount = UInt32(allowedChars.count)
         var randomString = ""
