@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
     spec.name         = "PMTestAutomation"
-    spec.version      = "1.0.1"
+    spec.version      = "1.0.2"
     spec.summary      = "UI test library that simplifies XCTests syntax, reduce test flakiness and improves test reporting."
     spec.description  = "Login module for ProtonMail that shows the login UI and gets the login user data"
     spec.homepage     = "https://gitlab.protontech.ch/apple/shared/pmtestautomation"
