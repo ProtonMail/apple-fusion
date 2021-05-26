@@ -9,6 +9,7 @@ lint:
   stage: linting
   tags:
     - iOS
+    - iOS_ARM
   script:
     - swiftlint --reporter junit > swiftlint.xml
   allow_failure: false

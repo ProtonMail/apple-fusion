@@ -50,6 +50,7 @@ open class UiElement {
     private var enabled: Bool?
     private var disabled: Bool?
     private var hittable: Bool?
+    private var shouldUseFirstMatch: Bool = false
     private var predicate: NSPredicate?
     private var matchedPredicate: NSPredicate?
     private var labelPreidcate: NSPredicate?
@@ -72,6 +73,11 @@ open class UiElement {
     /// Locators
     public func byIndex(_ index: Int) -> UiElement {
         self.index = index
+        return self
+    }
+    
+    public func firstMatch() -> UiElement {
+        self.shouldUseFirstMatch = true
         return self
     }
     
@@ -375,7 +381,11 @@ open class UiElement {
             return uiElementQuery!.element.descendant(descendantElement!)
         }
         
-        locatedElement = uiElementQuery!.element
+        if (shouldUseFirstMatch) {
+            locatedElement = uiElementQuery!.element.firstMatch
+        } else {
+            locatedElement = uiElementQuery!.element
+        }
         
         return locatedElement!
     }
