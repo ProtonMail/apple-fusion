@@ -32,13 +32,13 @@ open class Wait {
     }
 
     @discardableResult
-    open func forElement(_ element: XCUIElement, _ file: StaticString = #file, _ line: UInt = #line, _ timeout: TimeInterval = 10) -> XCUIElement {
-        waitSoftForCondition(element, Predicate.exists, file, line, timeout)
+    open func forElement(_ element: XCUIElement, _ file: StaticString = #file, _ line: UInt = #line) -> XCUIElement {
+        waitSoftForCondition(element, Predicate.exists, file, line)
         return element
     }
 
-    open func forElementExistance(_ element: XCUIElement, _ file: StaticString = #file, _ line: UInt = #line, _ timeout: TimeInterval = 10) -> Bool {
-        return waitSoftForCondition(element, Predicate.exists, file, line, timeout)
+    open func forElementExistance(_ element: XCUIElement, _ file: StaticString = #file, _ line: UInt = #line) -> Bool {
+        return waitSoftForCondition(element, Predicate.exists, file, line)
     }
 
     @discardableResult
@@ -73,9 +73,9 @@ open class Wait {
      Waits for the condition but don't fail the test.
      */
     @discardableResult
-    private func waitSoftForCondition(_ element: XCUIElement, _ predicate: NSPredicate, _ file: StaticString = #file, _ line: UInt = #line, _ timeout: TimeInterval = 5) -> Bool {
+    private func waitSoftForCondition(_ element: XCUIElement, _ predicate: NSPredicate, _ file: StaticString = #file, _ line: UInt = #line) -> Bool {
         let expectation = XCTNSPredicateExpectation(predicate: predicate, object: element)
-        let result = XCTWaiter().wait(for: [expectation], timeout: timeout)
+        let result = XCTWaiter().wait(for: [expectation], timeout: defaultTimeout)
         if result == .completed {
             return true
         } else {
