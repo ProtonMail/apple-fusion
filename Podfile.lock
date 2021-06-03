@@ -1,24 +1,16 @@
 PODS:
-  - CryptoSwift (1.4.0)
   - SwiftLint (0.42.0)
-  - SwiftOTP (2.0.3):
-    - CryptoSwift (>= 1.0.0)
 
 DEPENDENCIES:
   - SwiftLint (~> 0.42.0)
-  - SwiftOTP (~> 2.0.3)
 
 SPEC REPOS:
   trunk:
-    - CryptoSwift
     - SwiftLint
-    - SwiftOTP
 
 SPEC CHECKSUMS:
-  CryptoSwift: 7cc902df1784de3b389a387756c7d710f197730c
   SwiftLint: 4fa9579c63416865179bc416f0a92d55f009600d
-  SwiftOTP: ce98ded1ab42e4e66c39228fcad6b0c07b98e494
 
-PODFILE CHECKSUM: 4188fd5e01c09f38631a22ba41b1ab34e28abdb5
+PODFILE CHECKSUM: 287a1d0a555f12d6a51454662ff132a1c12a2d59
 
 COCOAPODS: 1.10.1
