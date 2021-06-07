@@ -13,7 +13,7 @@ Pod::Spec.new do |spec|
     spec.source       = { :git => ".", :commit => "" }
     spec.source_files  =  "PMTestAutomation/**/*.swift"
     spec.frameworks = 'XCTest'
-    spec.dependency 'SwiftOTP'
+    spec.dependency 'SwiftOTP', "2.0.3"
     spec.static_framework = true
   
   end
