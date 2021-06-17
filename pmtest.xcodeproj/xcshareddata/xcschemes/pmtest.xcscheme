@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "8A0F563925C9EC9B00DE7892"
-               BuildableName = "PMTestAutomation.framework"
-               BlueprintName = "PMTestAutomation"
-               ReferencedContainer = "container:PMTestAutomation.xcodeproj">
+               BuildableName = "pmtest.framework"
+               BlueprintName = "pmtest"
+               ReferencedContainer = "container:pmtest.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -51,9 +51,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8A0F563925C9EC9B00DE7892"
-            BuildableName = "PMTestAutomation.framework"
-            BlueprintName = "PMTestAutomation"
-            ReferencedContainer = "container:PMTestAutomation.xcodeproj">
+            BuildableName = "pmtest.framework"
+            BlueprintName = "pmtest"
+            ReferencedContainer = "container:pmtest.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>
