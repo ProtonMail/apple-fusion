@@ -1,7 +1,7 @@
 //
-//  CoreTestCase.swift
+//  UiDevice.swift
 //
-//  ProtonMail - Created on 08.06.21.
+//  ProtonMail - Created on 02.07.21.
 //
 //  The MIT License
 //
@@ -27,12 +27,24 @@
 
 import XCTest
 
-open class CoreTestCase: XCTestCase {
+/**
+ *  Contains functions related to the device or system actions.
+ */
+open class UiDevice {
     
-    let device = UiDevice()
-    let ui = Elements()
+    func pressHome() {
+        XCUIDevice.shared.press(.home)
+    }
     
-    func uiInBundle(appBundleId: String?) -> Elements {
-        return Elements(bundleIdentifier: appBundleId)
+    func saveTextToClipboard(_ text: String) {
+        UIPasteboard.general.string = text
+    }
+    
+    func saveImageToClipboard(_ image: UIImage) {
+        UIPasteboard.general.image = image
+    }
+    
+    func saveUrlToClipboard(_ url: URL) {
+        UIPasteboard.general.url = url
     }
 }

@@ -29,8 +29,6 @@
  * XCUIElement extensions that help to simplify the test syntax and keep it more compact.
  */
 open class CoreElements: Elements {
-
-    public override required init() {
-        super.init()
-    }
+    
+    let device = UiDevice()
 }
