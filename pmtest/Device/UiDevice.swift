@@ -32,19 +32,19 @@ import XCTest
  */
 open class UiDevice {
     
-    func pressHome() {
+    public func pressHome() {
         XCUIDevice.shared.press(.home)
     }
     
-    func saveTextToClipboard(_ text: String) {
+    public func saveTextToClipboard(_ text: String) {
         UIPasteboard.general.string = text
     }
     
-    func saveImageToClipboard(_ image: UIImage) {
+    public func saveImageToClipboard(_ image: UIImage) {
         UIPasteboard.general.image = image
     }
     
-    func saveUrlToClipboard(_ url: URL) {
+    public func saveUrlToClipboard(_ url: URL) {
         UIPasteboard.general.url = url
     }
 }
