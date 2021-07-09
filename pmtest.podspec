@@ -8,6 +8,7 @@ Pod::Spec.new do |spec|
     spec.author       = "Denys Zelenchuk"
   
     spec.ios.deployment_target = "10.0"
+    spec.osx.deployment_target  = '10.15'
   
     spec.source       = { :git => ".", :commit => "" }
     spec.source_files  =  "pmtest/**/*.swift"

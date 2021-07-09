@@ -17,6 +17,7 @@
 		8A0F563F25C9EC9B00DE7892 /* pmtest.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A0F563D25C9EC9B00DE7892 /* pmtest.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8A4A3B17266F2B8500DBC4D1 /* CoreTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4A3B16266F2B8500DBC4D1 /* CoreTestCase.swift */; };
 		8A5775E326698196001AFFA1 /* InterruptionMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5775E226698196001AFFA1 /* InterruptionMonitor.swift */; };
+		8AB5A468268E73410023D926 /* UiDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB5A467268E73410023D926 /* UiDevice.swift */; };
 		8AB883652649B44C00EDFCCB /* Predicate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB883642649B44C00EDFCCB /* Predicate.swift */; };
 		9AB96BB22B418BC35CDFBAE0 /* Pods_pmtest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32BA72A790058E142D735509 /* Pods_pmtest.framework */; };
 /* End PBXBuildFile section */
@@ -40,6 +41,7 @@
 		8A5775E226698196001AFFA1 /* InterruptionMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterruptionMonitor.swift; sourceTree = "<group>"; };
 		8A5775E4266AD130001AFFA1 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		8AA49C4C25CB5E4B00B9B365 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		8AB5A467268E73410023D926 /* UiDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UiDevice.swift; sourceTree = "<group>"; };
 		8AB883642649B44C00EDFCCB /* Predicate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Predicate.swift; sourceTree = "<group>"; };
 		8AD7092525CC28100000C78F /* pmtest.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = pmtest.podspec; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -90,6 +92,7 @@
 		8A0F563C25C9EC9B00DE7892 /* pmtest */ = {
 			isa = PBXGroup;
 			children = (
+				8AE339C6268D09AD0070311A /* Device */,
 				8A5775E12669817F001AFFA1 /* Interruption */,
 				8A0F566F25C9EF4200DE7892 /* Elements */,
 				8A0F566625C9EF4200DE7892 /* Utils */,
@@ -136,6 +139,14 @@
 				8A5775E226698196001AFFA1 /* InterruptionMonitor.swift */,
 			);
 			path = Interruption;
+			sourceTree = "<group>";
+		};
+		8AE339C6268D09AD0070311A /* Device */ = {
+			isa = PBXGroup;
+			children = (
+				8AB5A467268E73410023D926 /* UiDevice.swift */,
+			);
+			path = Device;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -247,6 +258,7 @@
 				8AB883652649B44C00EDFCCB /* Predicate.swift in Sources */,
 				473D54A125D2E818008F498E /* CoreElements.swift in Sources */,
 				473D54C325D2E8B6008F498E /* XCUIElement.swift in Sources */,
+				8AB5A468268E73410023D926 /* UiDevice.swift in Sources */,
 				8A5775E326698196001AFFA1 /* InterruptionMonitor.swift in Sources */,
 				8A4A3B17266F2B8500DBC4D1 /* CoreTestCase.swift in Sources */,
 				473D54C125D2E8B6008F498E /* UiElement.swift in Sources */,
