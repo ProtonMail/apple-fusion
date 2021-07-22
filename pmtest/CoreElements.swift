@@ -31,4 +31,6 @@
 open class CoreElements: Elements {
     
     let device = UiDevice()
+
+    required public override init() { super.init() }
 }
