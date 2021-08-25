@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		473D54A125D2E818008F498E /* CoreElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0F567525C9EF4200DE7892 /* CoreElements.swift */; };
 		473D54C125D2E8B6008F498E /* UiElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0F56DB25C9F56F00DE7892 /* UiElement.swift */; };
-		473D54C225D2E8B6008F498E /* Elements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0F56D225C9F53100DE7892 /* Elements.swift */; };
+		473D54C225D2E8B6008F498E /* ElementsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0F56D225C9F53100DE7892 /* ElementsProtocol.swift */; };
 		473D54C325D2E8B6008F498E /* XCUIElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0F56EA25C9F79E00DE7892 /* XCUIElement.swift */; };
 		473D54C825D2E8BC008F498E /* StringUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0F566825C9EF4200DE7892 /* StringUtils.swift */; };
 		473D54CA25D2E8BC008F498E /* DateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0F566C25C9EF4200DE7892 /* DateUtils.swift */; };
@@ -32,7 +32,7 @@
 		8A0F566C25C9EF4200DE7892 /* DateUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateUtils.swift; sourceTree = "<group>"; };
 		8A0F566E25C9EF4200DE7892 /* Wait.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wait.swift; sourceTree = "<group>"; };
 		8A0F567525C9EF4200DE7892 /* CoreElements.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreElements.swift; sourceTree = "<group>"; };
-		8A0F56D225C9F53100DE7892 /* Elements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Elements.swift; sourceTree = "<group>"; };
+		8A0F56D225C9F53100DE7892 /* ElementsProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementsProtocol.swift; sourceTree = "<group>"; };
 		8A0F56DB25C9F56F00DE7892 /* UiElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UiElement.swift; sourceTree = "<group>"; };
 		8A0F56EA25C9F79E00DE7892 /* XCUIElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCUIElement.swift; sourceTree = "<group>"; };
 		8A4A3B16266F2B8500DBC4D1 /* CoreTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreTestCase.swift; sourceTree = "<group>"; };
@@ -126,7 +126,7 @@
 		8A0F566F25C9EF4200DE7892 /* Elements */ = {
 			isa = PBXGroup;
 			children = (
-				8A0F56D225C9F53100DE7892 /* Elements.swift */,
+				8A0F56D225C9F53100DE7892 /* ElementsProtocol.swift */,
 				8A0F56DB25C9F56F00DE7892 /* UiElement.swift */,
 				8A0F56EA25C9F79E00DE7892 /* XCUIElement.swift */,
 			);
@@ -263,7 +263,7 @@
 				8A4A3B17266F2B8500DBC4D1 /* CoreTestCase.swift in Sources */,
 				473D54C125D2E8B6008F498E /* UiElement.swift in Sources */,
 				473D54CA25D2E8BC008F498E /* DateUtils.swift in Sources */,
-				473D54C225D2E8B6008F498E /* Elements.swift in Sources */,
+				473D54C225D2E8B6008F498E /* ElementsProtocol.swift in Sources */,
 				473D54C825D2E8BC008F498E /* StringUtils.swift in Sources */,
 				473D54D025D2E8C2008F498E /* Wait.swift in Sources */,
 			);
