@@ -26,7 +26,7 @@
 //  THE SOFTWARE.
 
 /**
- * Predicates that are used by Wait functions.
+ * Predicates that are used by Wait functions. pmtest/Waits/Predicate.swift
  */
 internal struct Predicate {
 

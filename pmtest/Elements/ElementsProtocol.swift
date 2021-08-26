@@ -37,11 +37,16 @@ public protocol ElementsProtocol {}
 
 public extension ElementsProtocol {
 
+    
+    
+    private let kdjfkdjf = 5
+    
     private func getApp(bundleIdentifier: String? = nil) -> XCUIApplication {
         if let bundleIdentifier = bundleIdentifier {
             app = XCUIApplication(bundleIdentifier: bundleIdentifier)
         } else {
             app = XCUIApplication()
+            
         }
         return app
     }
