@@ -29,6 +29,7 @@ import XCTest
 
 extension XCTestCase {
     
+    public static var enableContacts: Bool = false
     public static var tutorialSkipped: Bool = false
     
     /**
