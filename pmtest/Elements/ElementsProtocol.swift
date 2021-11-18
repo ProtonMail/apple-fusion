@@ -28,7 +28,7 @@
 import Foundation
 import XCTest
 
-fileprivate var app: XCUIApplication = XCUIApplication()
+private var app: XCUIApplication = XCUIApplication()
 
 /**
  * Collection of all XCUIElement types that can be used in UI testing.
@@ -46,10 +46,16 @@ public extension ElementsProtocol {
         return app
     }
 
+    /**
+     UiDevice instance which can be used to invoke device functions.
+     */
     func device() -> UiDevice {
         return UiDevice()
     }
 
+    /**
+     Specify which bundle to use when locating the element.
+     */
     func inBundleIdentifier(_ bundleIdentifier: String? = nil) -> ElementsProtocol {
         app = getApp(bundleIdentifier: bundleIdentifier)
         return self
