@@ -72,7 +72,7 @@ open class UiElement {
     private var containLabel: String?
 
     internal func getType() -> XCUIElement.ElementType {
-        return self.uiElement().elementType
+        return self.uiElement()!.elementType
     }
 
     internal func setType(_ elementQuery: XCUIElementQuery) -> UiElement {
@@ -94,63 +94,63 @@ open class UiElement {
 
     /// Element properties
     public func label() -> String? {
-        guard let element = locatedElement else {
+        guard let element = uiElement() else {
             return nil
         }
         return element.label
     }
 
     public func placeholderValue() -> String? {
-        guard let element = locatedElement else {
+        guard let element = uiElement() else {
             return nil
         }
         return element.placeholderValue
     }
 
     public func title() -> String? {
-        guard let element = locatedElement else {
+        guard let element = uiElement() else {
             return nil
         }
         return element.title
     }
 
     public func value() -> Any? {
-        guard let element = locatedElement else {
+        guard let element = uiElement() else {
             return nil
         }
         return element.value
     }
 
     public func exists() -> Bool {
-        guard let element = locatedElement else {
+        guard let element = uiElement() else {
             return false
         }
         return element.exists
     }
 
     public func enabled() -> Bool {
-        guard let element = locatedElement else {
+        guard let element = uiElement() else {
             return false
         }
         return element.isEnabled
     }
 
     public func focused() -> Bool {
-        guard let element = locatedElement else {
+        guard let element = uiElement() else {
             return false
         }
         return element.hasFocus
     }
 
     public func hittable() -> Bool {
-        guard let element = locatedElement else {
+        guard let element = uiElement() else {
             return false
         }
         return element.isHittable
     }
 
     public func selected() -> Bool {
-        guard let element = locatedElement else {
+        guard let element = uiElement() else {
             return false
         }
         return element.isSelected
@@ -240,114 +240,114 @@ open class UiElement {
 
     /// Actions
     public func adjust(to value: String) -> UiElement {
-        Wait().forElement(uiElement()).adjust(toPickerWheelValue: "\(value)")
+        Wait().forElement(uiElement()!).adjust(toPickerWheelValue: "\(value)")
         return self
     }
 
     public func clearText() -> UiElement {
-        Wait().forElement(uiElement()).clearText()
+        Wait().forElement(uiElement()!).clearText()
         return self
     }
 
     @discardableResult
     public func doubleTap() -> UiElement {
-        Wait().forElement(uiElement()).doubleTap()
+        Wait().forElement(uiElement()!).doubleTap()
         return self
     }
 
     @discardableResult
     public func forceTap() -> UiElement {
-        Wait().forElement(uiElement()).coordinate(withNormalizedOffset: .zero).tap()
+        Wait().forElement(uiElement()!).coordinate(withNormalizedOffset: .zero).tap()
         return self
     }
 
     @discardableResult
     public func longPress(_ timeInterval: TimeInterval = 2) -> UiElement {
-        Wait().forElement(uiElement()).press(forDuration: timeInterval)
+        Wait().forElement(uiElement()!).press(forDuration: timeInterval)
         return self
     }
 
     @discardableResult
     public func pinch(scale: CGFloat, velocity: CGFloat) -> UiElement {
-        Wait().forElement(uiElement()).pinch(withScale: scale, velocity: velocity)
+        Wait().forElement(uiElement()!).pinch(withScale: scale, velocity: velocity)
         return self
     }
 
     @discardableResult
     public func twoFingerTap(scale: CGFloat, velocity: CGFloat) -> UiElement {
-        Wait().forElement(uiElement()).twoFingerTap()
+        Wait().forElement(uiElement()!).twoFingerTap()
         return self
     }
 
     @discardableResult
     public func swipeDown() -> UiElement {
-        Wait().forElement(uiElement()).swipeDown()
+        Wait().forElement(uiElement()!).swipeDown()
         return self
     }
 
     @discardableResult
     public func swipeLeft() -> UiElement {
-        Wait().forElement(uiElement()).swipeLeft()
+        Wait().forElement(uiElement()!).swipeLeft()
         return self
     }
 
     @discardableResult
     public func swipeRight() -> UiElement {
-        Wait().forElement(uiElement()).swipeRight()
+        Wait().forElement(uiElement()!).swipeRight()
         return self
     }
 
     @discardableResult
     public func swipeUp() -> UiElement {
-        Wait().forElement(uiElement()).swipeUp()
+        Wait().forElement(uiElement()!).swipeUp()
         return self
     }
 
     @discardableResult
     public func tapThenSwipeLeft( _ forDuration: TimeInterval, _ speed: XCUIGestureVelocity) -> UiElement {
-        Wait().forElement(uiElement())
-        let start = uiElement().coordinate(withNormalizedOffset: CGVector(dx: 0.9, dy: 0.5))
-        let finish = uiElement().coordinate(withNormalizedOffset: CGVector(dx: 0.1, dy: 0.5))
+        Wait().forElement(uiElement()!)
+        let start = uiElement()!.coordinate(withNormalizedOffset: CGVector(dx: 0.9, dy: 0.5))
+        let finish = uiElement()!.coordinate(withNormalizedOffset: CGVector(dx: 0.1, dy: 0.5))
         start.press(forDuration: forDuration, thenDragTo: finish, withVelocity: speed, thenHoldForDuration: 0.1)
         return self
     }
 
     @discardableResult
     public func tapThenSwipeRight( _ forDuration: TimeInterval, _ speed: XCUIGestureVelocity) -> UiElement {
-        Wait().forElement(uiElement())
-        let start = uiElement().coordinate(withNormalizedOffset: CGVector(dx: 0.1, dy: 0.5))
-        let finish = uiElement().coordinate(withNormalizedOffset: CGVector(dx: 0.9, dy: 0.5))
+        Wait().forElement(uiElement()!)
+        let start = uiElement()!.coordinate(withNormalizedOffset: CGVector(dx: 0.1, dy: 0.5))
+        let finish = uiElement()!.coordinate(withNormalizedOffset: CGVector(dx: 0.9, dy: 0.5))
         start.press(forDuration: forDuration, thenDragTo: finish, withVelocity: speed, thenHoldForDuration: 0.1)
         return self
     }
 
     @discardableResult
     public func tapThenSwipeDown( _ forDuration: TimeInterval, _ speed: XCUIGestureVelocity) -> UiElement {
-        Wait().forElement(uiElement())
-        let start = uiElement().coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.1))
-        let finish = uiElement().coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.9))
+        Wait().forElement(uiElement()!)
+        let start = uiElement()!.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.1))
+        let finish = uiElement()!.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.9))
         start.press(forDuration: forDuration, thenDragTo: finish, withVelocity: speed, thenHoldForDuration: 0.1)
         return self
     }
 
     @discardableResult
     public func tapThenSwipeUp( _ forDuration: TimeInterval, _ speed: XCUIGestureVelocity) -> UiElement {
-        Wait().forElement(uiElement())
-        let start = uiElement().coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.9))
-        let finish = uiElement().coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.1))
+        Wait().forElement(uiElement()!)
+        let start = uiElement()!.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.9))
+        let finish = uiElement()!.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.1))
         start.press(forDuration: forDuration, thenDragTo: finish, withVelocity: speed, thenHoldForDuration: 0.1)
         return self
     }
 
     @discardableResult
     public func tap() -> UiElement {
-        Wait().forElement(uiElement()).tap()
+        Wait().forElement(uiElement()!).tap()
         return self
     }
 
     @discardableResult
     public func tapIfExists() -> UiElement {
-        let element = uiElement()
+        let element = uiElement()!
         if Wait().forElement(element).exists {
             element.tap()
         }
@@ -356,7 +356,21 @@ open class UiElement {
 
     @discardableResult
     public func typeText(_ text: String) -> UiElement {
-        Wait().forElement(uiElement()).typeText(text)
+        Wait().forElement(uiElement()!).typeText(text)
+        return self
+    }
+    
+    @discardableResult
+    public func forceKeyboardFocus(_ retries: Int = 5) -> UiElement {
+        var count = 0
+        while !Wait(time: 1).forElementHasKeyboardFocus(uiElement()!) {
+            if count < retries {
+                uiElement()!.tap()
+                count += 1
+            } else {
+                XCTFail("Unable to set the keyboard focus to element: \(String(describing: uiElement()?.debugDescription))")
+            }
+        }
         return self
     }
 
@@ -410,51 +424,51 @@ open class UiElement {
     /// Checks
     @discardableResult
     public func checkExists() -> UiElement {
-        XCTAssertTrue(uiElement().exists, "Expected element \(uiElement().debugDescription) to exist but it doesn't.", file: #file, line: #line)
+        XCTAssertTrue(uiElement()!.exists, "Expected element \(uiElement().debugDescription) to exist but it doesn't.", file: #file, line: #line)
         return self
     }
 
     @discardableResult
     public func checkIsHittable() -> UiElement {
-        XCTAssertTrue(uiElement().isHittable, "Expected element \(uiElement().debugDescription) to be hittable but it is not.", file: #file, line: #line)
+        XCTAssertTrue(uiElement()!.isHittable, "Expected element \(uiElement().debugDescription) to be hittable but it is not.", file: #file, line: #line)
         return self
     }
 
     @discardableResult
     public func checkDoesNotExist() -> UiElement {
-        XCTAssertFalse(uiElement().exists, "Expected element \(uiElement().debugDescription) to not exist but it exists.", file: #file, line: #line)
+        XCTAssertFalse(uiElement()!.exists, "Expected element \(uiElement().debugDescription) to not exist but it exists.", file: #file, line: #line)
         return self
     }
 
     @discardableResult
     public func checkDisabled() -> UiElement {
-        XCTAssertFalse(uiElement().isEnabled, "Expected element \(uiElement().debugDescription) to be in disabled state but it is enabled.", file: #file, line: #line)
+        XCTAssertFalse(uiElement()!.isEnabled, "Expected element \(uiElement().debugDescription) to be in disabled state but it is enabled.", file: #file, line: #line)
         return self
     }
 
     @discardableResult
     public func checkEnabled() -> UiElement {
-        XCTAssertTrue(uiElement().isEnabled, "Expected element \(uiElement().debugDescription) to be in enabled state but it is disabled.", file: #file, line: #line)
+        XCTAssertTrue(uiElement()!.isEnabled, "Expected element \(uiElement().debugDescription) to be in enabled state but it is disabled.", file: #file, line: #line)
         return self
     }
 
     @discardableResult
     public func checkHasChild(_ childElement: UiElement) -> UiElement {
-        let locatedElement = uiElement().child(childElement)
+        let locatedElement = uiElement()!.child(childElement)
         XCTAssertTrue(locatedElement.exists, "Expected to find a child element: \"\(childElement.uiElement().debugDescription)\" but found nothing.")
         return self
     }
 
     @discardableResult
     public func checkHasDescendant(_ descendantElement: UiElement) -> UiElement {
-        let locatedElement = uiElement().descendant(descendantElement)
+        let locatedElement = uiElement()!.descendant(descendantElement)
         XCTAssertTrue(locatedElement.exists, "Expected to find descendant element: \"\(descendantElement.uiElement().debugDescription)\" but found nothing.")
         return self
     }
 
     @discardableResult
     public func checkHasLabel(_ label: String) -> UiElement {
-        guard let labelValue = uiElement().label as? String else {
+        guard let labelValue = uiElement()!.label as? String else {
             XCTFail("Element doesn't have text label.")
             return self
         }
@@ -464,7 +478,7 @@ open class UiElement {
 
     @discardableResult
         public func checkContainsLabel(_ label: String) -> UiElement {
-            guard let labelValue = uiElement().label as? String else {
+            guard let labelValue = uiElement()!.label as? String else {
                 XCTFail("Element doesn't have text label.")
                 return self
             }
@@ -474,7 +488,7 @@ open class UiElement {
 
     @discardableResult
     public func checkHasValue(_ value: String) -> UiElement {
-        guard let stringValue = uiElement().value as? String else {
+        guard let stringValue = uiElement()!.value as? String else {
             XCTFail("Element doesn't have text value.")
             return self
         }
@@ -484,7 +498,7 @@ open class UiElement {
 
     @discardableResult
     public func checkHasTitle(_ title: String) -> UiElement {
-        guard let stringValue = uiElement().title as? String else {
+        guard let stringValue = uiElement()!.title as? String else {
             XCTFail("Element doesn't have title value.")
             return self
         }
@@ -494,38 +508,44 @@ open class UiElement {
 
     @discardableResult
     public func checkSelected() -> UiElement {
-        XCTAssertTrue(uiElement().isSelected == true, "Expected Element to be selected, but it is not")
+        XCTAssertTrue(uiElement()!.isSelected == true, "Expected Element to be selected, but it is not")
         return self
     }
 
     /// Waits
     @discardableResult
     public func wait(time: TimeInterval = 10.0) -> UiElement {
-        Wait(time: time).forElement(uiElement())
+        Wait(time: time).forElement(uiElement()!)
         return self
     }
 
     @discardableResult
     public func waitForDisabled(time: TimeInterval = 10.0) -> UiElement {
-        Wait(time: time).forElementToBeDisabled(uiElement())
+        Wait(time: time).forElementToBeDisabled(uiElement()!)
         return self
     }
 
     @discardableResult
     public func waitForHittable(time: TimeInterval = 10.0) -> UiElement {
-        Wait(time: time).forElementToBeHittable(uiElement())
+        Wait(time: time).forElementToBeHittable(uiElement()!)
         return self
     }
 
     @discardableResult
     public func waitForEnabled(time: TimeInterval = 10.0) -> UiElement {
-        Wait(time: time).forElementToBeEnabled(uiElement())
+        Wait(time: time).forElementToBeEnabled(uiElement()!)
+        return self
+    }
+    
+    @discardableResult
+    public func waitForFocused(time: TimeInterval = 10.0) -> UiElement {
+        Wait(time: time).forElementHasKeyboardFocus(uiElement()!)
         return self
     }
 
     @discardableResult
     public func waitUntilGone(time: TimeInterval = 10.0) -> UiElement {
-        Wait(time: time).forElementToDisappear(uiElement())
+        Wait(time: time).forElementToDisappear(uiElement()!)
         return self
     }
 
@@ -533,7 +553,7 @@ open class UiElement {
      * The core function responsible for XCUIElement location logic.
      */
     // swiftlint:disable cyclomatic_complexity
-    internal func uiElement() -> XCUIElement {
+    internal func uiElement() -> XCUIElement? {
         /// Return element instance if it was already located.
         if locatedElement != nil {
             return locatedElement!
@@ -623,7 +643,7 @@ open class UiElement {
     }
 
     private var isVisible: Bool {
-        guard uiElement().exists && !uiElement().frame.isEmpty else { return false }
-        return app.windows.element(boundBy: 0).frame.contains(uiElement().frame)
+        guard uiElement()!.exists && !uiElement()!.frame.isEmpty else { return false }
+        return app.windows.element(boundBy: 0).frame.contains(uiElement()!.frame)
     }
 }
