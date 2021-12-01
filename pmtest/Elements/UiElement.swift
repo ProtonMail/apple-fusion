@@ -363,26 +363,13 @@ open class UiElement {
     @discardableResult
     public func forceKeyboardFocus(_ retries: Int = 5) -> UiElement {
         var count = 0
-        while !Wait(time: 1).forElementHasKeyboardFocus(uiElement()!) {
+        while !Wait(time: 1).hasKeyboardFocus(uiElement()!) {
             if count < retries {
                 uiElement()!.tap()
                 count += 1
             } else {
                 XCTFail("Unable to set the keyboard focus to element: \(String(describing: uiElement()?.debugDescription))")
             }
-        }
-        return self
-    }
-    
-    @discardableResult
-    public func forcePutFocus(_ timeout: TimeInterval = 2) -> UiElement {
-        let predicate = NSPredicate(block: { _, _ -> Bool in
-            return self.uiElement().hasFocus == true
-        })
-        let expectation = XCTNSPredicateExpectation(predicate: predicate, object: uiElement())
-        let result = XCTWaiter().wait(for: [expectation], timeout: timeout)
-        if result != .completed {
-            uiElement().tap()
         }
         return self
     }
@@ -552,13 +539,7 @@ open class UiElement {
     
     @discardableResult
     public func waitForFocused(time: TimeInterval = 10.0) -> UiElement {
-        Wait(time: time).forElementHasKeyboardFocus(uiElement()!)
-        return self
-    }
-    
-    @discardableResult
-    public func waitForFocused(time: TimeInterval = 10.0) -> UiElement {
-        Wait(time: time).forElementHasKeyboardFocus(uiElement())
+        Wait(time: time).forHavingKeyboardFocus(uiElement()!)
         return self
     }
 
