@@ -373,6 +373,19 @@ open class UiElement {
         }
         return self
     }
+    
+    @discardableResult
+    public func forcePutFocus(_ timeout: TimeInterval = 2) -> UiElement {
+        let predicate = NSPredicate(block: { _, _ -> Bool in
+            return self.uiElement().hasFocus == true
+        })
+        let expectation = XCTNSPredicateExpectation(predicate: predicate, object: uiElement())
+        let result = XCTWaiter().wait(for: [expectation], timeout: timeout)
+        if result != .completed {
+            uiElement().tap()
+        }
+        return self
+    }
 
     @discardableResult
     public func swipeUpUntilVisible(maxAttempts: Int = 5) -> UiElement {
@@ -540,6 +553,12 @@ open class UiElement {
     @discardableResult
     public func waitForFocused(time: TimeInterval = 10.0) -> UiElement {
         Wait(time: time).forElementHasKeyboardFocus(uiElement()!)
+        return self
+    }
+    
+    @discardableResult
+    public func waitForFocused(time: TimeInterval = 10.0) -> UiElement {
+        Wait(time: time).forElementHasKeyboardFocus(uiElement())
         return self
     }
 
