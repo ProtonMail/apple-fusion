@@ -100,6 +100,13 @@ open class UiElement {
         return element.label
     }
 
+    public func placeholderValue() -> String? {
+        guard let element = locatedElement else {
+            return nil
+        }
+        return element.placeholderValue
+    }
+
     public func title() -> String? {
         guard let element = locatedElement else {
             return nil
@@ -126,6 +133,13 @@ open class UiElement {
             return false
         }
         return element.isEnabled
+    }
+
+    public func focused() -> Bool {
+        guard let element = locatedElement else {
+            return false
+        }
+        return element.hasFocus
     }
 
     public func hittable() -> Bool {
