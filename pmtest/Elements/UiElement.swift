@@ -363,7 +363,9 @@ open class UiElement {
     @discardableResult
     public func forceKeyboardFocus(_ retries: Int = 5) -> UiElement {
         var count = 0
-        while !Wait(time: 1).hasKeyboardFocus(uiElement()!) {
+        uiElement()!.tap()
+        // Give xctest enough time to evaluate predicate. It doesn't mean that each time it will be 10 seconds.
+        while !Wait().hasKeyboardFocus(uiElement()!) {
             if count < retries {
                 uiElement()!.tap()
                 count += 1
