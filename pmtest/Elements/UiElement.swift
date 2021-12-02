@@ -70,6 +70,7 @@ open class UiElement {
     private var containsIdentifier: String?
     private var containsPredicate: NSPredicate?
     private var containLabel: String?
+    private var shouldUseFirstMatch: Bool = false
 
     internal func getType() -> XCUIElement.ElementType {
         return self.uiElement()!.elementType
@@ -194,6 +195,11 @@ open class UiElement {
 
     public func isHittable() -> UiElement {
         self.elementHittable = true
+        return self
+    }
+
+    public func firstMatch() -> UiElement {
+        self.shouldUseFirstMatch = true
         return self
     }
 
@@ -639,7 +645,11 @@ open class UiElement {
             return uiElementQuery!.element.descendant(descendantElement!)
         }
 
-        locatedElement = uiElementQuery!.element
+        if (shouldUseFirstMatch) {
+            locatedElement = uiElementQuery!.element.firstMatch
+        } else {
+            locatedElement = uiElementQuery!.element
+        }
 
         return locatedElement!
     }
