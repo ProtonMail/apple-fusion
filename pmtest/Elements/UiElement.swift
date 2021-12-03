@@ -575,10 +575,14 @@ open class UiElement {
             uiElementQuery = uiElementQuery!.matching(identifier: identifier!)
         } else if predicate != nil {
             uiElementQuery = uiElementQuery!.matching(predicate!)
-        } else if index != nil {
+        }
+
+        if index != nil {
             /// Locate  XCUIElementQuery based on its index.
             locatedElement = uiElementQuery!.element(boundBy: index!)
-        } else {
+        }
+
+        if identifier == nil && predicate == nil && index == nil {
             /// Return matched element of given type.
             locatedElement = uiElementQuery!.element
         }
