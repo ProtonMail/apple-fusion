@@ -50,30 +50,38 @@ extension XCUIElement {
     }
 
     /**
-     * Returns child element that matches given locator: identifier, predicate or index.
-     */
+    * Returns child element that matches given locator.
+    */
     func child(_ childElement: UiElement) -> XCUIElement {
-        /// At least one of the following: identifier, predicate or index must not be nil because otherwise test will fail in UiElement() line 354.
+        let parent = childElement.parent!
+        let type = childElement.getType()
+
         if childElement.getIdentifier() != nil {
-            return Wait().forElement(self.children(matching: childElement.getType()).element(matching: childElement.getType(), identifier: childElement.getIdentifier()))
+            return parent.children(matching: type).element(matching: type, identifier: childElement.getIdentifier())
         } else if childElement.getPredicate() != nil {
-            return Wait().forElement(self.children(matching: childElement.getType()).element(matching: childElement.getPredicate()!))
+            return parent.children(matching: type).element(matching: childElement.getPredicate()!)
+        } else if childElement.getIndex() != nil {
+            return parent.children(matching: type).element(boundBy: childElement.getIndex()!)
         } else {
-            return Wait().forElement(self.children(matching: childElement.getType()).element(boundBy: childElement.getIndex()!))
+            return parent.children(matching: type).element
         }
     }
 
     /**
-     * Returns child element that matches given locator
-     */
+    * Returns child element that matches given locator.
+    */
     func descendant(_ descendantElement: UiElement) -> XCUIElement {
-        /// At least one of the following: identifier, predicate or index must not be nil because otherwise test will fail in UiElement() line 354.
+        let ancestor = descendantElement.ancestor!
+        let type = descendantElement.getType()
+
         if descendantElement.getIdentifier() != nil {
-            return Wait().forElement(self.descendants(matching: descendantElement.getType()).element(matching: descendantElement.getType(), identifier: descendantElement.getIdentifier()))
+            return ancestor.descendants(matching: type).element(matching: type, identifier: descendantElement.getIdentifier())
         } else if descendantElement.getPredicate() != nil {
-            return Wait().forElement(self.descendants(matching: descendantElement.getType()).element(matching: descendantElement.getPredicate()!))
+            return ancestor.descendants(matching: type).element(matching: descendantElement.getPredicate()!)
+        } else if descendantElement.getIndex() != nil {
+            return ancestor.descendants(matching: type).element(boundBy: descendantElement.getIndex()!)
         } else {
-            return Wait().forElement(self.descendants(matching: descendantElement.getType()).element(boundBy: descendantElement.getIndex()!))
+            return ancestor.descendants(matching: type).element
         }
     }
 }
