@@ -641,12 +641,6 @@ open class UiElement {
             locatedElement = uiElementQuery!.element
         }
 
-        if (parent != nil) {
-            locatedElement = parent!.child(self)
-        } else if (ancestor != nil) {
-            locatedElement = ancestor!.descendant(self)
-        }
-        
         if childElement != nil {
             /// Return child element based on UiElement instance provided.
             let parent = uiElementQuery!.element
@@ -657,13 +651,19 @@ open class UiElement {
             descendantElement?.ancestor = ancestor
         }
 
-        if (shouldUseFirstMatch) {
+        if parent != nil {
+            locatedElement = parent!.child(self)
+        } else if ancestor != nil {
+            locatedElement = ancestor!.descendant(self)
+        }
+
+        if shouldUseFirstMatch {
             locatedElement = uiElementQuery!.element.firstMatch
         } else {
             locatedElement = uiElementQuery!.element
         }
 
-        if (shouldWaitForExistance) {
+        if shouldWaitForExistance {
             return Wait().forElement(locatedElement!)
         } else {
             return locatedElement!
