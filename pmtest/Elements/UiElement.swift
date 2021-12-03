@@ -51,6 +51,8 @@ open class UiElement {
     }
 
     internal var uiElementQuery: XCUIElementQuery?
+    internal var ancestor: XCUIElement?
+    internal var parent: XCUIElement?
     private let app = XCUIApplication()
     private var locatedElement: XCUIElement?
     private var index: Int?
@@ -71,6 +73,7 @@ open class UiElement {
     private var containsPredicate: NSPredicate?
     private var containLabel: String?
     private var shouldUseFirstMatch: Bool = false
+    private var shouldWaitForExistance = true
 
     internal func getType() -> XCUIElement.ElementType {
         return self.uiElement()!.elementType
@@ -246,72 +249,71 @@ open class UiElement {
 
     /// Actions
     public func adjust(to value: String) -> UiElement {
-        Wait().forElement(uiElement()!).adjust(toPickerWheelValue: "\(value)")
+        uiElement()!.adjust(toPickerWheelValue: "\(value)")
         return self
     }
 
     public func clearText() -> UiElement {
-        Wait().forElement(uiElement()!).clearText()
+        uiElement()!.clearText()
         return self
     }
 
     @discardableResult
     public func doubleTap() -> UiElement {
-        Wait().forElement(uiElement()!).doubleTap()
+        uiElement()!.doubleTap()
         return self
     }
 
     @discardableResult
     public func forceTap() -> UiElement {
-        Wait().forElement(uiElement()!).coordinate(withNormalizedOffset: .zero).tap()
+        uiElement()!.coordinate(withNormalizedOffset: .zero).tap()
         return self
     }
 
     @discardableResult
     public func longPress(_ timeInterval: TimeInterval = 2) -> UiElement {
-        Wait().forElement(uiElement()!).press(forDuration: timeInterval)
+        uiElement()!.press(forDuration: timeInterval)
         return self
     }
 
     @discardableResult
     public func pinch(scale: CGFloat, velocity: CGFloat) -> UiElement {
-        Wait().forElement(uiElement()!).pinch(withScale: scale, velocity: velocity)
+        uiElement()!.pinch(withScale: scale, velocity: velocity)
         return self
     }
 
     @discardableResult
     public func twoFingerTap(scale: CGFloat, velocity: CGFloat) -> UiElement {
-        Wait().forElement(uiElement()!).twoFingerTap()
+        uiElement()!.twoFingerTap()
         return self
     }
 
     @discardableResult
     public func swipeDown() -> UiElement {
-        Wait().forElement(uiElement()!).swipeDown()
+        uiElement()!.swipeDown()
         return self
     }
 
     @discardableResult
     public func swipeLeft() -> UiElement {
-        Wait().forElement(uiElement()!).swipeLeft()
+        uiElement()!.swipeLeft()
         return self
     }
 
     @discardableResult
     public func swipeRight() -> UiElement {
-        Wait().forElement(uiElement()!).swipeRight()
+        uiElement()!.swipeRight()
         return self
     }
 
     @discardableResult
     public func swipeUp() -> UiElement {
-        Wait().forElement(uiElement()!).swipeUp()
+        uiElement()!.swipeUp()
         return self
     }
 
     @discardableResult
     public func tapThenSwipeLeft( _ forDuration: TimeInterval, _ speed: XCUIGestureVelocity) -> UiElement {
-        Wait().forElement(uiElement()!)
         let start = uiElement()!.coordinate(withNormalizedOffset: CGVector(dx: 0.9, dy: 0.5))
         let finish = uiElement()!.coordinate(withNormalizedOffset: CGVector(dx: 0.1, dy: 0.5))
         start.press(forDuration: forDuration, thenDragTo: finish, withVelocity: speed, thenHoldForDuration: 0.1)
@@ -320,7 +322,6 @@ open class UiElement {
 
     @discardableResult
     public func tapThenSwipeRight( _ forDuration: TimeInterval, _ speed: XCUIGestureVelocity) -> UiElement {
-        Wait().forElement(uiElement()!)
         let start = uiElement()!.coordinate(withNormalizedOffset: CGVector(dx: 0.1, dy: 0.5))
         let finish = uiElement()!.coordinate(withNormalizedOffset: CGVector(dx: 0.9, dy: 0.5))
         start.press(forDuration: forDuration, thenDragTo: finish, withVelocity: speed, thenHoldForDuration: 0.1)
@@ -329,7 +330,6 @@ open class UiElement {
 
     @discardableResult
     public func tapThenSwipeDown( _ forDuration: TimeInterval, _ speed: XCUIGestureVelocity) -> UiElement {
-        Wait().forElement(uiElement()!)
         let start = uiElement()!.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.1))
         let finish = uiElement()!.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.9))
         start.press(forDuration: forDuration, thenDragTo: finish, withVelocity: speed, thenHoldForDuration: 0.1)
@@ -338,7 +338,6 @@ open class UiElement {
 
     @discardableResult
     public func tapThenSwipeUp( _ forDuration: TimeInterval, _ speed: XCUIGestureVelocity) -> UiElement {
-        Wait().forElement(uiElement()!)
         let start = uiElement()!.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.9))
         let finish = uiElement()!.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.1))
         start.press(forDuration: forDuration, thenDragTo: finish, withVelocity: speed, thenHoldForDuration: 0.1)
@@ -347,7 +346,7 @@ open class UiElement {
 
     @discardableResult
     public func tap() -> UiElement {
-        Wait().forElement(uiElement()!).tap()
+        uiElement()!.tap()
         return self
     }
 
@@ -362,15 +361,15 @@ open class UiElement {
 
     @discardableResult
     public func typeText(_ text: String) -> UiElement {
-        Wait().forElement(uiElement()!).typeText(text)
+        uiElement()!.typeText(text)
         return self
     }
     
     @discardableResult
     public func forceKeyboardFocus(_ retries: Int = 5) -> UiElement {
         var count = 0
-        Wait().forElement(uiElement()!).tap()
-        // Give xctest enough time to evaluate predicate. It doesn't mean that each time it will be 10 seconds.
+        uiElement()!.tap()
+        // Give xctest enough time to evaluate predicate.
         while !Wait().hasKeyboardFocus(uiElement()!) {
             if count < retries {
                 uiElement()!.tap()
@@ -462,14 +461,16 @@ open class UiElement {
 
     @discardableResult
     public func checkHasChild(_ childElement: UiElement) -> UiElement {
-        let locatedElement = uiElement()!.child(childElement)
+        let parent = uiElement()!
+        let locatedElement = parent.child(childElement)
         XCTAssertTrue(locatedElement.exists, "Expected to find a child element: \"\(childElement.uiElement().debugDescription)\" but found nothing.")
         return self
     }
 
     @discardableResult
     public func checkHasDescendant(_ descendantElement: UiElement) -> UiElement {
-        let locatedElement = uiElement()!.descendant(descendantElement)
+        let ancestor = uiElement()!
+        let locatedElement = ancestor.descendant(descendantElement)
         XCTAssertTrue(locatedElement.exists, "Expected to find descendant element: \"\(descendantElement.uiElement().debugDescription)\" but found nothing.")
         return self
     }
@@ -523,6 +524,7 @@ open class UiElement {
     /// Waits
     @discardableResult
     public func wait(time: TimeInterval = 10.0) -> UiElement {
+        shouldWaitForExistance = false
         Wait(time: time).forElement(uiElement()!)
         return self
     }
@@ -564,12 +566,8 @@ open class UiElement {
     internal func uiElement() -> XCUIElement? {
         /// Return element instance if it was already located.
         if locatedElement != nil {
-            return locatedElement!
-        }
-
-        /// Fail test if identifier, predicate and index are nil.
-        if identifier == nil && predicate == nil && index == nil {
-            XCTFail("Unable to locate an element when its identifier, predicate and element index are nil.", file: #file, line: #line)
+          shouldWaitForExistance = false
+          return locatedElement!
         }
 
         /// Filer out XCUIElementQuery based on identifier or predicate value provided.
@@ -577,6 +575,12 @@ open class UiElement {
             uiElementQuery = uiElementQuery!.matching(identifier: identifier!)
         } else if predicate != nil {
             uiElementQuery = uiElementQuery!.matching(predicate!)
+        } else if index != nil {
+            /// Locate  XCUIElementQuery based on its index.
+            locatedElement = uiElementQuery!.element(boundBy: index!)
+        } else {
+            /// Return matched element of given type.
+            locatedElement = uiElementQuery!.element
         }
 
         /// Fail test if both disabled and enbaled parameters were used.
@@ -629,20 +633,28 @@ open class UiElement {
             let predicate = NSPredicate(format: "label CONTAINS[c] %@", containLabel!)
             uiElementQuery = uiElementQuery!.matching(predicate)
         }
-
-        /// Return element from XCUIElementQuery based on its index.
+        
         if index != nil {
-             return uiElementQuery!.element(boundBy: index!)
+            /// Locate  XCUIElementQuery based on its index.
+            locatedElement = uiElementQuery!.element(boundBy: index!)
+        } else {
+            locatedElement = uiElementQuery!.element
         }
 
-        /// Return child element based on UiElement instance provided.
+        if (parent != nil) {
+            locatedElement = parent!.child(self)
+        } else if (ancestor != nil) {
+            locatedElement = ancestor!.descendant(self)
+        }
+        
         if childElement != nil {
-            return uiElementQuery!.element.child(childElement!)
-        }
-
-        /// Return descendant element based on UiElement instance provided.
-        if descendantElement != nil {
-            return uiElementQuery!.element.descendant(descendantElement!)
+            /// Return child element based on UiElement instance provided.
+            let parent = uiElementQuery!.element
+            childElement?.parent = parent
+        } else if descendantElement != nil {
+            /// Return descendant element based on UiElement instance provided.
+            let ancestor = uiElementQuery!.element
+            descendantElement?.ancestor = ancestor
         }
 
         if (shouldUseFirstMatch) {
@@ -651,7 +663,11 @@ open class UiElement {
             locatedElement = uiElementQuery!.element
         }
 
-        return locatedElement!
+        if (shouldWaitForExistance) {
+            return Wait().forElement(locatedElement!)
+        } else {
+            return locatedElement!
+        }
     }
 
     private var isVisible: Bool {
