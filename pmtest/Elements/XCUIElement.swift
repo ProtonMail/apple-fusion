@@ -53,7 +53,7 @@ extension XCUIElement {
     * Returns child element that matches given locator.
     */
     func child(_ childElement: UiElement) -> XCUIElement {
-        let parent = childElement.parent!
+        let parent = childElement.parentElement!
         let type = childElement.getType()
 
         if childElement.getIdentifier() != nil {
@@ -71,7 +71,7 @@ extension XCUIElement {
     * Returns child element that matches given locator.
     */
     func descendant(_ descendantElement: UiElement) -> XCUIElement {
-        let ancestor = descendantElement.ancestor!
+        let ancestor = descendantElement.ancestorElement!
         let type = descendantElement.getType()
 
         if descendantElement.getIdentifier() != nil {
