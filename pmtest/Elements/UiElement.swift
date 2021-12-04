@@ -51,8 +51,8 @@ open class UiElement {
     }
 
     internal var uiElementQuery: XCUIElementQuery?
-    internal var ancestor: XCUIElement?
-    internal var parent: XCUIElement?
+    internal var ancestorElement: XCUIElement?
+    internal var parentElement: XCUIElement?
     private let app = XCUIApplication()
     private var locatedElement: XCUIElement?
     private var index: Int?
@@ -460,18 +460,18 @@ open class UiElement {
     }
 
     @discardableResult
-    public func checkHasChild(_ childElement: UiElement) -> UiElement {
+    public func checkHasChild(_ element: UiElement) -> UiElement {
         let parent = uiElement()!
-        let locatedElement = parent.child(childElement)
-        XCTAssertTrue(locatedElement.exists, "Expected to find a child element: \"\(childElement.uiElement().debugDescription)\" but found nothing.")
+        let locatedElement = parent.child(element)
+        XCTAssertTrue(locatedElement.exists, "Expected to find a child element: \"\(element.uiElement().debugDescription)\" but found nothing.")
         return self
     }
 
     @discardableResult
-    public func checkHasDescendant(_ descendantElement: UiElement) -> UiElement {
+    public func checkHasDescendant(_ element: UiElement) -> UiElement {
         let ancestor = uiElement()!
-        let locatedElement = ancestor.descendant(descendantElement)
-        XCTAssertTrue(locatedElement.exists, "Expected to find descendant element: \"\(descendantElement.uiElement().debugDescription)\" but found nothing.")
+        let locatedElement = ancestor.descendant(element)
+        XCTAssertTrue(locatedElement.exists, "Expected to find descendant element: \"\(element.uiElement().debugDescription)\" but found nothing.")
         return self
     }
 
@@ -577,16 +577,6 @@ open class UiElement {
             uiElementQuery = uiElementQuery!.matching(predicate!)
         }
 
-        if index != nil {
-            /// Locate  XCUIElementQuery based on its index.
-            locatedElement = uiElementQuery!.element(boundBy: index!)
-        }
-
-        if identifier == nil && predicate == nil && index == nil {
-            /// Return matched element of given type.
-            locatedElement = uiElementQuery!.element
-        }
-
         /// Fail test if both disabled and enbaled parameters were used.
         if elementDisabled == true && elementEnabled == true {
             XCTFail("Only one isDisabled() or isEnabled() function can be applied to query the element.", file: #file, line: #line)
@@ -637,34 +627,31 @@ open class UiElement {
             let predicate = NSPredicate(format: "label CONTAINS[c] %@", containLabel!)
             uiElementQuery = uiElementQuery!.matching(predicate)
         }
-        
+
         if index != nil {
             /// Locate  XCUIElementQuery based on its index.
             locatedElement = uiElementQuery!.element(boundBy: index!)
-        } else {
-            locatedElement = uiElementQuery!.element
+        } else {//if identifier == nil && predicate == nil && index == nil {
+            /// Return matched element of given type.
+            if shouldUseFirstMatch {
+                locatedElement = uiElementQuery!.element.firstMatch
+            } else {
+                locatedElement = uiElementQuery!.element
+            }
         }
-
+        
         if childElement != nil {
             /// Return child element based on UiElement instance provided.
-            let parent = uiElementQuery!.element
-            childElement?.parent = parent
+            childElement?.parentElement = locatedElement
         } else if descendantElement != nil {
             /// Return descendant element based on UiElement instance provided.
-            let ancestor = uiElementQuery!.element
-            descendantElement?.ancestor = ancestor
+            descendantElement?.ancestorElement = locatedElement
         }
-
-        if parent != nil {
-            locatedElement = parent!.child(self)
-        } else if ancestor != nil {
-            locatedElement = ancestor!.descendant(self)
-        }
-
-        if shouldUseFirstMatch {
-            locatedElement = uiElementQuery!.element.firstMatch
-        } else {
-            locatedElement = uiElementQuery!.element
+        
+        if parentElement != nil {
+            locatedElement = parentElement!.child(self)
+        } else if ancestorElement != nil {
+            locatedElement = ancestorElement!.descendant(self)
         }
 
         if shouldWaitForExistance {
