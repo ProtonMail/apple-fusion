@@ -29,7 +29,7 @@ import Foundation
 import XCTest
 
 /**
- * Contains wait functions and wait conditions taht are used to wait for the elements.
+ * Contains wait functions and wait conditions that are used to wait for the elements.
  */
 open class Wait {
 
