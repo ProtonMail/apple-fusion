@@ -10,7 +10,7 @@ import UIKit
 import Photos
 
 struct VideoGenerationConfiguration {
-    
+
     var outputUrl: URL
     var fileType: AVFileType
     var size: CGSize = UIScreen.main.bounds.size
@@ -18,7 +18,7 @@ struct VideoGenerationConfiguration {
     var avCodecKey: AVVideoCodecType = .h264
     var timescale: Int32 = 600
     var frameDurationInSeconds: Float64 = 0.3
-    
+
     var avOutputSettings: [String: Any] {
         [ AVVideoCodecKey: avCodecKey,
           AVVideoWidthKey: NSNumber(value: Float(size.width)),
