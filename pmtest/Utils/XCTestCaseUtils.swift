@@ -1,7 +1,7 @@
 //
-//  CoreTestCase.swift
+//  XCTestCaseUtils.swift
 //
-//  ProtonMail - Created on 08.06.21.
+//  ProtonMail - Created on 28.01.22.
 //
 //  The MIT License
 //
@@ -27,6 +27,11 @@
 
 import XCTest
 
-open class CoreTestCase: XCTestCase, ElementsProtocol {
-    lazy var testRecorder = XCUITestCaseRecorder(testName: getTestMethodName())
+extension XCTestCase {
+
+    func getTestMethodName() -> String {
+        let testNames = self.name.split(separator: " ")
+        let testMethodName = String(testNames[1].dropLast())
+        return testMethodName
+    }
 }

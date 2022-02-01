@@ -1,7 +1,7 @@
 //
-//  CoreTestCase.swift
+//  FileManagerUtils.swift
 //
-//  ProtonMail - Created on 08.06.21.
+//  ProtonMail - Created on 27.01.22.
 //
 //  The MIT License
 //
@@ -25,8 +25,19 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-import XCTest
+import Foundation
 
-open class CoreTestCase: XCTestCase, ElementsProtocol {
-    lazy var testRecorder = XCUITestCaseRecorder(testName: getTestMethodName())
+struct FileManagerUtils {
+
+    static var documentsDirectoryUrl: URL? {
+        try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+    }
+
+    static func createFolderInDocumentsDirectory(folderName: String) -> URL? {
+        guard let directoryUrl = documentsDirectoryUrl?.appendingPathComponent(folderName) else {
+            return nil
+        }
+        try? FileManager.default.createDirectory(atPath: directoryUrl.path, withIntermediateDirectories: true, attributes: nil)
+        return directoryUrl
+    }
 }

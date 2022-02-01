@@ -1,7 +1,7 @@
 //
-//  CoreTestCase.swift
+//  XCUITestCaseRecording.swift
 //
-//  ProtonMail - Created on 08.06.21.
+//  ProtonMail - Created on 26.01.22.
 //
 //  The MIT License
 //
@@ -27,6 +27,10 @@
 
 import XCTest
 
-open class CoreTestCase: XCTestCase, ElementsProtocol {
-    lazy var testRecorder = XCUITestCaseRecorder(testName: getTestMethodName())
+public protocol XCUITestCaseRecording: XCTestCase {
+    func setRecorderTimeInterval(timeInterval: TimeInterval)
+    func resumeRecording()
+    func pauseRecording()
+    func addGifAttachment()
+    func addVideoAttachment()
 }

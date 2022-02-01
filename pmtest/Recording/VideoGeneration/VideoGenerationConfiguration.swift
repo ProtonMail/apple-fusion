@@ -1,7 +1,7 @@
 //
-//  CoreTestCase.swift
+//  VideoGenerationConfiguration.swift
 //
-//  ProtonMail - Created on 08.06.21.
+//  ProtonMail - Created on 26.01.22.
 //
 //  The MIT License
 //
@@ -25,8 +25,23 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-import XCTest
+import AVFoundation
+import UIKit
+import Photos
 
-open class CoreTestCase: XCTestCase, ElementsProtocol {
-    lazy var testRecorder = XCUITestCaseRecorder(testName: getTestMethodName())
+struct VideoGenerationConfiguration {
+
+    var outputUrl: URL
+    var fileType: AVFileType
+    var size: CGSize = UIScreen.main.bounds.size
+    var fps: Int32 = 60
+    var avCodecKey: AVVideoCodecType = .h264
+    var timescale: Int32 = 600
+    var frameDurationInSeconds: Float64 = 0.3
+
+    var avOutputSettings: [String: Any] {
+        [ AVVideoCodecKey: avCodecKey,
+          AVVideoWidthKey: NSNumber(value: Float(size.width)),
+          AVVideoHeightKey: NSNumber(value: Float(size.height)) ]
+    }
 }

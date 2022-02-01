@@ -1,7 +1,7 @@
 //
-//  CoreTestCase.swift
+//  GifGenerationConfiguration.swift
 //
-//  ProtonMail - Created on 08.06.21.
+//  ProtonMail - Created on 28.01.22.
 //
 //  The MIT License
 //
@@ -25,8 +25,20 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-import XCTest
+import AVFoundation
 
-open class CoreTestCase: XCTestCase, ElementsProtocol {
-    lazy var testRecorder = XCUITestCaseRecorder(testName: getTestMethodName())
+struct GifGenerationConfiguration {
+
+    var utType: CFString
+    var outputUrl: URL
+    var loopCount: Int = 1
+    var delayTime: Double = 0.1
+
+    var fileProperties: [String: Any] {
+        [ kCGImagePropertyGIFDictionary as String: [kCGImagePropertyGIFLoopCount as String: loopCount] ]
+    }
+
+    var frameProperties: [String: Any] {
+        [ kCGImagePropertyGIFDictionary as String: [(kCGImagePropertyGIFDelayTime as String): delayTime] ]
+    }
 }
