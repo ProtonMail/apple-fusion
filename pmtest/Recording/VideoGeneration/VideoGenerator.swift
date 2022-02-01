@@ -9,14 +9,14 @@ import UIKit
 import Photos
 
 final class VideoGenerator {
-        
+
     private let configuration: VideoGenerationConfiguration
     private let videoWriter: VideoWriter
     private var images: [UIImage]
     private var currentFrameNumber = 0
-    
+
     // MARK: - Initialization
-    
+
     init?(configuration: VideoGenerationConfiguration, images: [UIImage]) {
         self.configuration = configuration
         self.images = images
@@ -26,9 +26,9 @@ final class VideoGenerator {
             return nil
         }
     }
-    
+
     // MARK: - Public
-    
+
     func generate(completion: @escaping ((Bool) -> Void)) {
         guard videoWriter.start() == true else {
             completion(false)
@@ -38,7 +38,7 @@ final class VideoGenerator {
             completion(success)
         }
     }
-    
+
     func appendPixelBuffers(writer: VideoWriter) -> AppendPixelBuffersOutput {
         let frameDuration = CMTimeMakeWithSeconds(configuration.frameDurationInSeconds, preferredTimescale: configuration.timescale)
         while !images.isEmpty {

@@ -12,7 +12,7 @@ struct FileManagerUtils {
     static var documentsDirectoryUrl: URL? {
         try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
     }
-    
+
     static func createFolderInDocumentsDirectory(folderName: String) -> URL? {
         guard let directoryUrl = documentsDirectoryUrl?.appendingPathComponent(folderName) else {
             return nil

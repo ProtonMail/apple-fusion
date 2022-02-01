@@ -9,18 +9,18 @@ import UIKit
 import AVFoundation
 
 final class VideoWriter {
-    
+
     private let configuration: VideoGenerationConfiguration
     private let videoWriter: AVAssetWriter!
     private var videoWriterInput: AVAssetWriterInput!
     private var pixelBufferAdaptor: AVAssetWriterInputPixelBufferAdaptor!
-    
+
     var isReadyForData: Bool {
         return videoWriterInput.isReadyForMoreMediaData
     }
-    
+
     // MARK: - Initialization
-    
+
     init?(configuration: VideoGenerationConfiguration) {
         self.configuration = configuration
         if let videoWriter = try? AVAssetWriter(outputURL: configuration.outputUrl, fileType: configuration.fileType),
@@ -43,7 +43,7 @@ final class VideoWriter {
         pixelBufferAdaptor = AVAssetWriterInputPixelBufferAdaptor(assetWriterInput: videoWriterInput,
                                                                   sourcePixelBufferAttributes: attributes)
     }
-    
+
     func start() -> Bool {
         guard videoWriter.startWriting() else {
             return false
@@ -51,7 +51,7 @@ final class VideoWriter {
         videoWriter.startSession(atSourceTime: .zero)
         return pixelBufferAdaptor.pixelBufferPool != nil
     }
-    
+
     func render(appendPixelBuffers: @escaping ((VideoWriter) -> AppendPixelBuffersOutput),
                 completion: @escaping (Bool) -> Void) {
         let queue = DispatchQueue(label: String(describing: VideoWriter.self))
@@ -63,7 +63,7 @@ final class VideoWriter {
             }
             if output.isFinished {
                 self.videoWriterInput.markAsFinished()
-                self.videoWriter.finishWriting() {
+                self.videoWriter.finishWriting {
                     DispatchQueue.main.async {
                         completion(true)
                     }
@@ -71,7 +71,7 @@ final class VideoWriter {
             }
         }
     }
-    
+
     func addImage(image: UIImage, withPresentationTime presentationTime: CMTime) -> Bool {
         guard let pixelBufferPool = pixelBufferAdaptor.pixelBufferPool else { return false }
         if let pixelBuffer = PixelBufferFactory.pixelBufferFromImage(image: image,

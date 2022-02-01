@@ -69,7 +69,7 @@ open class Wait {
     open func forHavingKeyboardFocus(_ element: XCUIElement, _ file: StaticString = #file, _ line: UInt = #line) -> XCUIElement {
         return waitForCondition(element, Predicate.hasKeyboardFocus, file, line)
     }
-    
+
     @discardableResult
     open func hasKeyboardFocus(_ element: XCUIElement, _ file: StaticString = #file, _ line: UInt = #line) -> Bool {
         return waitSoftForCondition(element, Predicate.hasKeyboardFocus, file, line)
