@@ -368,7 +368,7 @@ open class UiElement {
         uiElement()!.typeText(text)
         return self
     }
-    
+
     @discardableResult
     public func forceKeyboardFocus(_ retries: Int = 5) -> UiElement {
         var count = 0
@@ -551,7 +551,7 @@ open class UiElement {
         Wait(time: time).forElementToBeEnabled(uiElement()!)
         return self
     }
-    
+
     @discardableResult
     public func waitForFocused(time: TimeInterval = 10.0) -> UiElement {
         Wait(time: time).forHavingKeyboardFocus(uiElement()!)
@@ -569,6 +569,7 @@ open class UiElement {
      * The core function responsible for XCUIElement location logic.
      */
     // swiftlint:disable cyclomatic_complexity
+    // swiftlint:disable function_body_length
     internal func uiElement() -> XCUIElement? {
         /// Return element instance if it was already located.
         if locatedElement != nil {
@@ -645,7 +646,6 @@ open class UiElement {
                 locatedElement = uiElementQuery!.element
             }
         }
-        
         if childElement != nil {
             /// Return child element based on UiElement instance provided.
             locatedElement = locatedElement?.child(childElement!)
@@ -660,6 +660,8 @@ open class UiElement {
             return locatedElement!
         }
     }
+    // swiftlint:enable cyclomatic_complexity
+    // swiftlint:enable function_body_length
 
     private var isVisible: Bool {
         guard uiElement()!.exists && !uiElement()!.frame.isEmpty else { return false }

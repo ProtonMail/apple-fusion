@@ -7,6 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		240117AF27A1816000B1DC61 /* XCUITestCaseRecording.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240117AE27A1816000B1DC61 /* XCUITestCaseRecording.swift */; };
+		240117B127A181F400B1DC61 /* XCUITestCaseRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240117B027A181F400B1DC61 /* XCUITestCaseRecorder.swift */; };
+		240117B627A1977200B1DC61 /* VideoGenerationConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240117B527A1977200B1DC61 /* VideoGenerationConfiguration.swift */; };
+		240117B827A1978A00B1DC61 /* VideoGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240117B727A1978A00B1DC61 /* VideoGenerator.swift */; };
+		240117BA27A1979F00B1DC61 /* VideoWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240117B927A1979F00B1DC61 /* VideoWriter.swift */; };
+		240117BC27A197B400B1DC61 /* PixelBufferFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240117BB27A197B400B1DC61 /* PixelBufferFactory.swift */; };
+		2438A1D627A3204A00066EF0 /* FileManagerUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2438A1D527A3204A00066EF0 /* FileManagerUtils.swift */; };
+		24D22A8127A35A1A003F0651 /* XCTestCaseUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D22A8027A35A1A003F0651 /* XCTestCaseUtils.swift */; };
+		24D22A8327A433E2003F0651 /* GifGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D22A8227A433E2003F0651 /* GifGenerator.swift */; };
+		24D22A8627A43436003F0651 /* GifGenerationConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D22A8527A43436003F0651 /* GifGenerationConfiguration.swift */; };
+		24D22A8827A441F4003F0651 /* FileTypeUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D22A8727A441F4003F0651 /* FileTypeUtils.swift */; };
+		24D22A8A27A4882E003F0651 /* CoreTestCase+XCUITestRecording.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D22A8927A4882E003F0651 /* CoreTestCase+XCUITestRecording.swift */; };
 		473D54A125D2E818008F498E /* CoreElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0F567525C9EF4200DE7892 /* CoreElements.swift */; };
 		473D54C125D2E8B6008F498E /* UiElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0F56DB25C9F56F00DE7892 /* UiElement.swift */; };
 		473D54C225D2E8B6008F498E /* ElementsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0F56D225C9F53100DE7892 /* ElementsProtocol.swift */; };
@@ -24,6 +36,18 @@
 
 /* Begin PBXFileReference section */
 		157E440E2EFD0B3C0DA1749E /* Pods-pmtest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pmtest.debug.xcconfig"; path = "Target Support Files/Pods-pmtest/Pods-pmtest.debug.xcconfig"; sourceTree = "<group>"; };
+		240117AE27A1816000B1DC61 /* XCUITestCaseRecording.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCUITestCaseRecording.swift; sourceTree = "<group>"; };
+		240117B027A181F400B1DC61 /* XCUITestCaseRecorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCUITestCaseRecorder.swift; sourceTree = "<group>"; };
+		240117B527A1977200B1DC61 /* VideoGenerationConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoGenerationConfiguration.swift; sourceTree = "<group>"; };
+		240117B727A1978A00B1DC61 /* VideoGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoGenerator.swift; sourceTree = "<group>"; };
+		240117B927A1979F00B1DC61 /* VideoWriter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoWriter.swift; sourceTree = "<group>"; };
+		240117BB27A197B400B1DC61 /* PixelBufferFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PixelBufferFactory.swift; sourceTree = "<group>"; };
+		2438A1D527A3204A00066EF0 /* FileManagerUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerUtils.swift; sourceTree = "<group>"; };
+		24D22A8027A35A1A003F0651 /* XCTestCaseUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTestCaseUtils.swift; sourceTree = "<group>"; };
+		24D22A8227A433E2003F0651 /* GifGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifGenerator.swift; sourceTree = "<group>"; };
+		24D22A8527A43436003F0651 /* GifGenerationConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifGenerationConfiguration.swift; sourceTree = "<group>"; };
+		24D22A8727A441F4003F0651 /* FileTypeUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileTypeUtils.swift; sourceTree = "<group>"; };
+		24D22A8927A4882E003F0651 /* CoreTestCase+XCUITestRecording.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreTestCase+XCUITestRecording.swift"; sourceTree = "<group>"; };
 		32BA72A790058E142D735509 /* Pods_pmtest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_pmtest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		45178386F215F2D73E015537 /* Pods-pmtest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pmtest.release.xcconfig"; path = "Target Support Files/Pods-pmtest/Pods-pmtest.release.xcconfig"; sourceTree = "<group>"; };
 		8A0F563D25C9EC9B00DE7892 /* pmtest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = pmtest.h; sourceTree = "<group>"; };
@@ -66,6 +90,37 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		240117B427A1975A00B1DC61 /* Recording */ = {
+			isa = PBXGroup;
+			children = (
+				240117B027A181F400B1DC61 /* XCUITestCaseRecorder.swift */,
+				240117AE27A1816000B1DC61 /* XCUITestCaseRecording.swift */,
+				24D22A8427A433E9003F0651 /* GifGeneration */,
+				240117BD27A197FF00B1DC61 /* VideoGeneration */,
+			);
+			path = Recording;
+			sourceTree = "<group>";
+		};
+		240117BD27A197FF00B1DC61 /* VideoGeneration */ = {
+			isa = PBXGroup;
+			children = (
+				240117B727A1978A00B1DC61 /* VideoGenerator.swift */,
+				240117B527A1977200B1DC61 /* VideoGenerationConfiguration.swift */,
+				240117B927A1979F00B1DC61 /* VideoWriter.swift */,
+				240117BB27A197B400B1DC61 /* PixelBufferFactory.swift */,
+			);
+			path = VideoGeneration;
+			sourceTree = "<group>";
+		};
+		24D22A8427A433E9003F0651 /* GifGeneration */ = {
+			isa = PBXGroup;
+			children = (
+				24D22A8227A433E2003F0651 /* GifGenerator.swift */,
+				24D22A8527A43436003F0651 /* GifGenerationConfiguration.swift */,
+			);
+			path = GifGeneration;
+			sourceTree = "<group>";
+		};
 		76E6C6C761CC41237E062069 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -99,6 +154,8 @@
 				8A0F566D25C9EF4200DE7892 /* Waits */,
 				8A0F567525C9EF4200DE7892 /* CoreElements.swift */,
 				8A4A3B16266F2B8500DBC4D1 /* CoreTestCase.swift */,
+				24D22A8927A4882E003F0651 /* CoreTestCase+XCUITestRecording.swift */,
+				240117B427A1975A00B1DC61 /* Recording */,
 				8A0F563D25C9EC9B00DE7892 /* pmtest.h */,
 				8A0F563E25C9EC9B00DE7892 /* Info.plist */,
 			);
@@ -110,6 +167,9 @@
 			children = (
 				8A0F566C25C9EF4200DE7892 /* DateUtils.swift */,
 				8A0F566825C9EF4200DE7892 /* StringUtils.swift */,
+				2438A1D527A3204A00066EF0 /* FileManagerUtils.swift */,
+				24D22A8727A441F4003F0651 /* FileTypeUtils.swift */,
+				24D22A8027A35A1A003F0651 /* XCTestCaseUtils.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -255,17 +315,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				240117AF27A1816000B1DC61 /* XCUITestCaseRecording.swift in Sources */,
 				8AB883652649B44C00EDFCCB /* Predicate.swift in Sources */,
 				473D54A125D2E818008F498E /* CoreElements.swift in Sources */,
 				473D54C325D2E8B6008F498E /* XCUIElement.swift in Sources */,
 				8AB5A468268E73410023D926 /* UiDevice.swift in Sources */,
+				240117BA27A1979F00B1DC61 /* VideoWriter.swift in Sources */,
+				24D22A8327A433E2003F0651 /* GifGenerator.swift in Sources */,
 				8A5775E326698196001AFFA1 /* InterruptionMonitor.swift in Sources */,
 				8A4A3B17266F2B8500DBC4D1 /* CoreTestCase.swift in Sources */,
+				240117B627A1977200B1DC61 /* VideoGenerationConfiguration.swift in Sources */,
+				2438A1D627A3204A00066EF0 /* FileManagerUtils.swift in Sources */,
+				240117B127A181F400B1DC61 /* XCUITestCaseRecorder.swift in Sources */,
 				473D54C125D2E8B6008F498E /* UiElement.swift in Sources */,
 				473D54CA25D2E8BC008F498E /* DateUtils.swift in Sources */,
+				24D22A8A27A4882E003F0651 /* CoreTestCase+XCUITestRecording.swift in Sources */,
+				24D22A8127A35A1A003F0651 /* XCTestCaseUtils.swift in Sources */,
 				473D54C225D2E8B6008F498E /* ElementsProtocol.swift in Sources */,
+				240117B827A1978A00B1DC61 /* VideoGenerator.swift in Sources */,
+				24D22A8827A441F4003F0651 /* FileTypeUtils.swift in Sources */,
 				473D54C825D2E8BC008F498E /* StringUtils.swift in Sources */,
 				473D54D025D2E8C2008F498E /* Wait.swift in Sources */,
+				24D22A8627A43436003F0651 /* GifGenerationConfiguration.swift in Sources */,
+				240117BC27A197B400B1DC61 /* PixelBufferFactory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -413,6 +485,7 @@
 				EXCLUDED_ARCHS = "";
 				INFOPLIST_FILE = pmtest/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -444,6 +517,7 @@
 				EXCLUDED_ARCHS = "";
 				INFOPLIST_FILE = pmtest/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
