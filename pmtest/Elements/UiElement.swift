@@ -641,7 +641,7 @@ open class UiElement {
         
         if containLabel != nil {
             let predicate = NSPredicate(format: "label CONTAINS[c] %@", containLabel!)
-            uiElementQuery = uiElementQuery!.matching(predicate)
+            uiElementQuery = uiElementQuery!.containing(predicate)
         }
         
         if index != nil {
