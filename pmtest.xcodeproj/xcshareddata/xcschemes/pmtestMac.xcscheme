@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "FAED656C28F042A400C09F5F"
-               BuildableName = "pmtest.framework"
-               BlueprintName = "pmtest"
+               BlueprintIdentifier = "FAED64AA28F0264D00C09F5F"
+               BuildableName = "pmtestMac.framework"
+               BlueprintName = "pmtestMac"
                ReferencedContainer = "container:pmtest.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -50,9 +50,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "FAED656C28F042A400C09F5F"
-            BuildableName = "pmtest.framework"
-            BlueprintName = "pmtest"
+            BlueprintIdentifier = "FAED64AA28F0264D00C09F5F"
+            BuildableName = "pmtestMac.framework"
+            BlueprintName = "pmtestMac"
             ReferencedContainer = "container:pmtest.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
