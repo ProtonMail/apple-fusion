@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D44C3ABD28F5AFBD00D91E2A /* XCUIElement+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44C3ABC28F5AFBD00D91E2A /* XCUIElement+extension.swift */; };
+		D44C3ABF28F5B02E00D91E2A /* UiElement+macOSExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44C3ABE28F5B02E00D91E2A /* UiElement+macOSExtension.swift */; };
+		D44C3AC228F5B05200D91E2A /* UiElements+iOSExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44C3AC128F5B05200D91E2A /* UiElements+iOSExtension.swift */; };
 		FA00EDF428F0471C004925A3 /* MacUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAED63D928F001B800C09F5F /* MacUITests.swift */; };
 		FA00EDF528F04723004925A3 /* IosUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAED63CC28F001A200C09F5F /* IosUITests.swift */; };
 		FAED64C228F0268E00C09F5F /* CoreElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0F567525C9EF4200DE7892 /* CoreElements.swift */; };
@@ -74,6 +77,9 @@
 		8AB5A467268E73410023D926 /* UiDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UiDevice.swift; sourceTree = "<group>"; };
 		8AB883642649B44C00EDFCCB /* Predicate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Predicate.swift; sourceTree = "<group>"; };
 		8AD7092525CC28100000C78F /* pmtest.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = pmtest.podspec; sourceTree = "<group>"; };
+		D44C3ABC28F5AFBD00D91E2A /* XCUIElement+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCUIElement+extension.swift"; sourceTree = "<group>"; };
+		D44C3ABE28F5B02E00D91E2A /* UiElement+macOSExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UiElement+macOSExtension.swift"; sourceTree = "<group>"; };
+		D44C3AC128F5B05200D91E2A /* UiElements+iOSExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UiElements+iOSExtension.swift"; sourceTree = "<group>"; };
 		FA3EBEF228F3FC3F00EDC86B /* MacUITest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MacUITest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA3EBEF328F3FC3F00EDC86B /* IosUITest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IosUITest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAED63CC28F001A200C09F5F /* IosUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IosUITests.swift; sourceTree = "<group>"; };
@@ -219,9 +225,27 @@
 			path = Device;
 			sourceTree = "<group>";
 		};
+		D44C3ABB28F5AF9B00D91E2A /* Elements */ = {
+			isa = PBXGroup;
+			children = (
+				D44C3ABE28F5B02E00D91E2A /* UiElement+macOSExtension.swift */,
+				D44C3ABC28F5AFBD00D91E2A /* XCUIElement+extension.swift */,
+			);
+			path = Elements;
+			sourceTree = "<group>";
+		};
+		D44C3AC028F5B03600D91E2A /* Elements */ = {
+			isa = PBXGroup;
+			children = (
+				D44C3AC128F5B05200D91E2A /* UiElements+iOSExtension.swift */,
+			);
+			path = Elements;
+			sourceTree = "<group>";
+		};
 		FAED63C328F0009D00C09F5F /* Mac */ = {
 			isa = PBXGroup;
 			children = (
+				D44C3ABB28F5AF9B00D91E2A /* Elements */,
 				FAED63E028F0026300C09F5F /* MacCoreTestCase.swift */,
 			);
 			path = Mac;
@@ -230,6 +254,7 @@
 		FAED63C428F000A400C09F5F /* iOS */ = {
 			isa = PBXGroup;
 			children = (
+				D44C3AC028F5B03600D91E2A /* Elements */,
 				8A4A3B16266F2B8500DBC4D1 /* CoreTestCase.swift */,
 				24D22A8927A4882E003F0651 /* CoreTestCase+XCUITestRecording.swift */,
 				8AE339C6268D09AD0070311A /* Device */,
@@ -453,6 +478,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				FAED64C928F026D000C09F5F /* StringUtils.swift in Sources */,
+				D44C3ABF28F5B02E00D91E2A /* UiElement+macOSExtension.swift in Sources */,
+				D44C3ABD28F5AFBD00D91E2A /* XCUIElement+extension.swift in Sources */,
 				FAED64C428F026B100C09F5F /* ElementsProtocol.swift in Sources */,
 				FAED64C828F026C200C09F5F /* DateUtils.swift in Sources */,
 				FAED64CA28F026D600C09F5F /* FileManagerUtils.swift in Sources */,
@@ -494,6 +521,7 @@
 				FAED659728F042E400C09F5F /* VideoGenerator.swift in Sources */,
 				FAED659828F042E400C09F5F /* VideoGenerationConfiguration.swift in Sources */,
 				FAED659928F042E400C09F5F /* VideoWriter.swift in Sources */,
+				D44C3AC228F5B05200D91E2A /* UiElements+iOSExtension.swift in Sources */,
 				FAED659A28F042E400C09F5F /* PixelBufferFactory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -555,7 +583,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -616,7 +644,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
