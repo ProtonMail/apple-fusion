@@ -379,12 +379,6 @@ open class UiElement {
     }
     
     @discardableResult
-    public func typeText(_ text: String) -> UiElement {
-        uiElement()!.typeText(text)
-        return self
-    }
-    
-    @discardableResult
     public func forceKeyboardFocus(_ retries: Int = 5) -> UiElement {
         var count = 0
         uiElement()!.tap()
