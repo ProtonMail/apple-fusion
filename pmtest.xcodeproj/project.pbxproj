@@ -9,7 +9,8 @@
 /* Begin PBXBuildFile section */
 		D44C3ABD28F5AFBD00D91E2A /* XCUIElement+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44C3ABC28F5AFBD00D91E2A /* XCUIElement+extension.swift */; };
 		D44C3ABF28F5B02E00D91E2A /* UiElement+macOSExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44C3ABE28F5B02E00D91E2A /* UiElement+macOSExtension.swift */; };
-		D44C3AC228F5B05200D91E2A /* UiElements+iOSExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44C3AC128F5B05200D91E2A /* UiElements+iOSExtension.swift */; };
+		D44C3AC228F5B05200D91E2A /* UiElement+iOSExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44C3AC128F5B05200D91E2A /* UiElement+iOSExtension.swift */; };
+		D4C9B59F28FEBEF100C90E11 /* ElementsProtocol+iOSExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C9B59E28FEBEF100C90E11 /* ElementsProtocol+iOSExtension.swift */; };
 		FA00EDF428F0471C004925A3 /* MacUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAED63D928F001B800C09F5F /* MacUITests.swift */; };
 		FA00EDF528F04723004925A3 /* IosUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAED63CC28F001A200C09F5F /* IosUITests.swift */; };
 		FAED64C228F0268E00C09F5F /* CoreElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0F567525C9EF4200DE7892 /* CoreElements.swift */; };
@@ -79,7 +80,8 @@
 		8AD7092525CC28100000C78F /* pmtest.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = pmtest.podspec; sourceTree = "<group>"; };
 		D44C3ABC28F5AFBD00D91E2A /* XCUIElement+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCUIElement+extension.swift"; sourceTree = "<group>"; };
 		D44C3ABE28F5B02E00D91E2A /* UiElement+macOSExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UiElement+macOSExtension.swift"; sourceTree = "<group>"; };
-		D44C3AC128F5B05200D91E2A /* UiElements+iOSExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UiElements+iOSExtension.swift"; sourceTree = "<group>"; };
+		D44C3AC128F5B05200D91E2A /* UiElement+iOSExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UiElement+iOSExtension.swift"; sourceTree = "<group>"; };
+		D4C9B59E28FEBEF100C90E11 /* ElementsProtocol+iOSExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ElementsProtocol+iOSExtension.swift"; sourceTree = "<group>"; };
 		FA3EBEF228F3FC3F00EDC86B /* MacUITest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MacUITest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA3EBEF328F3FC3F00EDC86B /* IosUITest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IosUITest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAED63CC28F001A200C09F5F /* IosUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IosUITests.swift; sourceTree = "<group>"; };
@@ -237,7 +239,8 @@
 		D44C3AC028F5B03600D91E2A /* Elements */ = {
 			isa = PBXGroup;
 			children = (
-				D44C3AC128F5B05200D91E2A /* UiElements+iOSExtension.swift */,
+				D44C3AC128F5B05200D91E2A /* UiElement+iOSExtension.swift */,
+				D4C9B59E28FEBEF100C90E11 /* ElementsProtocol+iOSExtension.swift */,
 			);
 			path = Elements;
 			sourceTree = "<group>";
@@ -508,6 +511,7 @@
 				FAED658A28F042E400C09F5F /* StringUtils.swift in Sources */,
 				FAED658B28F042E400C09F5F /* FileManagerUtils.swift in Sources */,
 				FAED658C28F042E400C09F5F /* FileTypeUtils.swift in Sources */,
+				D4C9B59F28FEBEF100C90E11 /* ElementsProtocol+iOSExtension.swift in Sources */,
 				FAED658D28F042E400C09F5F /* XCTestCaseUtils.swift in Sources */,
 				FAED658E28F042E400C09F5F /* Wait.swift in Sources */,
 				FAED658F28F042E400C09F5F /* Predicate.swift in Sources */,
@@ -521,7 +525,7 @@
 				FAED659728F042E400C09F5F /* VideoGenerator.swift in Sources */,
 				FAED659828F042E400C09F5F /* VideoGenerationConfiguration.swift in Sources */,
 				FAED659928F042E400C09F5F /* VideoWriter.swift in Sources */,
-				D44C3AC228F5B05200D91E2A /* UiElements+iOSExtension.swift in Sources */,
+				D44C3AC228F5B05200D91E2A /* UiElement+iOSExtension.swift in Sources */,
 				FAED659A28F042E400C09F5F /* PixelBufferFactory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
