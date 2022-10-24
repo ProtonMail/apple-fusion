@@ -37,9 +37,24 @@ public struct Element {
             return element
         }
 
+        public func forStaticTextFieldWithIdentifier(_ identifier: String, shouldUseFirstMatch: Bool = true, file: StaticString = #filePath, line: UInt = #line, timeout: TimeInterval = 10) -> XCUIElement {
+            var element = app.staticTexts[identifier]
+            if shouldUseFirstMatch {
+                element = element.firstMatch
+            }
+            
+            XCTAssertTrue(element.waitForExistence(timeout: timeout), "Element \(element.debugDescription) does not exist.", file: file, line: line)
+            return element
+        }
+
+
         @discardableResult
-        public static func forTextFieldWithIdentifier(_ identifier: String, file: StaticString = #file, line: UInt = #line, timeout: TimeInterval = 10) -> XCUIElement {
-            let element = app.textFields[identifier].firstMatch
+        public static func forTextFieldWithIdentifier(_ identifier: String, shouldUseFirstMatch: Bool = true, file: StaticString = #file, line: UInt = #line, timeout: TimeInterval = 10) -> XCUIElement {
+            var element = app.textFields[identifier]
+            if shouldUseFirstMatch {
+                element = element.firstMatch
+            }
+
             XCTAssertTrue(element.waitForExistence(timeout: timeout), "Element \(element.debugDescription) does not exist.", file: file, line: line)
             return element
         }
