@@ -33,5 +33,18 @@ class IosUITests: CoreTestCase {
     func testExample() throws {
         let app = XCUIApplication(bundleIdentifier: "com.apple.mobilecal")
         app.launch()
+
+//        print("-------")
+//
+//        Thread.callStackSymbols.forEach{print($0)}
+//        print("-------")
+//        print("-------")
+
+        for symbol: String in Thread.callStackSymbols {
+            var stacktrace = CallStackParser.parse(stackSymbol: symbol)
+            if (stacktrace != nil){
+                print(stacktrace!.classname + " - " + stacktrace!.method)
+            }
+        }
     }
 }
