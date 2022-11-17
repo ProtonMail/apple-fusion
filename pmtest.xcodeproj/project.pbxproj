@@ -16,6 +16,14 @@
 		D4C9B59F28FEBEF100C90E11 /* ElementsProtocol+iOSExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C9B59E28FEBEF100C90E11 /* ElementsProtocol+iOSExtension.swift */; };
 		FA00EDF428F0471C004925A3 /* MacUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAED63D928F001B800C09F5F /* MacUITests.swift */; };
 		FA00EDF528F04723004925A3 /* IosUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAED63CC28F001A200C09F5F /* IosUITests.swift */; };
+		FAE305FF291BF7210058A2B7 /* CallStackParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE305FE291BF7210058A2B7 /* CallStackParser.swift */; };
+		FAE30600291BF7210058A2B7 /* CallStackParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE305FE291BF7210058A2B7 /* CallStackParser.swift */; };
+		FAE30602291BF7420058A2B7 /* CwlDemangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE30601291BF7420058A2B7 /* CwlDemangle.swift */; };
+		FAE30603291BF7420058A2B7 /* CwlDemangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE30601291BF7420058A2B7 /* CwlDemangle.swift */; };
+		FAE30605291BF7590058A2B7 /* NSObject+Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE30604291BF7590058A2B7 /* NSObject+Logging.swift */; };
+		FAE30606291BF7590058A2B7 /* NSObject+Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE30604291BF7590058A2B7 /* NSObject+Logging.swift */; };
+		FAE30608291BF7770058A2B7 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE30607291BF7770058A2B7 /* String+Extensions.swift */; };
+		FAE30609291BF7770058A2B7 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE30607291BF7770058A2B7 /* String+Extensions.swift */; };
 		FAED64C228F0268E00C09F5F /* CoreElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0F567525C9EF4200DE7892 /* CoreElements.swift */; };
 		FAED64C328F026A000C09F5F /* MacCoreTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAED63E028F0026300C09F5F /* MacCoreTestCase.swift */; };
 		FAED64C428F026B100C09F5F /* ElementsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0F56D225C9F53100DE7892 /* ElementsProtocol.swift */; };
@@ -89,6 +97,10 @@
 		D4C9B59E28FEBEF100C90E11 /* ElementsProtocol+iOSExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ElementsProtocol+iOSExtension.swift"; sourceTree = "<group>"; };
 		FA3EBEF228F3FC3F00EDC86B /* MacUITest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MacUITest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA3EBEF328F3FC3F00EDC86B /* IosUITest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IosUITest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FAE305FE291BF7210058A2B7 /* CallStackParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallStackParser.swift; sourceTree = "<group>"; };
+		FAE30601291BF7420058A2B7 /* CwlDemangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CwlDemangle.swift; sourceTree = "<group>"; };
+		FAE30604291BF7590058A2B7 /* NSObject+Logging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Logging.swift"; sourceTree = "<group>"; };
+		FAE30607291BF7770058A2B7 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		FAED63CC28F001A200C09F5F /* IosUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IosUITests.swift; sourceTree = "<group>"; };
 		FAED63D928F001B800C09F5F /* MacUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacUITests.swift; sourceTree = "<group>"; };
 		FAED63E028F0026300C09F5F /* MacCoreTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacCoreTestCase.swift; sourceTree = "<group>"; };
@@ -252,6 +264,17 @@
 			path = Elements;
 			sourceTree = "<group>";
 		};
+		FAE305FD291BF7080058A2B7 /* stacktrace */ = {
+			isa = PBXGroup;
+			children = (
+				FAE305FE291BF7210058A2B7 /* CallStackParser.swift */,
+				FAE30601291BF7420058A2B7 /* CwlDemangle.swift */,
+				FAE30604291BF7590058A2B7 /* NSObject+Logging.swift */,
+				FAE30607291BF7770058A2B7 /* String+Extensions.swift */,
+			);
+			path = stacktrace;
+			sourceTree = "<group>";
+		};
 		FAED63C328F0009D00C09F5F /* Mac */ = {
 			isa = PBXGroup;
 			children = (
@@ -276,6 +299,7 @@
 		FAED63C528F000BE00C09F5F /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				FAE305FD291BF7080058A2B7 /* stacktrace */,
 				8A0F567525C9EF4200DE7892 /* CoreElements.swift */,
 				8A0F566F25C9EF4200DE7892 /* Elements */,
 				8A5775E12669817F001AFFA1 /* Interruption */,
@@ -487,6 +511,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAE30608291BF7770058A2B7 /* String+Extensions.swift in Sources */,
 				FAED64C928F026D000C09F5F /* StringUtils.swift in Sources */,
 				D44C3ABF28F5B02E00D91E2A /* UiElement+macOSExtension.swift in Sources */,
 				D4A6033029029E84003EBCC3 /* Element.swift in Sources */,
@@ -498,8 +523,11 @@
 				FAED64C728F026BD00C09F5F /* InterruptionMonitor.swift in Sources */,
 				FAED64C328F026A000C09F5F /* MacCoreTestCase.swift in Sources */,
 				FAED64CD28F026E300C09F5F /* Wait.swift in Sources */,
+				FAE30602291BF7420058A2B7 /* CwlDemangle.swift in Sources */,
+				FAE305FF291BF7210058A2B7 /* CallStackParser.swift in Sources */,
 				FAED64C528F026B500C09F5F /* UiElement.swift in Sources */,
 				FAED64CF28F026E700C09F5F /* Predicate.swift in Sources */,
+				FAE30605291BF7590058A2B7 /* NSObject+Logging.swift in Sources */,
 				FAED64CC28F026DE00C09F5F /* XCTestCaseUtils.swift in Sources */,
 				FAED64CB28F026DA00C09F5F /* FileTypeUtils.swift in Sources */,
 				FAED64C228F0268E00C09F5F /* CoreElements.swift in Sources */,
@@ -514,9 +542,11 @@
 				FAED658528F042E400C09F5F /* ElementsProtocol.swift in Sources */,
 				FAED658628F042E400C09F5F /* UiElement.swift in Sources */,
 				FAED658728F042E400C09F5F /* XCUIElement.swift in Sources */,
+				FAE30609291BF7770058A2B7 /* String+Extensions.swift in Sources */,
 				FAED658828F042E400C09F5F /* InterruptionMonitor.swift in Sources */,
 				FAED658928F042E400C09F5F /* DateUtils.swift in Sources */,
 				FAED658A28F042E400C09F5F /* StringUtils.swift in Sources */,
+				FAE30606291BF7590058A2B7 /* NSObject+Logging.swift in Sources */,
 				FAED658B28F042E400C09F5F /* FileManagerUtils.swift in Sources */,
 				FAED658C28F042E400C09F5F /* FileTypeUtils.swift in Sources */,
 				D4C9B59F28FEBEF100C90E11 /* ElementsProtocol+iOSExtension.swift in Sources */,
@@ -532,8 +562,10 @@
 				FAED659528F042E400C09F5F /* GifGenerator.swift in Sources */,
 				FAED659628F042E400C09F5F /* GifGenerationConfiguration.swift in Sources */,
 				FAED659728F042E400C09F5F /* VideoGenerator.swift in Sources */,
+				FAE30603291BF7420058A2B7 /* CwlDemangle.swift in Sources */,
 				FAED659828F042E400C09F5F /* VideoGenerationConfiguration.swift in Sources */,
 				FAED659928F042E400C09F5F /* VideoWriter.swift in Sources */,
+				FAE30600291BF7210058A2B7 /* CallStackParser.swift in Sources */,
 				D44C3AC228F5B05200D91E2A /* UiElement+iOSExtension.swift in Sources */,
 				FAED659A28F042E400C09F5F /* PixelBufferFactory.swift in Sources */,
 				D4A6033329029EDB003EBCC3 /* XCUIElement+forceTouchExtension.swift in Sources */,
