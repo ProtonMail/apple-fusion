@@ -27,6 +27,4 @@
 
 import XCTest
 
-open class MacCoreTestCase: XCTestCase, ElementsProtocol {
-    
-}
+open class MacCoreTestCase: XCTestCase, ElementsProtocol {}
