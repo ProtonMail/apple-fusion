@@ -7,7 +7,7 @@
 
 import XCTest
 
-extension UIElement {
+extension UiElement {
 
     public func focused() -> Bool {
         guard let element = uiElement() else {
@@ -16,25 +16,25 @@ extension UIElement {
         return element.hasFocus
     }
 
-    public func adjust(to value: String) -> UIElement {
+    public func adjust(to value: String) -> UiElement {
         uiElement()!.adjust(toPickerWheelValue: "\(value)")
         return self
     }
 
     @discardableResult
-    public func pinch(scale: CGFloat, velocity: CGFloat) -> UIElement {
+    public func pinch(scale: CGFloat, velocity: CGFloat) -> UiElement {
         uiElement()!.pinch(withScale: scale, velocity: velocity)
         return self
     }
 
     @discardableResult
-    public func twoFingerTap(scale: CGFloat, velocity: CGFloat) -> UIElement {
+    public func twoFingerTap(scale: CGFloat, velocity: CGFloat) -> UiElement {
         uiElement()!.twoFingerTap()
         return self
     }
 
     @discardableResult
-    public func typeText(_ text: String) -> UIElement {
+    public func typeText(_ text: String) -> UiElement {
         uiElement()!.typeText(text)
         return self
     }

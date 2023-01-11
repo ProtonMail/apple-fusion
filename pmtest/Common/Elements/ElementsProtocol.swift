@@ -28,360 +28,351 @@
 import Foundation
 import XCTest
 
+
+private var app: XCUIApplication = XCUIApplication()
+
+internal func getApp(bundleIdentifier: String? = nil) -> XCUIApplication {
+    if let bundleIdentifier = bundleIdentifier {
+        app = XCUIApplication(bundleIdentifier: bundleIdentifier)
+    }
+    return app
+}
+
 /**
  * Collection of all XCUIElement types that can be used in UI testing.
  */
-public protocol ElementsProtocol: AnyObject {
-    var app: XCUIApplication {
-        get
-        set
-    }
-}
+public protocol ElementsProtocol {}
 
 public extension ElementsProtocol {
-
-    var app: XCUIApplication {
-
-        set {}
-
-        get {
-            return XCUIApplication()
-        }
-    }
-
     /**
      Specify which bundle to use when locating the element.
      */
     func inBundleIdentifier(_ bundleIdentifier: String? = nil) -> ElementsProtocol {
-        guard let bundleIdentifier = bundleIdentifier else {
-            return self
-        }
-        app = XCUIApplication(bundleIdentifier: bundleIdentifier)
+        app = getApp(bundleIdentifier: bundleIdentifier)
         return self
     }
 
-
-    func activityIndicator() -> UIElement { UIElement(app.activityIndicators, XCUIElement.ElementType.activityIndicator) }
-    func activityIndicator(_ identifier: String) -> UIElement { UIElement(identifier, app.activityIndicators, XCUIElement.ElementType.activityIndicator) }
-    func activityIndicator(_ predicate: NSPredicate) -> UIElement { UIElement(predicate, app.activityIndicators, XCUIElement.ElementType.activityIndicator) }
-
-    func alert() -> UIElement { UIElement(app.alerts, XCUIElement.ElementType.alert) }
-    func alert(_ identifier: String) -> UIElement { UIElement(identifier, app.alerts, XCUIElement.ElementType.alert) }
-    func alert(_ predicate: NSPredicate) -> UIElement { UIElement(predicate, app.alerts, XCUIElement.ElementType.alert) }
-
-    func browser() -> UIElement { UIElement(app.browsers, XCUIElement.ElementType.browser) }
-    func browser(_ identifier: String) -> UIElement { UIElement(identifier, app.browsers, XCUIElement.ElementType.browser) }
-    func browser(_ predicate: NSPredicate) -> UIElement { UIElement(predicate, app.browsers, XCUIElement.ElementType.browser) }
-
-    func button() -> UIElement { UIElement(app.buttons, XCUIElement.ElementType.button) }
-    func button(_ identifier: String) -> UIElement { UIElement(identifier, app.buttons, XCUIElement.ElementType.button) }
-    func button(_ predicate: NSPredicate) -> UIElement { UIElement(predicate, app.buttons, XCUIElement.ElementType.button) }
-
-    func cell() -> UIElement { UIElement(app.cells, XCUIElement.ElementType.cell) }
-    func cell(_ identifier: String) -> UIElement { UIElement(identifier, app.cells, XCUIElement.ElementType.cell) }
-    func cell(_ predicate: NSPredicate) -> UIElement { UIElement(predicate, app.cells, XCUIElement.ElementType.cell) }
-
-    func checkBox() -> UIElement { UIElement(app.checkBoxes, XCUIElement.ElementType.checkBox) }
-    func checkBox(_ identifier: String) -> UIElement { UIElement(identifier, app.checkBoxes, XCUIElement.ElementType.checkBox) }
-    func checkBox(_ predicate: NSPredicate) -> UIElement { UIElement(predicate, app.checkBoxes, XCUIElement.ElementType.checkBox) }
-
-    func collectionView() -> UIElement { UIElement(app.collectionViews, XCUIElement.ElementType.collectionView) }
-    func collectionView(_ identifier: String) -> UIElement { UIElement(identifier, app.collectionViews, XCUIElement.ElementType.collectionView) }
-    func collectionView(_ predicate: NSPredicate) -> UIElement { UIElement(predicate, app.collectionViews, XCUIElement.ElementType.collectionView) }
-
-    func colorWell() -> UIElement { UIElement(app.colorWells, XCUIElement.ElementType.colorWell) }
-    func colorWell(_ identifier: String) -> UIElement { UIElement(identifier, app.colorWells, XCUIElement.ElementType.colorWell) }
-    func colorWell(_ predicate: NSPredicate) -> UIElement { UIElement(predicate, app.colorWells, XCUIElement.ElementType.colorWell) }
-
-    func comboBox() -> UIElement { UIElement(app.comboBoxes, XCUIElement.ElementType.comboBox) }
-    func comboBox(_ identifier: String) -> UIElement { UIElement(identifier, app.comboBoxes, XCUIElement.ElementType.comboBox) }
-    func comboBox(_ predicate: NSPredicate) -> UIElement { UIElement(predicate, app.comboBoxes, XCUIElement.ElementType.comboBox) }
-
-    func datePicker() -> UIElement { UIElement(app.datePickers, XCUIElement.ElementType.datePicker) }
-    func datePicker(_ identifier: String) -> UIElement { UIElement(identifier, app.datePickers, XCUIElement.ElementType.datePicker) }
-    func datePicker(_ predicate: NSPredicate) -> UIElement { UIElement(predicate, app.datePickers, XCUIElement.ElementType.datePicker) }
-
-    func decrementArrow() -> UIElement { UIElement(app.decrementArrows, XCUIElement.ElementType.decrementArrow) }
-    func decrementArrow(_ identifier: String) -> UIElement { UIElement(identifier, app.decrementArrows, XCUIElement.ElementType.decrementArrow) }
-    func decrementArrow(_ predicate: NSPredicate) -> UIElement { UIElement(predicate, app.decrementArrows, XCUIElement.ElementType.decrementArrow) }
-
-    func dialog() -> UIElement { UIElement(app.dialogs, XCUIElement.ElementType.dialog) }
-    func dialog(_ identifier: String) -> UIElement { UIElement(identifier, app.dialogs, XCUIElement.ElementType.dialog) }
-    func dialog(_ predicate: NSPredicate) -> UIElement { UIElement(predicate, app.dialogs, XCUIElement.ElementType.dialog) }
-
-    func disclosureTriangle() -> UIElement { UIElement(app.disclosureTriangles, XCUIElement.ElementType.disclosureTriangle) }
-    func disclosureTriangle(_ identifier: String) -> UIElement { UIElement(identifier, app.disclosureTriangles, XCUIElement.ElementType.disclosureTriangle) }
-    func disclosureTriangle(_ predicate: NSPredicate) -> UIElement { UIElement(predicate, app.disclosureTriangles, XCUIElement.ElementType.disclosureTriangle) }
-
-    func dockItem() -> UIElement { UIElement(app.dockItems, XCUIElement.ElementType.dockItem) }
-    func dockItem(_ identifier: String) -> UIElement { UIElement(identifier, app.dockItems, XCUIElement.ElementType.dockItem) }
-    func dockItem(_ predicate: NSPredicate) -> UIElement { UIElement(predicate, app.dockItems, XCUIElement.ElementType.dockItem) }
-
-    func drawer() -> UIElement { UIElement(app.drawers, XCUIElement.ElementType.drawer) }
-    func drawer(_ identifier: String) -> UIElement { UIElement(identifier, app.drawers, XCUIElement.ElementType.drawer) }
-    func drawer(_ predicate: NSPredicate) -> UIElement { UIElement(predicate, app.drawers, XCUIElement.ElementType.drawer) }
-
-    func grid() -> UIElement { UIElement(app.grids, XCUIElement.ElementType.grid) }
-    func grid(_ identifier: String) -> UIElement { UIElement(identifier, app.grids, XCUIElement.ElementType.grid) }
-    func grid(_ predicate: NSPredicate) -> UIElement { UIElement(predicate, app.grids, XCUIElement.ElementType.grid) }
-
-    func group() -> UIElement { UIElement(app.groups, XCUIElement.ElementType.group) }
-    func group(_ identifier: String) -> UIElement { UIElement(identifier, app.groups, XCUIElement.ElementType.group) }
-    func group(_ predicate: NSPredicate) -> UIElement { UIElement(predicate, app.groups, XCUIElement.ElementType.group) }
-
-    func handle() -> UIElement { UIElement(app.handles, XCUIElement.ElementType.handle) }
-    func handle(_ identifier: String) -> UIElement { UIElement(identifier, app.handles, XCUIElement.ElementType.handle) }
-    func handle(_ predicate: NSPredicate) -> UIElement { UIElement(predicate, app.handles, XCUIElement.ElementType.handle) }
-
-    func helpTag() -> UIElement { UIElement(app.helpTags, XCUIElement.ElementType.helpTag) }
-    func helpTag(_ identifier: String) -> UIElement { UIElement(identifier, app.helpTags, XCUIElement.ElementType.helpTag) }
-    func helpTag(_ predicate: NSPredicate) -> UIElement { UIElement(predicate, app.helpTags, XCUIElement.ElementType.helpTag) }
-
-    func icon() -> UIElement { UIElement(app.icons, XCUIElement.ElementType.icon) }
-    func icon(_ identifier: String) -> UIElement { UIElement(identifier, app.icons, XCUIElement.ElementType.icon) }
-    func icon(_ predicate: NSPredicate) -> UIElement { UIElement(predicate, app.icons, XCUIElement.ElementType.icon) }
-
-    func image() -> UIElement { UIElement(app.images, XCUIElement.ElementType.image) }
-    func image(_ identifier: String) -> UIElement { UIElement(identifier, app.images, XCUIElement.ElementType.image) }
-    func image(_ predicate: NSPredicate) -> UIElement { UIElement(predicate, app.images, XCUIElement.ElementType.image) }
-
-    func incrementArrow() -> UIElement { UIElement(app.incrementArrows, XCUIElement.ElementType.incrementArrow) }
-    func incrementArrow(_ identifier: String) -> UIElement { UIElement(identifier, app.incrementArrows, XCUIElement.ElementType.incrementArrow) }
-    func incrementArrow(_ predicate: NSPredicate) -> UIElement { UIElement(predicate, app.incrementArrows, XCUIElement.ElementType.incrementArrow) }
-
-    func keyboard() -> UIElement { UIElement(app.keyboards, XCUIElement.ElementType.keyboard) }
-    func keyboard(_ identifier: String) -> UIElement { UIElement(identifier, app.keyboards, XCUIElement.ElementType.keyboard) }
-    func keyboard(_ predicate: NSPredicate) -> UIElement { UIElement(predicate, app.keyboards, XCUIElement.ElementType.keyboard) }
-
-    func key() -> UIElement { UIElement(app.keys, XCUIElement.ElementType.key) }
-    func key(_ identifier: String) -> UIElement { UIElement(identifier, app.keys, XCUIElement.ElementType.key) }
-    func key(_ predicate: NSPredicate) -> UIElement { UIElement(predicate, app.keys, XCUIElement.ElementType.key) }
-
-    func layoutArea() -> UIElement { UIElement(app.layoutAreas, XCUIElement.ElementType.layoutArea) }
-    func layoutArea(_ identifier: String) -> UIElement { UIElement(identifier, app.layoutAreas, XCUIElement.ElementType.layoutArea) }
-    func layoutArea(_ predicate: NSPredicate) -> UIElement { UIElement(predicate, app.layoutAreas, XCUIElement.ElementType.layoutArea) }
-
-    func layoutItem() -> UIElement { UIElement(app.layoutItems, XCUIElement.ElementType.layoutItem) }
-    func layoutItem(_ identifier: String) -> UIElement { UIElement(identifier, app.layoutItems, XCUIElement.ElementType.layoutItem) }
-    func layoutItem(_ predicate: NSPredicate) -> UIElement { UIElement(predicate, app.layoutItems, XCUIElement.ElementType.layoutItem) }
-
-    func levelIndicator() -> UIElement { UIElement(app.levelIndicators, XCUIElement.ElementType.levelIndicator) }
-    func levelIndicator(_ identifier: String) -> UIElement { UIElement(identifier, app.levelIndicators, XCUIElement.ElementType.levelIndicator) }
-    func levelIndicator(_ predicate: NSPredicate) -> UIElement { UIElement(predicate, app.levelIndicators, XCUIElement.ElementType.levelIndicator) }
-
-    func link() -> UIElement { UIElement(app.links, XCUIElement.ElementType.link) }
-    func link(_ identifier: String) -> UIElement { UIElement(identifier, app.links, XCUIElement.ElementType.link) }
-    func link(_ predicate: NSPredicate) -> UIElement { UIElement(predicate, app.links, XCUIElement.ElementType.link) }
-
-    func map() -> UIElement { UIElement(app.maps, XCUIElement.ElementType.map) }
-    func map(_ identifier: String) -> UIElement { UIElement(identifier, app.maps, XCUIElement.ElementType.map) }
-    func map(_ predicate: NSPredicate) -> UIElement { UIElement(predicate, app.maps, XCUIElement.ElementType.map) }
-
-    func matte() -> UIElement { UIElement(app.mattes, XCUIElement.ElementType.matte) }
-    func matte(_ identifier: String) -> UIElement { UIElement(identifier, app.mattes, XCUIElement.ElementType.matte) }
-    func matte(_ predicate: NSPredicate) -> UIElement { UIElement(predicate, app.mattes, XCUIElement.ElementType.matte) }
-
-    func menuBar() -> UIElement { UIElement(app.menuBars, XCUIElement.ElementType.menuBar) }
-    func menuBar(_ identifier: String) -> UIElement { UIElement(identifier, app.menuBars, XCUIElement.ElementType.menuBar) }
-    func menuBar(_ predicate: NSPredicate) -> UIElement { UIElement(predicate, app.menuBars, XCUIElement.ElementType.menuBar) }
-
-    func menuBarItem() -> UIElement { UIElement(app.menuBarItems, XCUIElement.ElementType.menuBarItem) }
-    func menuBarItem(_ identifier: String) -> UIElement { UIElement(identifier, app.menuBarItems, XCUIElement.ElementType.menuBarItem) }
-    func menuBarItem(_ predicate: NSPredicate) -> UIElement { UIElement(predicate, app.menuBarItems, XCUIElement.ElementType.menuBarItem) }
-
-    func menuButton() -> UIElement { UIElement(app.menuButtons, XCUIElement.ElementType.menuButton) }
-    func menuButton(_ identifier: String) -> UIElement { UIElement(identifier, app.menuButtons, XCUIElement.ElementType.menuButton) }
-    func menuButton(_ predicate: NSPredicate) -> UIElement { UIElement(predicate, app.menuButtons, XCUIElement.ElementType.menuButton) }
-
-    func menuItem() -> UIElement { UIElement(app.menuItems, XCUIElement.ElementType.menuItem) }
-    func menuItem(_ identifier: String) -> UIElement { UIElement(identifier, app.menuItems, XCUIElement.ElementType.menuItem) }
-    func menuItem(_ predicate: NSPredicate) -> UIElement { UIElement(predicate, app.menuItems, XCUIElement.ElementType.menuItem) }
-
-    func menu() -> UIElement { UIElement(app.menus, XCUIElement.ElementType.menu) }
-    func menu(_ identifier: String) -> UIElement { UIElement(identifier, app.menus, XCUIElement.ElementType.menu) }
-    func menu(_ predicate: NSPredicate) -> UIElement { UIElement(predicate, app.menus, XCUIElement.ElementType.menu) }
-
-    func navigationBar() -> UIElement { UIElement(app.navigationBars, XCUIElement.ElementType.navigationBar) }
-    func navigationBar(_ identifier: String) -> UIElement { UIElement(identifier, app.navigationBars, XCUIElement.ElementType.navigationBar) }
-    func navigationBar(_ predicate: NSPredicate) -> UIElement { UIElement(predicate, app.navigationBars, XCUIElement.ElementType.navigationBar) }
-
-    func otherElement() -> UIElement { UIElement(app.otherElements, XCUIElement.ElementType.other) }
-    func otherElement(_ identifier: String) -> UIElement { UIElement(identifier, app.otherElements, XCUIElement.ElementType.other) }
-    func otherElement(_ predicate: NSPredicate) -> UIElement { UIElement(predicate, app.otherElements, XCUIElement.ElementType.other) }
-
-    func outline() -> UIElement { UIElement(app.outlines, XCUIElement.ElementType.outline) }
-    func outline(_ identifier: String) -> UIElement { UIElement(identifier, app.outlines, XCUIElement.ElementType.outline) }
-    func outline(_ predicate: NSPredicate) -> UIElement { UIElement(predicate, app.outlines, XCUIElement.ElementType.outline) }
-
-    func outlineRow() -> UIElement { UIElement(app.outlineRows, XCUIElement.ElementType.outlineRow) }
-    func outlineRow(_ identifier: String) -> UIElement { UIElement(identifier, app.outlineRows, XCUIElement.ElementType.outlineRow) }
-    func outlineRow(_ predicate: NSPredicate) -> UIElement { UIElement(predicate, app.outlineRows, XCUIElement.ElementType.outlineRow) }
-
-    func pageIndicator() -> UIElement { UIElement(app.pageIndicators, XCUIElement.ElementType.pageIndicator) }
-    func pageIndicator(_ identifier: String) -> UIElement { UIElement(identifier, app.pageIndicators, XCUIElement.ElementType.pageIndicator) }
-    func pageIndicator(_ predicate: NSPredicate) -> UIElement { UIElement(predicate, app.pageIndicators, XCUIElement.ElementType.pageIndicator) }
-
-    func picker() -> UIElement { UIElement(app.pickers, XCUIElement.ElementType.picker) }
-    func picker(_ identifier: String) -> UIElement { UIElement(identifier, app.pickers, XCUIElement.ElementType.picker) }
-    func picker(_ predicate: NSPredicate) -> UIElement { UIElement(predicate, app.pickers, XCUIElement.ElementType.picker) }
-
-    func pickerWheel() -> UIElement { UIElement(app.pickerWheels, XCUIElement.ElementType.pickerWheel) }
-    func pickerWheel(_ identifier: String) -> UIElement { UIElement(identifier, app.pickerWheels, XCUIElement.ElementType.pickerWheel) }
-    func pickerWheel(_ predicate: NSPredicate) -> UIElement { UIElement(predicate, app.pickerWheels, XCUIElement.ElementType.pickerWheel) }
-
-    func popover() -> UIElement { UIElement(app.popovers, XCUIElement.ElementType.popover) }
-    func popover(_ identifier: String) -> UIElement { UIElement(identifier, app.popovers, XCUIElement.ElementType.popover) }
-    func popover(_ predicate: NSPredicate) -> UIElement { UIElement(predicate, app.popovers, XCUIElement.ElementType.popover) }
-
-    func popUpButton() -> UIElement { UIElement(app.popUpButtons, XCUIElement.ElementType.popUpButton) }
-    func popUpButton(_ identifier: String) -> UIElement { UIElement(identifier, app.popUpButtons, XCUIElement.ElementType.popUpButton) }
-    func popUpButton(_ predicate: NSPredicate) -> UIElement { UIElement(predicate, app.popUpButtons, XCUIElement.ElementType.popUpButton) }
-
-    func progressIndicator() -> UIElement { UIElement(app.progressIndicators, XCUIElement.ElementType.progressIndicator) }
-    func progressIndicator(_ identifier: String) -> UIElement { UIElement(identifier, app.progressIndicators, XCUIElement.ElementType.progressIndicator) }
-    func progressIndicator(_ predicate: NSPredicate) -> UIElement { UIElement(predicate, app.progressIndicators, XCUIElement.ElementType.progressIndicator) }
-
-    func radioButton() -> UIElement { UIElement(app.radioButtons, XCUIElement.ElementType.radioButton) }
-    func radioButton(_ identifier: String) -> UIElement { UIElement(identifier, app.radioButtons, XCUIElement.ElementType.radioButton) }
-    func radioButton(_ predicate: NSPredicate) -> UIElement { UIElement(predicate, app.radioButtons, XCUIElement.ElementType.radioButton) }
-
-    func radioGroup() -> UIElement { UIElement(app.radioGroups, XCUIElement.ElementType.radioGroup) }
-    func radioGroup(_ identifier: String) -> UIElement { UIElement(identifier, app.radioGroups, XCUIElement.ElementType.radioGroup) }
-    func radioGroup(_ predicate: NSPredicate) -> UIElement { UIElement(predicate, app.radioGroups, XCUIElement.ElementType.radioGroup) }
-
-    func ratingIndicator() -> UIElement { UIElement(app.ratingIndicators, XCUIElement.ElementType.ratingIndicator) }
-    func ratingIndicator(_ identifier: String) -> UIElement { UIElement(identifier, app.ratingIndicators, XCUIElement.ElementType.ratingIndicator) }
-    func ratingIndicator(_ predicate: NSPredicate) -> UIElement { UIElement(predicate, app.ratingIndicators, XCUIElement.ElementType.ratingIndicator) }
-
-    func relevanceIndicator() -> UIElement { UIElement(app.relevanceIndicators, XCUIElement.ElementType.relevanceIndicator) }
-    func relevanceIndicator(_ identifier: String) -> UIElement { UIElement(identifier, app.relevanceIndicators, XCUIElement.ElementType.relevanceIndicator) }
-    func relevanceIndicator(_ predicate: NSPredicate) -> UIElement { UIElement(predicate, app.relevanceIndicators, XCUIElement.ElementType.relevanceIndicator) }
-
-    func rulerMarker() -> UIElement { UIElement(app.rulerMarkers, XCUIElement.ElementType.rulerMarker) }
-    func rulerMarker(_ identifier: String) -> UIElement { UIElement(identifier, app.rulerMarkers, XCUIElement.ElementType.rulerMarker) }
-    func rulerMarker(_ predicate: NSPredicate) -> UIElement { UIElement(predicate, app.rulerMarkers, XCUIElement.ElementType.rulerMarker) }
-
-    func ruler() -> UIElement { UIElement(app.rulers, XCUIElement.ElementType.ruler) }
-    func ruler(_ identifier: String) -> UIElement { UIElement(identifier, app.rulers, XCUIElement.ElementType.ruler) }
-    func ruler(_ predicate: NSPredicate) -> UIElement { UIElement(predicate, app.rulers, XCUIElement.ElementType.ruler) }
-
-    func scrollBar() -> UIElement { UIElement(app.scrollBars, XCUIElement.ElementType.scrollBar) }
-    func scrollBar(_ identifier: String) -> UIElement { UIElement(identifier, app.scrollBars, XCUIElement.ElementType.scrollBar) }
-    func scrollBar(_ predicate: NSPredicate) -> UIElement { UIElement(predicate, app.scrollBars, XCUIElement.ElementType.scrollBar) }
-
-    func scrollView() -> UIElement { UIElement(app.scrollViews, XCUIElement.ElementType.scrollView) }
-    func scrollView(_ identifier: String) -> UIElement { UIElement(identifier, app.scrollViews, XCUIElement.ElementType.scrollView) }
-    func scrollView(_ predicate: NSPredicate) -> UIElement { UIElement(predicate, app.scrollViews, XCUIElement.ElementType.scrollView) }
-
-    func searchField() -> UIElement { UIElement(app.searchFields, XCUIElement.ElementType.searchField) }
-    func searchField(_ identifier: String) -> UIElement { UIElement(identifier, app.searchFields, XCUIElement.ElementType.searchField) }
-    func searchField(_ predicate: NSPredicate) -> UIElement { UIElement(predicate, app.searchFields, XCUIElement.ElementType.searchField) }
-
-    func secureTextField() -> UIElement { UIElement(app.secureTextFields, XCUIElement.ElementType.secureTextField) }
-    func secureTextField(_ identifier: String) -> UIElement { UIElement(identifier, app.secureTextFields, XCUIElement.ElementType.secureTextField) }
-    func secureTextField(_ predicate: NSPredicate) -> UIElement { UIElement(predicate, app.secureTextFields, XCUIElement.ElementType.secureTextField) }
-
-    func segmentedControl() -> UIElement { UIElement(app.segmentedControls, XCUIElement.ElementType.segmentedControl) }
-    func segmentedControl(_ identifier: String) -> UIElement { UIElement(identifier, app.segmentedControls, XCUIElement.ElementType.segmentedControl) }
-    func segmentedControl(_ predicate: NSPredicate) -> UIElement { UIElement(predicate, app.segmentedControls, XCUIElement.ElementType.segmentedControl) }
-
-    func sheet() -> UIElement { UIElement(app.sheets, XCUIElement.ElementType.sheet) }
-    func sheet(_ identifier: String) -> UIElement { UIElement(identifier, app.sheets, XCUIElement.ElementType.sheet) }
-    func sheet(_ predicate: NSPredicate) -> UIElement { UIElement(predicate, app.sheets, XCUIElement.ElementType.sheet) }
-
-    func slider() -> UIElement { UIElement(app.sliders, XCUIElement.ElementType.slider) }
-    func slider(_ identifier: String) -> UIElement { UIElement(identifier, app.sliders, XCUIElement.ElementType.slider) }
-    func slider(_ predicate: NSPredicate) -> UIElement { UIElement(predicate, app.sliders, XCUIElement.ElementType.slider) }
-
-    func splitGroup() -> UIElement { UIElement(app.splitGroups, XCUIElement.ElementType.splitGroup) }
-    func splitGroup(_ identifier: String) -> UIElement { UIElement(identifier, app.splitGroups, XCUIElement.ElementType.splitGroup) }
-    func splitGroup(_ predicate: NSPredicate) -> UIElement { UIElement(predicate, app.splitGroups, XCUIElement.ElementType.splitGroup) }
-
-    func splitter() -> UIElement { UIElement(app.splitters, XCUIElement.ElementType.splitter) }
-    func splitter(_ identifier: String) -> UIElement { UIElement(identifier, app.splitters, XCUIElement.ElementType.splitter) }
-    func splitter(_ predicate: NSPredicate) -> UIElement { UIElement(predicate, app.splitters, XCUIElement.ElementType.splitter) }
-
-    func staticText() -> UIElement { UIElement(app.staticTexts, XCUIElement.ElementType.staticText) }
-    func staticText(_ identifier: String) -> UIElement { UIElement(identifier, app.staticTexts, XCUIElement.ElementType.staticText) }
-    func staticText(_ predicate: NSPredicate) -> UIElement { UIElement(predicate, app.staticTexts, XCUIElement.ElementType.staticText) }
-
-    func statusBar() -> UIElement { UIElement(app.statusBars, XCUIElement.ElementType.statusBar) }
-    func statusBar(_ identifier: String) -> UIElement { UIElement(identifier, app.statusBars, XCUIElement.ElementType.statusBar) }
-    func statusBar(_ predicate: NSPredicate) -> UIElement { UIElement(predicate, app.statusBars, XCUIElement.ElementType.statusBar) }
-
-    func statusItem() -> UIElement { UIElement(app.statusItems, XCUIElement.ElementType.statusItem) }
-    func statusItem(_ identifier: String) -> UIElement { UIElement(identifier, app.statusItems, XCUIElement.ElementType.statusItem) }
-    func statusItem(_ predicate: NSPredicate) -> UIElement { UIElement(predicate, app.statusItems, XCUIElement.ElementType.statusItem) }
-
-    func stepper() -> UIElement { UIElement(app.steppers, XCUIElement.ElementType.stepper) }
-    func stepper(_ identifier: String) -> UIElement { UIElement(identifier, app.steppers, XCUIElement.ElementType.stepper) }
-    func stepper(_ predicate: NSPredicate) -> UIElement { UIElement(predicate, app.steppers, XCUIElement.ElementType.stepper) }
-
-    func swittch() -> UIElement { UIElement(app.switches, XCUIElement.ElementType.switch) }
-    func swittch(_ identifier: String) -> UIElement { UIElement(identifier, app.switches, XCUIElement.ElementType.switch) }
-    func swittch(_ predicate: NSPredicate) -> UIElement { UIElement(predicate, app.switches, XCUIElement.ElementType.switch) }
-
-    func tab() -> UIElement { UIElement(app.tabs, XCUIElement.ElementType.tab) }
-    func tab(_ identifier: String) -> UIElement { UIElement(identifier, app.tabs, XCUIElement.ElementType.tab) }
-    func tab(_ predicate: NSPredicate) -> UIElement { UIElement(predicate, app.tabs, XCUIElement.ElementType.tab) }
-
-    func tabBar() -> UIElement { UIElement(app.tabBars, XCUIElement.ElementType.tabBar) }
-    func tabBar(_ identifier: String) -> UIElement { UIElement(identifier, app.tabBars, XCUIElement.ElementType.tabBar) }
-    func tabBar(_ predicate: NSPredicate) -> UIElement { UIElement(predicate, app.tabBars, XCUIElement.ElementType.tabBar) }
-
-    func tabGroup() -> UIElement { UIElement(app.tabGroups, XCUIElement.ElementType.tabGroup) }
-    func tabGroup(_ identifier: String) -> UIElement { UIElement(identifier, app.tabGroups, XCUIElement.ElementType.tabGroup) }
-    func tabGroup(_ predicate: NSPredicate) -> UIElement { UIElement(predicate, app.tabGroups, XCUIElement.ElementType.tabGroup) }
-
-    func table() -> UIElement { UIElement(app.tables, XCUIElement.ElementType.table) }
-    func table(_ identifier: String) -> UIElement { UIElement(identifier, app.tables, XCUIElement.ElementType.table) }
-    func table(_ predicate: NSPredicate) -> UIElement { UIElement(predicate, app.tables, XCUIElement.ElementType.table) }
-
-    func tableColumn() -> UIElement { UIElement(app.tableColumns, XCUIElement.ElementType.tableColumn) }
-    func tableColumn(_ identifier: String) -> UIElement { UIElement(identifier, app.tableColumns, XCUIElement.ElementType.tableColumn) }
-    func tableColumn(_ predicate: NSPredicate) -> UIElement { UIElement(predicate, app.tableColumns, XCUIElement.ElementType.tableColumn) }
-
-    func tableRow() -> UIElement { UIElement(app.tableRows, XCUIElement.ElementType.tableRow) }
-    func tableRow(_ identifier: String) -> UIElement { UIElement(identifier, app.tableRows, XCUIElement.ElementType.tableRow) }
-    func tableRow(_ predicate: NSPredicate) -> UIElement { UIElement(predicate, app.tableRows, XCUIElement.ElementType.tableRow) }
-
-    func textField() -> UIElement { UIElement(app.textFields, XCUIElement.ElementType.textField) }
-    func textField(_ identifier: String) -> UIElement { UIElement(identifier, app.textFields, XCUIElement.ElementType.textField) }
-    func textField(_ predicate: NSPredicate) -> UIElement { UIElement(predicate, app.textFields, XCUIElement.ElementType.textField) }
-
-    func textView() -> UIElement { UIElement(app.textViews, XCUIElement.ElementType.textView) }
-    func textView(_ identifier: String) -> UIElement { UIElement(identifier, app.textViews, XCUIElement.ElementType.textView) }
-    func textView(_ predicate: NSPredicate) -> UIElement { UIElement(predicate, app.textViews, XCUIElement.ElementType.textView) }
-
-    func timeline() -> UIElement { UIElement(app.timelines, XCUIElement.ElementType.timeline) }
-    func timeline(_ identifier: String) -> UIElement { UIElement(identifier, app.timelines, XCUIElement.ElementType.timeline) }
-    func timeline(_ predicate: NSPredicate) -> UIElement { UIElement(predicate, app.timelines, XCUIElement.ElementType.timeline) }
-
-    func toggle() -> UIElement { UIElement(app.toggles, XCUIElement.ElementType.toggle) }
-    func toggle(_ identifier: String) -> UIElement { UIElement(identifier, app.toggles, XCUIElement.ElementType.toggle) }
-    func toggle(_ predicate: NSPredicate) -> UIElement { UIElement(predicate, app.toggles, XCUIElement.ElementType.toggle) }
-
-    func toolbarButton() -> UIElement { UIElement(app.toolbarButtons, XCUIElement.ElementType.toolbarButton) }
-    func toolbarButton(_ identifier: String) -> UIElement { UIElement(identifier, app.toolbarButtons, XCUIElement.ElementType.toolbarButton) }
-    func toolbarButton(_ predicate: NSPredicate) -> UIElement { UIElement(predicate, app.toolbarButtons, XCUIElement.ElementType.toolbarButton) }
-
-    func toolbar() -> UIElement { UIElement(app.toolbars, XCUIElement.ElementType.toolbar) }
-    func toolbar(_ identifier: String) -> UIElement { UIElement(identifier, app.toolbars, XCUIElement.ElementType.toolbar) }
-    func toolbar(_ predicate: NSPredicate) -> UIElement { UIElement(predicate, app.toolbars, XCUIElement.ElementType.toolbar) }
-
-    func touchBar() -> UIElement { UIElement(app.touchBars, XCUIElement.ElementType.touchBar) }
-    func touchBar(_ identifier: String) -> UIElement { UIElement(identifier, app.touchBars, XCUIElement.ElementType.touchBar) }
-    func touchBar(_ predicate: NSPredicate) -> UIElement { UIElement(predicate, app.touchBars, XCUIElement.ElementType.touchBar) }
-
-    func valueIndicator() -> UIElement { UIElement(app.valueIndicators, XCUIElement.ElementType.valueIndicator) }
-    func valueIndicator(_ identifier: String) -> UIElement { UIElement(identifier, app.valueIndicators, XCUIElement.ElementType.valueIndicator) }
-    func valueIndicator(_ predicate: NSPredicate) -> UIElement { UIElement(predicate, app.valueIndicators, XCUIElement.ElementType.valueIndicator) }
-
-    func webView() -> UIElement { UIElement(app.webViews, XCUIElement.ElementType.webView) }
-    func webView(_ identifier: String) -> UIElement { UIElement(identifier, app.webViews, XCUIElement.ElementType.webView) }
-    func webView(_ predicate: NSPredicate) -> UIElement { UIElement(predicate, app.webViews, XCUIElement.ElementType.webView) }
-
-    func windows() -> UIElement { UIElement(app.windows, XCUIElement.ElementType.window) }
-    func windows(_ identifier: String) -> UIElement { UIElement(identifier, app.windows, XCUIElement.ElementType.window) }
-    func windows(_ predicate: NSPredicate) -> UIElement { UIElement(predicate, app.windows, XCUIElement.ElementType.window) }
+    func activityIndicator() -> UiElement { UiElement(app.activityIndicators, XCUIElement.ElementType.activityIndicator) }
+    func activityIndicator(_ identifier: String) -> UiElement { UiElement(identifier, app.activityIndicators, XCUIElement.ElementType.activityIndicator) }
+    func activityIndicator(_ predicate: NSPredicate) -> UiElement { UiElement(predicate, app.activityIndicators, XCUIElement.ElementType.activityIndicator) }
+
+    func alert() -> UiElement { UiElement(app.alerts, XCUIElement.ElementType.alert) }
+    func alert(_ identifier: String) -> UiElement { UiElement(identifier, app.alerts, XCUIElement.ElementType.alert) }
+    func alert(_ predicate: NSPredicate) -> UiElement { UiElement(predicate, app.alerts, XCUIElement.ElementType.alert) }
+
+    func browser() -> UiElement { UiElement(app.browsers, XCUIElement.ElementType.browser) }
+    func browser(_ identifier: String) -> UiElement { UiElement(identifier, app.browsers, XCUIElement.ElementType.browser) }
+    func browser(_ predicate: NSPredicate) -> UiElement { UiElement(predicate, app.browsers, XCUIElement.ElementType.browser) }
+
+    func button() -> UiElement { UiElement(app.buttons, XCUIElement.ElementType.button) }
+    func button(_ identifier: String) -> UiElement { UiElement(identifier, app.buttons, XCUIElement.ElementType.button) }
+    func button(_ predicate: NSPredicate) -> UiElement { UiElement(predicate, app.buttons, XCUIElement.ElementType.button) }
+
+    func cell() -> UiElement { UiElement(app.cells, XCUIElement.ElementType.cell) }
+    func cell(_ identifier: String) -> UiElement { UiElement(identifier, app.cells, XCUIElement.ElementType.cell) }
+    func cell(_ predicate: NSPredicate) -> UiElement { UiElement(predicate, app.cells, XCUIElement.ElementType.cell) }
+
+    func checkBox() -> UiElement { UiElement(app.checkBoxes, XCUIElement.ElementType.checkBox) }
+    func checkBox(_ identifier: String) -> UiElement { UiElement(identifier, app.checkBoxes, XCUIElement.ElementType.checkBox) }
+    func checkBox(_ predicate: NSPredicate) -> UiElement { UiElement(predicate, app.checkBoxes, XCUIElement.ElementType.checkBox) }
+
+    func collectionView() -> UiElement { UiElement(app.collectionViews, XCUIElement.ElementType.collectionView) }
+    func collectionView(_ identifier: String) -> UiElement { UiElement(identifier, app.collectionViews, XCUIElement.ElementType.collectionView) }
+    func collectionView(_ predicate: NSPredicate) -> UiElement { UiElement(predicate, app.collectionViews, XCUIElement.ElementType.collectionView) }
+
+    func colorWell() -> UiElement { UiElement(app.colorWells, XCUIElement.ElementType.colorWell) }
+    func colorWell(_ identifier: String) -> UiElement { UiElement(identifier, app.colorWells, XCUIElement.ElementType.colorWell) }
+    func colorWell(_ predicate: NSPredicate) -> UiElement { UiElement(predicate, app.colorWells, XCUIElement.ElementType.colorWell) }
+
+    func comboBox() -> UiElement { UiElement(app.comboBoxes, XCUIElement.ElementType.comboBox) }
+    func comboBox(_ identifier: String) -> UiElement { UiElement(identifier, app.comboBoxes, XCUIElement.ElementType.comboBox) }
+    func comboBox(_ predicate: NSPredicate) -> UiElement { UiElement(predicate, app.comboBoxes, XCUIElement.ElementType.comboBox) }
+
+    func datePicker() -> UiElement { UiElement(app.datePickers, XCUIElement.ElementType.datePicker) }
+    func datePicker(_ identifier: String) -> UiElement { UiElement(identifier, app.datePickers, XCUIElement.ElementType.datePicker) }
+    func datePicker(_ predicate: NSPredicate) -> UiElement { UiElement(predicate, app.datePickers, XCUIElement.ElementType.datePicker) }
+
+    func decrementArrow() -> UiElement { UiElement(app.decrementArrows, XCUIElement.ElementType.decrementArrow) }
+    func decrementArrow(_ identifier: String) -> UiElement { UiElement(identifier, app.decrementArrows, XCUIElement.ElementType.decrementArrow) }
+    func decrementArrow(_ predicate: NSPredicate) -> UiElement { UiElement(predicate, app.decrementArrows, XCUIElement.ElementType.decrementArrow) }
+
+    func dialog() -> UiElement { UiElement(app.dialogs, XCUIElement.ElementType.dialog) }
+    func dialog(_ identifier: String) -> UiElement { UiElement(identifier, app.dialogs, XCUIElement.ElementType.dialog) }
+    func dialog(_ predicate: NSPredicate) -> UiElement { UiElement(predicate, app.dialogs, XCUIElement.ElementType.dialog) }
+
+    func disclosureTriangle() -> UiElement { UiElement(app.disclosureTriangles, XCUIElement.ElementType.disclosureTriangle) }
+    func disclosureTriangle(_ identifier: String) -> UiElement { UiElement(identifier, app.disclosureTriangles, XCUIElement.ElementType.disclosureTriangle) }
+    func disclosureTriangle(_ predicate: NSPredicate) -> UiElement { UiElement(predicate, app.disclosureTriangles, XCUIElement.ElementType.disclosureTriangle) }
+
+    func dockItem() -> UiElement { UiElement(app.dockItems, XCUIElement.ElementType.dockItem) }
+    func dockItem(_ identifier: String) -> UiElement { UiElement(identifier, app.dockItems, XCUIElement.ElementType.dockItem) }
+    func dockItem(_ predicate: NSPredicate) -> UiElement { UiElement(predicate, app.dockItems, XCUIElement.ElementType.dockItem) }
+
+    func drawer() -> UiElement { UiElement(app.drawers, XCUIElement.ElementType.drawer) }
+    func drawer(_ identifier: String) -> UiElement { UiElement(identifier, app.drawers, XCUIElement.ElementType.drawer) }
+    func drawer(_ predicate: NSPredicate) -> UiElement { UiElement(predicate, app.drawers, XCUIElement.ElementType.drawer) }
+
+    func grid() -> UiElement { UiElement(app.grids, XCUIElement.ElementType.grid) }
+    func grid(_ identifier: String) -> UiElement { UiElement(identifier, app.grids, XCUIElement.ElementType.grid) }
+    func grid(_ predicate: NSPredicate) -> UiElement { UiElement(predicate, app.grids, XCUIElement.ElementType.grid) }
+
+    func group() -> UiElement { UiElement(app.groups, XCUIElement.ElementType.group) }
+    func group(_ identifier: String) -> UiElement { UiElement(identifier, app.groups, XCUIElement.ElementType.group) }
+    func group(_ predicate: NSPredicate) -> UiElement { UiElement(predicate, app.groups, XCUIElement.ElementType.group) }
+
+    func handle() -> UiElement { UiElement(app.handles, XCUIElement.ElementType.handle) }
+    func handle(_ identifier: String) -> UiElement { UiElement(identifier, app.handles, XCUIElement.ElementType.handle) }
+    func handle(_ predicate: NSPredicate) -> UiElement { UiElement(predicate, app.handles, XCUIElement.ElementType.handle) }
+
+    func helpTag() -> UiElement { UiElement(app.helpTags, XCUIElement.ElementType.helpTag) }
+    func helpTag(_ identifier: String) -> UiElement { UiElement(identifier, app.helpTags, XCUIElement.ElementType.helpTag) }
+    func helpTag(_ predicate: NSPredicate) -> UiElement { UiElement(predicate, app.helpTags, XCUIElement.ElementType.helpTag) }
+
+    func icon() -> UiElement { UiElement(app.icons, XCUIElement.ElementType.icon) }
+    func icon(_ identifier: String) -> UiElement { UiElement(identifier, app.icons, XCUIElement.ElementType.icon) }
+    func icon(_ predicate: NSPredicate) -> UiElement { UiElement(predicate, app.icons, XCUIElement.ElementType.icon) }
+
+    func image() -> UiElement { UiElement(app.images, XCUIElement.ElementType.image) }
+    func image(_ identifier: String) -> UiElement { UiElement(identifier, app.images, XCUIElement.ElementType.image) }
+    func image(_ predicate: NSPredicate) -> UiElement { UiElement(predicate, app.images, XCUIElement.ElementType.image) }
+
+    func incrementArrow() -> UiElement { UiElement(app.incrementArrows, XCUIElement.ElementType.incrementArrow) }
+    func incrementArrow(_ identifier: String) -> UiElement { UiElement(identifier, app.incrementArrows, XCUIElement.ElementType.incrementArrow) }
+    func incrementArrow(_ predicate: NSPredicate) -> UiElement { UiElement(predicate, app.incrementArrows, XCUIElement.ElementType.incrementArrow) }
+
+    func keyboard() -> UiElement { UiElement(app.keyboards, XCUIElement.ElementType.keyboard) }
+    func keyboard(_ identifier: String) -> UiElement { UiElement(identifier, app.keyboards, XCUIElement.ElementType.keyboard) }
+    func keyboard(_ predicate: NSPredicate) -> UiElement { UiElement(predicate, app.keyboards, XCUIElement.ElementType.keyboard) }
+
+    func key() -> UiElement { UiElement(app.keys, XCUIElement.ElementType.key) }
+    func key(_ identifier: String) -> UiElement { UiElement(identifier, app.keys, XCUIElement.ElementType.key) }
+    func key(_ predicate: NSPredicate) -> UiElement { UiElement(predicate, app.keys, XCUIElement.ElementType.key) }
+
+    func layoutArea() -> UiElement { UiElement(app.layoutAreas, XCUIElement.ElementType.layoutArea) }
+    func layoutArea(_ identifier: String) -> UiElement { UiElement(identifier, app.layoutAreas, XCUIElement.ElementType.layoutArea) }
+    func layoutArea(_ predicate: NSPredicate) -> UiElement { UiElement(predicate, app.layoutAreas, XCUIElement.ElementType.layoutArea) }
+
+    func layoutItem() -> UiElement { UiElement(app.layoutItems, XCUIElement.ElementType.layoutItem) }
+    func layoutItem(_ identifier: String) -> UiElement { UiElement(identifier, app.layoutItems, XCUIElement.ElementType.layoutItem) }
+    func layoutItem(_ predicate: NSPredicate) -> UiElement { UiElement(predicate, app.layoutItems, XCUIElement.ElementType.layoutItem) }
+
+    func levelIndicator() -> UiElement { UiElement(app.levelIndicators, XCUIElement.ElementType.levelIndicator) }
+    func levelIndicator(_ identifier: String) -> UiElement { UiElement(identifier, app.levelIndicators, XCUIElement.ElementType.levelIndicator) }
+    func levelIndicator(_ predicate: NSPredicate) -> UiElement { UiElement(predicate, app.levelIndicators, XCUIElement.ElementType.levelIndicator) }
+
+    func link() -> UiElement { UiElement(app.links, XCUIElement.ElementType.link) }
+    func link(_ identifier: String) -> UiElement { UiElement(identifier, app.links, XCUIElement.ElementType.link) }
+    func link(_ predicate: NSPredicate) -> UiElement { UiElement(predicate, app.links, XCUIElement.ElementType.link) }
+
+    func map() -> UiElement { UiElement(app.maps, XCUIElement.ElementType.map) }
+    func map(_ identifier: String) -> UiElement { UiElement(identifier, app.maps, XCUIElement.ElementType.map) }
+    func map(_ predicate: NSPredicate) -> UiElement { UiElement(predicate, app.maps, XCUIElement.ElementType.map) }
+
+    func matte() -> UiElement { UiElement(app.mattes, XCUIElement.ElementType.matte) }
+    func matte(_ identifier: String) -> UiElement { UiElement(identifier, app.mattes, XCUIElement.ElementType.matte) }
+    func matte(_ predicate: NSPredicate) -> UiElement { UiElement(predicate, app.mattes, XCUIElement.ElementType.matte) }
+
+    func menuBar() -> UiElement { UiElement(app.menuBars, XCUIElement.ElementType.menuBar) }
+    func menuBar(_ identifier: String) -> UiElement { UiElement(identifier, app.menuBars, XCUIElement.ElementType.menuBar) }
+    func menuBar(_ predicate: NSPredicate) -> UiElement { UiElement(predicate, app.menuBars, XCUIElement.ElementType.menuBar) }
+
+    func menuBarItem() -> UiElement { UiElement(app.menuBarItems, XCUIElement.ElementType.menuBarItem) }
+    func menuBarItem(_ identifier: String) -> UiElement { UiElement(identifier, app.menuBarItems, XCUIElement.ElementType.menuBarItem) }
+    func menuBarItem(_ predicate: NSPredicate) -> UiElement { UiElement(predicate, app.menuBarItems, XCUIElement.ElementType.menuBarItem) }
+
+    func menuButton() -> UiElement { UiElement(app.menuButtons, XCUIElement.ElementType.menuButton) }
+    func menuButton(_ identifier: String) -> UiElement { UiElement(identifier, app.menuButtons, XCUIElement.ElementType.menuButton) }
+    func menuButton(_ predicate: NSPredicate) -> UiElement { UiElement(predicate, app.menuButtons, XCUIElement.ElementType.menuButton) }
+
+    func menuItem() -> UiElement { UiElement(app.menuItems, XCUIElement.ElementType.menuItem) }
+    func menuItem(_ identifier: String) -> UiElement { UiElement(identifier, app.menuItems, XCUIElement.ElementType.menuItem) }
+    func menuItem(_ predicate: NSPredicate) -> UiElement { UiElement(predicate, app.menuItems, XCUIElement.ElementType.menuItem) }
+
+    func menu() -> UiElement { UiElement(app.menus, XCUIElement.ElementType.menu) }
+    func menu(_ identifier: String) -> UiElement { UiElement(identifier, app.menus, XCUIElement.ElementType.menu) }
+    func menu(_ predicate: NSPredicate) -> UiElement { UiElement(predicate, app.menus, XCUIElement.ElementType.menu) }
+
+    func navigationBar() -> UiElement { UiElement(app.navigationBars, XCUIElement.ElementType.navigationBar) }
+    func navigationBar(_ identifier: String) -> UiElement { UiElement(identifier, app.navigationBars, XCUIElement.ElementType.navigationBar) }
+    func navigationBar(_ predicate: NSPredicate) -> UiElement { UiElement(predicate, app.navigationBars, XCUIElement.ElementType.navigationBar) }
+
+    func otherElement() -> UiElement { UiElement(app.otherElements, XCUIElement.ElementType.other) }
+    func otherElement(_ identifier: String) -> UiElement { UiElement(identifier, app.otherElements, XCUIElement.ElementType.other) }
+    func otherElement(_ predicate: NSPredicate) -> UiElement { UiElement(predicate, app.otherElements, XCUIElement.ElementType.other) }
+
+    func outline() -> UiElement { UiElement(app.outlines, XCUIElement.ElementType.outline) }
+    func outline(_ identifier: String) -> UiElement { UiElement(identifier, app.outlines, XCUIElement.ElementType.outline) }
+    func outline(_ predicate: NSPredicate) -> UiElement { UiElement(predicate, app.outlines, XCUIElement.ElementType.outline) }
+
+    func outlineRow() -> UiElement { UiElement(app.outlineRows, XCUIElement.ElementType.outlineRow) }
+    func outlineRow(_ identifier: String) -> UiElement { UiElement(identifier, app.outlineRows, XCUIElement.ElementType.outlineRow) }
+    func outlineRow(_ predicate: NSPredicate) -> UiElement { UiElement(predicate, app.outlineRows, XCUIElement.ElementType.outlineRow) }
+
+    func pageIndicator() -> UiElement { UiElement(app.pageIndicators, XCUIElement.ElementType.pageIndicator) }
+    func pageIndicator(_ identifier: String) -> UiElement { UiElement(identifier, app.pageIndicators, XCUIElement.ElementType.pageIndicator) }
+    func pageIndicator(_ predicate: NSPredicate) -> UiElement { UiElement(predicate, app.pageIndicators, XCUIElement.ElementType.pageIndicator) }
+
+    func picker() -> UiElement { UiElement(app.pickers, XCUIElement.ElementType.picker) }
+    func picker(_ identifier: String) -> UiElement { UiElement(identifier, app.pickers, XCUIElement.ElementType.picker) }
+    func picker(_ predicate: NSPredicate) -> UiElement { UiElement(predicate, app.pickers, XCUIElement.ElementType.picker) }
+
+    func pickerWheel() -> UiElement { UiElement(app.pickerWheels, XCUIElement.ElementType.pickerWheel) }
+    func pickerWheel(_ identifier: String) -> UiElement { UiElement(identifier, app.pickerWheels, XCUIElement.ElementType.pickerWheel) }
+    func pickerWheel(_ predicate: NSPredicate) -> UiElement { UiElement(predicate, app.pickerWheels, XCUIElement.ElementType.pickerWheel) }
+
+    func popover() -> UiElement { UiElement(app.popovers, XCUIElement.ElementType.popover) }
+    func popover(_ identifier: String) -> UiElement { UiElement(identifier, app.popovers, XCUIElement.ElementType.popover) }
+    func popover(_ predicate: NSPredicate) -> UiElement { UiElement(predicate, app.popovers, XCUIElement.ElementType.popover) }
+
+    func popUpButton() -> UiElement { UiElement(app.popUpButtons, XCUIElement.ElementType.popUpButton) }
+    func popUpButton(_ identifier: String) -> UiElement { UiElement(identifier, app.popUpButtons, XCUIElement.ElementType.popUpButton) }
+    func popUpButton(_ predicate: NSPredicate) -> UiElement { UiElement(predicate, app.popUpButtons, XCUIElement.ElementType.popUpButton) }
+
+    func progressIndicator() -> UiElement { UiElement(app.progressIndicators, XCUIElement.ElementType.progressIndicator) }
+    func progressIndicator(_ identifier: String) -> UiElement { UiElement(identifier, app.progressIndicators, XCUIElement.ElementType.progressIndicator) }
+    func progressIndicator(_ predicate: NSPredicate) -> UiElement { UiElement(predicate, app.progressIndicators, XCUIElement.ElementType.progressIndicator) }
+
+    func radioButton() -> UiElement { UiElement(app.radioButtons, XCUIElement.ElementType.radioButton) }
+    func radioButton(_ identifier: String) -> UiElement { UiElement(identifier, app.radioButtons, XCUIElement.ElementType.radioButton) }
+    func radioButton(_ predicate: NSPredicate) -> UiElement { UiElement(predicate, app.radioButtons, XCUIElement.ElementType.radioButton) }
+
+    func radioGroup() -> UiElement { UiElement(app.radioGroups, XCUIElement.ElementType.radioGroup) }
+    func radioGroup(_ identifier: String) -> UiElement { UiElement(identifier, app.radioGroups, XCUIElement.ElementType.radioGroup) }
+    func radioGroup(_ predicate: NSPredicate) -> UiElement { UiElement(predicate, app.radioGroups, XCUIElement.ElementType.radioGroup) }
+
+    func ratingIndicator() -> UiElement { UiElement(app.ratingIndicators, XCUIElement.ElementType.ratingIndicator) }
+    func ratingIndicator(_ identifier: String) -> UiElement { UiElement(identifier, app.ratingIndicators, XCUIElement.ElementType.ratingIndicator) }
+    func ratingIndicator(_ predicate: NSPredicate) -> UiElement { UiElement(predicate, app.ratingIndicators, XCUIElement.ElementType.ratingIndicator) }
+
+    func relevanceIndicator() -> UiElement { UiElement(app.relevanceIndicators, XCUIElement.ElementType.relevanceIndicator) }
+    func relevanceIndicator(_ identifier: String) -> UiElement { UiElement(identifier, app.relevanceIndicators, XCUIElement.ElementType.relevanceIndicator) }
+    func relevanceIndicator(_ predicate: NSPredicate) -> UiElement { UiElement(predicate, app.relevanceIndicators, XCUIElement.ElementType.relevanceIndicator) }
+
+    func rulerMarker() -> UiElement { UiElement(app.rulerMarkers, XCUIElement.ElementType.rulerMarker) }
+    func rulerMarker(_ identifier: String) -> UiElement { UiElement(identifier, app.rulerMarkers, XCUIElement.ElementType.rulerMarker) }
+    func rulerMarker(_ predicate: NSPredicate) -> UiElement { UiElement(predicate, app.rulerMarkers, XCUIElement.ElementType.rulerMarker) }
+
+    func ruler() -> UiElement { UiElement(app.rulers, XCUIElement.ElementType.ruler) }
+    func ruler(_ identifier: String) -> UiElement { UiElement(identifier, app.rulers, XCUIElement.ElementType.ruler) }
+    func ruler(_ predicate: NSPredicate) -> UiElement { UiElement(predicate, app.rulers, XCUIElement.ElementType.ruler) }
+
+    func scrollBar() -> UiElement { UiElement(app.scrollBars, XCUIElement.ElementType.scrollBar) }
+    func scrollBar(_ identifier: String) -> UiElement { UiElement(identifier, app.scrollBars, XCUIElement.ElementType.scrollBar) }
+    func scrollBar(_ predicate: NSPredicate) -> UiElement { UiElement(predicate, app.scrollBars, XCUIElement.ElementType.scrollBar) }
+
+    func scrollView() -> UiElement { UiElement(app.scrollViews, XCUIElement.ElementType.scrollView) }
+    func scrollView(_ identifier: String) -> UiElement { UiElement(identifier, app.scrollViews, XCUIElement.ElementType.scrollView) }
+    func scrollView(_ predicate: NSPredicate) -> UiElement { UiElement(predicate, app.scrollViews, XCUIElement.ElementType.scrollView) }
+
+    func searchField() -> UiElement { UiElement(app.searchFields, XCUIElement.ElementType.searchField) }
+    func searchField(_ identifier: String) -> UiElement { UiElement(identifier, app.searchFields, XCUIElement.ElementType.searchField) }
+    func searchField(_ predicate: NSPredicate) -> UiElement { UiElement(predicate, app.searchFields, XCUIElement.ElementType.searchField) }
+
+    func secureTextField() -> UiElement { UiElement(app.secureTextFields, XCUIElement.ElementType.secureTextField) }
+    func secureTextField(_ identifier: String) -> UiElement { UiElement(identifier, app.secureTextFields, XCUIElement.ElementType.secureTextField) }
+    func secureTextField(_ predicate: NSPredicate) -> UiElement { UiElement(predicate, app.secureTextFields, XCUIElement.ElementType.secureTextField) }
+
+    func segmentedControl() -> UiElement { UiElement(app.segmentedControls, XCUIElement.ElementType.segmentedControl) }
+    func segmentedControl(_ identifier: String) -> UiElement { UiElement(identifier, app.segmentedControls, XCUIElement.ElementType.segmentedControl) }
+    func segmentedControl(_ predicate: NSPredicate) -> UiElement { UiElement(predicate, app.segmentedControls, XCUIElement.ElementType.segmentedControl) }
+
+    func sheet() -> UiElement { UiElement(app.sheets, XCUIElement.ElementType.sheet) }
+    func sheet(_ identifier: String) -> UiElement { UiElement(identifier, app.sheets, XCUIElement.ElementType.sheet) }
+    func sheet(_ predicate: NSPredicate) -> UiElement { UiElement(predicate, app.sheets, XCUIElement.ElementType.sheet) }
+
+    func slider() -> UiElement { UiElement(app.sliders, XCUIElement.ElementType.slider) }
+    func slider(_ identifier: String) -> UiElement { UiElement(identifier, app.sliders, XCUIElement.ElementType.slider) }
+    func slider(_ predicate: NSPredicate) -> UiElement { UiElement(predicate, app.sliders, XCUIElement.ElementType.slider) }
+
+    func splitGroup() -> UiElement { UiElement(app.splitGroups, XCUIElement.ElementType.splitGroup) }
+    func splitGroup(_ identifier: String) -> UiElement { UiElement(identifier, app.splitGroups, XCUIElement.ElementType.splitGroup) }
+    func splitGroup(_ predicate: NSPredicate) -> UiElement { UiElement(predicate, app.splitGroups, XCUIElement.ElementType.splitGroup) }
+
+    func splitter() -> UiElement { UiElement(app.splitters, XCUIElement.ElementType.splitter) }
+    func splitter(_ identifier: String) -> UiElement { UiElement(identifier, app.splitters, XCUIElement.ElementType.splitter) }
+    func splitter(_ predicate: NSPredicate) -> UiElement { UiElement(predicate, app.splitters, XCUIElement.ElementType.splitter) }
+
+    func staticText() -> UiElement { UiElement(app.staticTexts, XCUIElement.ElementType.staticText) }
+    func staticText(_ identifier: String) -> UiElement { UiElement(identifier, app.staticTexts, XCUIElement.ElementType.staticText) }
+    func staticText(_ predicate: NSPredicate) -> UiElement { UiElement(predicate, app.staticTexts, XCUIElement.ElementType.staticText) }
+
+    func statusBar() -> UiElement { UiElement(app.statusBars, XCUIElement.ElementType.statusBar) }
+    func statusBar(_ identifier: String) -> UiElement { UiElement(identifier, app.statusBars, XCUIElement.ElementType.statusBar) }
+    func statusBar(_ predicate: NSPredicate) -> UiElement { UiElement(predicate, app.statusBars, XCUIElement.ElementType.statusBar) }
+
+    func statusItem() -> UiElement { UiElement(app.statusItems, XCUIElement.ElementType.statusItem) }
+    func statusItem(_ identifier: String) -> UiElement { UiElement(identifier, app.statusItems, XCUIElement.ElementType.statusItem) }
+    func statusItem(_ predicate: NSPredicate) -> UiElement { UiElement(predicate, app.statusItems, XCUIElement.ElementType.statusItem) }
+
+    func stepper() -> UiElement { UiElement(app.steppers, XCUIElement.ElementType.stepper) }
+    func stepper(_ identifier: String) -> UiElement { UiElement(identifier, app.steppers, XCUIElement.ElementType.stepper) }
+    func stepper(_ predicate: NSPredicate) -> UiElement { UiElement(predicate, app.steppers, XCUIElement.ElementType.stepper) }
+
+    func swittch() -> UiElement { UiElement(app.switches, XCUIElement.ElementType.switch) }
+    func swittch(_ identifier: String) -> UiElement { UiElement(identifier, app.switches, XCUIElement.ElementType.switch) }
+    func swittch(_ predicate: NSPredicate) -> UiElement { UiElement(predicate, app.switches, XCUIElement.ElementType.switch) }
+
+    func tab() -> UiElement { UiElement(app.tabs, XCUIElement.ElementType.tab) }
+    func tab(_ identifier: String) -> UiElement { UiElement(identifier, app.tabs, XCUIElement.ElementType.tab) }
+    func tab(_ predicate: NSPredicate) -> UiElement { UiElement(predicate, app.tabs, XCUIElement.ElementType.tab) }
+
+    func tabBar() -> UiElement { UiElement(app.tabBars, XCUIElement.ElementType.tabBar) }
+    func tabBar(_ identifier: String) -> UiElement { UiElement(identifier, app.tabBars, XCUIElement.ElementType.tabBar) }
+    func tabBar(_ predicate: NSPredicate) -> UiElement { UiElement(predicate, app.tabBars, XCUIElement.ElementType.tabBar) }
+
+    func tabGroup() -> UiElement { UiElement(app.tabGroups, XCUIElement.ElementType.tabGroup) }
+    func tabGroup(_ identifier: String) -> UiElement { UiElement(identifier, app.tabGroups, XCUIElement.ElementType.tabGroup) }
+    func tabGroup(_ predicate: NSPredicate) -> UiElement { UiElement(predicate, app.tabGroups, XCUIElement.ElementType.tabGroup) }
+
+    func table() -> UiElement { UiElement(app.tables, XCUIElement.ElementType.table) }
+    func table(_ identifier: String) -> UiElement { UiElement(identifier, app.tables, XCUIElement.ElementType.table) }
+    func table(_ predicate: NSPredicate) -> UiElement { UiElement(predicate, app.tables, XCUIElement.ElementType.table) }
+
+    func tableColumn() -> UiElement { UiElement(app.tableColumns, XCUIElement.ElementType.tableColumn) }
+    func tableColumn(_ identifier: String) -> UiElement { UiElement(identifier, app.tableColumns, XCUIElement.ElementType.tableColumn) }
+    func tableColumn(_ predicate: NSPredicate) -> UiElement { UiElement(predicate, app.tableColumns, XCUIElement.ElementType.tableColumn) }
+
+    func tableRow() -> UiElement { UiElement(app.tableRows, XCUIElement.ElementType.tableRow) }
+    func tableRow(_ identifier: String) -> UiElement { UiElement(identifier, app.tableRows, XCUIElement.ElementType.tableRow) }
+    func tableRow(_ predicate: NSPredicate) -> UiElement { UiElement(predicate, app.tableRows, XCUIElement.ElementType.tableRow) }
+
+    func textField() -> UiElement { UiElement(app.textFields, XCUIElement.ElementType.textField) }
+    func textField(_ identifier: String) -> UiElement { UiElement(identifier, app.textFields, XCUIElement.ElementType.textField) }
+    func textField(_ predicate: NSPredicate) -> UiElement { UiElement(predicate, app.textFields, XCUIElement.ElementType.textField) }
+
+    func textView() -> UiElement { UiElement(app.textViews, XCUIElement.ElementType.textView) }
+    func textView(_ identifier: String) -> UiElement { UiElement(identifier, app.textViews, XCUIElement.ElementType.textView) }
+    func textView(_ predicate: NSPredicate) -> UiElement { UiElement(predicate, app.textViews, XCUIElement.ElementType.textView) }
+
+    func timeline() -> UiElement { UiElement(app.timelines, XCUIElement.ElementType.timeline) }
+    func timeline(_ identifier: String) -> UiElement { UiElement(identifier, app.timelines, XCUIElement.ElementType.timeline) }
+    func timeline(_ predicate: NSPredicate) -> UiElement { UiElement(predicate, app.timelines, XCUIElement.ElementType.timeline) }
+
+    func toggle() -> UiElement { UiElement(app.toggles, XCUIElement.ElementType.toggle) }
+    func toggle(_ identifier: String) -> UiElement { UiElement(identifier, app.toggles, XCUIElement.ElementType.toggle) }
+    func toggle(_ predicate: NSPredicate) -> UiElement { UiElement(predicate, app.toggles, XCUIElement.ElementType.toggle) }
+
+    func toolbarButton() -> UiElement { UiElement(app.toolbarButtons, XCUIElement.ElementType.toolbarButton) }
+    func toolbarButton(_ identifier: String) -> UiElement { UiElement(identifier, app.toolbarButtons, XCUIElement.ElementType.toolbarButton) }
+    func toolbarButton(_ predicate: NSPredicate) -> UiElement { UiElement(predicate, app.toolbarButtons, XCUIElement.ElementType.toolbarButton) }
+
+    func toolbar() -> UiElement { UiElement(app.toolbars, XCUIElement.ElementType.toolbar) }
+    func toolbar(_ identifier: String) -> UiElement { UiElement(identifier, app.toolbars, XCUIElement.ElementType.toolbar) }
+    func toolbar(_ predicate: NSPredicate) -> UiElement { UiElement(predicate, app.toolbars, XCUIElement.ElementType.toolbar) }
+
+    func touchBar() -> UiElement { UiElement(app.touchBars, XCUIElement.ElementType.touchBar) }
+    func touchBar(_ identifier: String) -> UiElement { UiElement(identifier, app.touchBars, XCUIElement.ElementType.touchBar) }
+    func touchBar(_ predicate: NSPredicate) -> UiElement { UiElement(predicate, app.touchBars, XCUIElement.ElementType.touchBar) }
+
+    func valueIndicator() -> UiElement { UiElement(app.valueIndicators, XCUIElement.ElementType.valueIndicator) }
+    func valueIndicator(_ identifier: String) -> UiElement { UiElement(identifier, app.valueIndicators, XCUIElement.ElementType.valueIndicator) }
+    func valueIndicator(_ predicate: NSPredicate) -> UiElement { UiElement(predicate, app.valueIndicators, XCUIElement.ElementType.valueIndicator) }
+
+    func webView() -> UiElement { UiElement(app.webViews, XCUIElement.ElementType.webView) }
+    func webView(_ identifier: String) -> UiElement { UiElement(identifier, app.webViews, XCUIElement.ElementType.webView) }
+    func webView(_ predicate: NSPredicate) -> UiElement { UiElement(predicate, app.webViews, XCUIElement.ElementType.webView) }
+
+    func windows() -> UiElement { UiElement(app.windows, XCUIElement.ElementType.window) }
+    func windows(_ identifier: String) -> UiElement { UiElement(identifier, app.windows, XCUIElement.ElementType.window) }
+    func windows(_ predicate: NSPredicate) -> UiElement { UiElement(predicate, app.windows, XCUIElement.ElementType.window) }
 }
