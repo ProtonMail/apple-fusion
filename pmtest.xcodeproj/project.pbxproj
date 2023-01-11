@@ -27,7 +27,7 @@
 		FAED64C228F0268E00C09F5F /* CoreElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0F567525C9EF4200DE7892 /* CoreElements.swift */; };
 		FAED64C328F026A000C09F5F /* MacCoreTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAED63E028F0026300C09F5F /* MacCoreTestCase.swift */; };
 		FAED64C428F026B100C09F5F /* ElementsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0F56D225C9F53100DE7892 /* ElementsProtocol.swift */; };
-		FAED64C528F026B500C09F5F /* UiElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0F56DB25C9F56F00DE7892 /* UiElement.swift */; };
+		FAED64C528F026B500C09F5F /* UIElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0F56DB25C9F56F00DE7892 /* UIElement.swift */; };
 		FAED64C628F026B900C09F5F /* XCUIElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0F56EA25C9F79E00DE7892 /* XCUIElement.swift */; };
 		FAED64C728F026BD00C09F5F /* InterruptionMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5775E226698196001AFFA1 /* InterruptionMonitor.swift */; };
 		FAED64C828F026C200C09F5F /* DateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0F566C25C9EF4200DE7892 /* DateUtils.swift */; };
@@ -39,7 +39,7 @@
 		FAED64CF28F026E700C09F5F /* Predicate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB883642649B44C00EDFCCB /* Predicate.swift */; };
 		FAED658428F042E400C09F5F /* CoreElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0F567525C9EF4200DE7892 /* CoreElements.swift */; };
 		FAED658528F042E400C09F5F /* ElementsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0F56D225C9F53100DE7892 /* ElementsProtocol.swift */; };
-		FAED658628F042E400C09F5F /* UiElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0F56DB25C9F56F00DE7892 /* UiElement.swift */; };
+		FAED658628F042E400C09F5F /* UIElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0F56DB25C9F56F00DE7892 /* UIElement.swift */; };
 		FAED658728F042E400C09F5F /* XCUIElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0F56EA25C9F79E00DE7892 /* XCUIElement.swift */; };
 		FAED658828F042E400C09F5F /* InterruptionMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5775E226698196001AFFA1 /* InterruptionMonitor.swift */; };
 		FAED658928F042E400C09F5F /* DateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0F566C25C9EF4200DE7892 /* DateUtils.swift */; };
@@ -80,7 +80,7 @@
 		8A0F566E25C9EF4200DE7892 /* Wait.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wait.swift; sourceTree = "<group>"; };
 		8A0F567525C9EF4200DE7892 /* CoreElements.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreElements.swift; sourceTree = "<group>"; };
 		8A0F56D225C9F53100DE7892 /* ElementsProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementsProtocol.swift; sourceTree = "<group>"; };
-		8A0F56DB25C9F56F00DE7892 /* UiElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UiElement.swift; sourceTree = "<group>"; };
+		8A0F56DB25C9F56F00DE7892 /* UIElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIElement.swift; sourceTree = "<group>"; };
 		8A0F56EA25C9F79E00DE7892 /* XCUIElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCUIElement.swift; sourceTree = "<group>"; };
 		8A4A3B16266F2B8500DBC4D1 /* CoreTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreTestCase.swift; sourceTree = "<group>"; };
 		8A5775DC266931CD001AFFA1 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
@@ -223,7 +223,7 @@
 			children = (
 				D4A6032F29029E84003EBCC3 /* Element.swift */,
 				8A0F56D225C9F53100DE7892 /* ElementsProtocol.swift */,
-				8A0F56DB25C9F56F00DE7892 /* UiElement.swift */,
+				8A0F56DB25C9F56F00DE7892 /* UIElement.swift */,
 				8A0F56EA25C9F79E00DE7892 /* XCUIElement.swift */,
 			);
 			path = Elements;
@@ -525,7 +525,7 @@
 				FAED64CD28F026E300C09F5F /* Wait.swift in Sources */,
 				FAE30602291BF7420058A2B7 /* CwlDemangle.swift in Sources */,
 				FAE305FF291BF7210058A2B7 /* CallStackParser.swift in Sources */,
-				FAED64C528F026B500C09F5F /* UiElement.swift in Sources */,
+				FAED64C528F026B500C09F5F /* UIElement.swift in Sources */,
 				FAED64CF28F026E700C09F5F /* Predicate.swift in Sources */,
 				FAE30605291BF7590058A2B7 /* NSObject+Logging.swift in Sources */,
 				FAED64CC28F026DE00C09F5F /* XCTestCaseUtils.swift in Sources */,
@@ -540,7 +540,7 @@
 			files = (
 				FAED658428F042E400C09F5F /* CoreElements.swift in Sources */,
 				FAED658528F042E400C09F5F /* ElementsProtocol.swift in Sources */,
-				FAED658628F042E400C09F5F /* UiElement.swift in Sources */,
+				FAED658628F042E400C09F5F /* UIElement.swift in Sources */,
 				FAED658728F042E400C09F5F /* XCUIElement.swift in Sources */,
 				FAE30609291BF7770058A2B7 /* String+Extensions.swift in Sources */,
 				FAED658828F042E400C09F5F /* InterruptionMonitor.swift in Sources */,
