@@ -1,5 +1,5 @@
 //
-//  UiElement.swift
+//  UIElement.swift
 //
 //  ProtonMail - Created on 02.02.21.
 //
@@ -57,7 +57,6 @@ open class UIElement {
     internal var uiElementQuery: XCUIElementQuery?
     internal var ancestorElement: XCUIElement?
     internal var parentElement: XCUIElement?
-    private let app = XCUIApplication()
     private var locatedElement: XCUIElement?
     private var index: Int?
     private var identifier: String?
@@ -365,16 +364,16 @@ open class UIElement {
     }
 
     @discardableResult
-    public func swipeUpUntilVisible(maxAttempts: Int = 5) -> UIElement {
+    public func swipeUpUntilVisible(maxAttempts: Int = 5, app: XCUIApplication = XCUIApplication()) -> UIElement {
         var eventCount = 0
         var swipeArea: XCUIElement
-        
+
         if focusedTable != nil {
             swipeArea = focusedTable!
         } else {
             swipeArea = app
         }
-        
+
         while eventCount <= maxAttempts, !isVisible {
             swipeArea.swipeUp()
             eventCount += 1
@@ -383,16 +382,16 @@ open class UIElement {
     }
 
     @discardableResult
-    public func swipeDownUntilVisible(maxAttempts: Int = 5) -> UIElement {
+    public func swipeDownUntilVisible(maxAttempts: Int = 5, app: XCUIApplication = XCUIApplication()) -> UIElement {
         var eventCount = 0
         var swipeArea: XCUIElement
-        
+
         if focusedTable != nil {
             swipeArea = focusedTable!
         } else {
             swipeArea = app
         }
-        
+
         while eventCount <= maxAttempts, !isVisible {
             swipeArea.swipeDown()
             eventCount += 1
@@ -699,6 +698,6 @@ open class UIElement {
 
     private var isVisible: Bool {
         guard uiElement()!.exists && !uiElement()!.frame.isEmpty else { return false }
-        return app.windows.element(boundBy: 0).frame.contains(uiElement()!.frame)
+        return XCUIApplication().windows.element(boundBy: 0).frame.contains(uiElement()!.frame)
     }
 }

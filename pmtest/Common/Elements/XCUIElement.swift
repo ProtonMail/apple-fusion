@@ -28,8 +28,6 @@
 import Foundation
 import XCTest
 
-private let app = XCUIApplication()
-
 /**
  * XCUIElement extensions that help to simplify the test syntax and keep it more compact.
  */
