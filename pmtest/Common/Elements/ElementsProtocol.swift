@@ -28,24 +28,23 @@
 import Foundation
 import XCTest
 
+var currentApp: XCUIApplication?
+
 /**
  * Collection of all XCUIElement types that can be used in UI testing.
  */
 public protocol ElementsProtocol: AnyObject {
-    var app: XCUIApplication {
-        get
-        set
-    }
+    var app: XCUIApplication { get }
 }
 
 public extension ElementsProtocol {
 
     var app: XCUIApplication {
-
-        set {}
-
-        get {
-            return XCUIApplication()
+        if let app = currentApp {
+            return app
+        } else {
+            currentApp = XCUIApplication()
+            return currentApp!
         }
     }
 
@@ -56,10 +55,9 @@ public extension ElementsProtocol {
         guard let bundleIdentifier = bundleIdentifier else {
             return self
         }
-        app = XCUIApplication(bundleIdentifier: bundleIdentifier)
+        currentApp = XCUIApplication(bundleIdentifier: bundleIdentifier)
         return self
     }
-
 
     func activityIndicator() -> UIElement { UIElement(app.activityIndicators, XCUIElement.ElementType.activityIndicator) }
     func activityIndicator(_ identifier: String) -> UIElement { UIElement(identifier, app.activityIndicators, XCUIElement.ElementType.activityIndicator) }

@@ -1,5 +1,5 @@
 //
-//  UiElements+iOSExtension.swift
+//  UIElement+iOSExtension.swift
 //  pmtest
 //
 //  Created by Robert Patchett on 11.10.22.
