@@ -34,11 +34,11 @@ class IosUITests: CoreTestCase {
         let app = XCUIApplication(bundleIdentifier: "com.apple.mobilecal")
         app.launch()
 
-        inBundleIdentifier("com.apple.mobilecal").button("Today").wait().tap()
+        inBundleIdentifier("com.apple.mobilecal").button("Today").tap()
 
         let safari = XCUIApplication(bundleIdentifier: "com.apple.mobilesafari")
         safari.launch()
 
-        inBundleIdentifier("com.apple.mobilesafari").button("Edit").wait().tap()
+        inBundleIdentifier("com.apple.mobilesafari").button("Edit").tap()
     }
 }

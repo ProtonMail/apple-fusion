@@ -51,10 +51,7 @@ public extension ElementsProtocol {
     /**
      Specify which bundle to use when locating the element.
      */
-    func inBundleIdentifier(_ bundleIdentifier: String? = nil) -> ElementsProtocol {
-        guard let bundleIdentifier = bundleIdentifier else {
-            return self
-        }
+    func inBundleIdentifier(_ bundleIdentifier: String) -> ElementsProtocol {
         currentApp = XCUIApplication(bundleIdentifier: bundleIdentifier)
         return self
     }

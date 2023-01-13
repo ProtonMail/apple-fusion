@@ -32,6 +32,9 @@ public enum ForegroundType {
     case launch
 }
 
+@available(*, deprecated, message: "`UiDevice` has been renamed to `UIDevice`.")
+typealias UiDevice = UIDevice
+
 /**
  Contains functions related to the device or system actions.
  */
