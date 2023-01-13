@@ -368,14 +368,14 @@ open class UIElement {
     }
 
     @discardableResult
-    public func swipeUpUntilVisible(maxAttempts: Int = 5, app: XCUIApplication = XCUIApplication()) -> UIElement {
+    public func swipeUpUntilVisible(maxAttempts: Int = 5) -> UIElement {
         var eventCount = 0
         var swipeArea: XCUIElement
 
         if focusedTable != nil {
             swipeArea = focusedTable!
         } else {
-            swipeArea = app
+            swipeArea = currentApp!
         }
 
         while eventCount <= maxAttempts, !isVisible {
@@ -386,14 +386,14 @@ open class UIElement {
     }
 
     @discardableResult
-    public func swipeDownUntilVisible(maxAttempts: Int = 5, app: XCUIApplication = XCUIApplication()) -> UIElement {
+    public func swipeDownUntilVisible(maxAttempts: Int = 5) -> UIElement {
         var eventCount = 0
         var swipeArea: XCUIElement
 
         if focusedTable != nil {
             swipeArea = focusedTable!
         } else {
-            swipeArea = app
+            swipeArea = currentApp!
         }
 
         while eventCount <= maxAttempts, !isVisible {
@@ -612,12 +612,12 @@ open class UIElement {
         /// Filter out XCUIElementQuery based on identifier or predicate value provided.
         if identifier != nil {
             if focusedTable != nil {
-                uiElementQuery = XCUIApplication().tables[focusedTable!.identifier].descendants(matching: self.elementType).matching(identifier: identifier!)
+                uiElementQuery = currentApp!.tables[focusedTable!.identifier].descendants(matching: self.elementType).matching(identifier: identifier!)
             }
             uiElementQuery = uiElementQuery!.matching(identifier: identifier!)
         } else if predicate != nil {
             if focusedTable != nil {
-                uiElementQuery = XCUIApplication().tables[focusedTable!.identifier].descendants(matching: self.elementType).matching(predicate!)
+                uiElementQuery = currentApp!.tables[focusedTable!.identifier].descendants(matching: self.elementType).matching(predicate!)
             }
             uiElementQuery = uiElementQuery!.matching(predicate!)
         }
@@ -702,6 +702,6 @@ open class UIElement {
 
     private var isVisible: Bool {
         guard uiElement()!.exists && !uiElement()!.frame.isEmpty else { return false }
-        return XCUIApplication().windows.element(boundBy: 0).frame.contains(uiElement()!.frame)
+        return currentApp!.windows.element(boundBy: 0).frame.contains(uiElement()!.frame)
     }
 }
