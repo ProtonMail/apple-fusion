@@ -31,12 +31,16 @@ public struct StringUtils {
 
     public static func randomEmailString(length: Int = 5) -> String {
         let allowedChars = "abcdefghijklmnopqrstuuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!#$%&*+-=?^`{|}~"
-        return String((0..<length).map { _ in allowedChars.randomElement()! })
+        return randomString(allowedChars, length: length)
     }
 
     public static func randomAlphanumericString(length: Int = 10) -> String {
-        let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
-        return String((0..<length).map { _ in letters.randomElement()! })
+        let allowedChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+        return  randomString(allowedChars, length: length)
+    }
+
+    private static func randomString(_ allowedChars: String, length: Int) -> String {
+        return String((0..<length).map { _ in allowedChars.randomElement()! })
     }
 }
 

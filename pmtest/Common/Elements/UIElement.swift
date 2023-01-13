@@ -33,6 +33,10 @@ import XCTest
  * By default each XCUIElement that is referenced by this class already has a wait functionality in place except check functions or checkDoesNotExist() function.
  * Check functions assume that element was already located before check is called. checkDoesNotExist() function shouldn't wait for the element.
  */
+
+@available(*, deprecated, message: "`UiElement` has been renamed to `UIElement`.")
+typealias UiElement = UIElement
+
 // swiftlint:disable type_body_length
 open class UIElement {
 
