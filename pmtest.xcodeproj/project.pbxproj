@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		D44C3ABD28F5AFBD00D91E2A /* XCUIElement+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44C3ABC28F5AFBD00D91E2A /* XCUIElement+extension.swift */; };
-		D44C3ABF28F5B02E00D91E2A /* UiElement+macOSExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44C3ABE28F5B02E00D91E2A /* UiElement+macOSExtension.swift */; };
-		D44C3AC228F5B05200D91E2A /* UiElement+iOSExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44C3AC128F5B05200D91E2A /* UiElement+iOSExtension.swift */; };
+		D44C3ABF28F5B02E00D91E2A /* UIElement+macOSExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44C3ABE28F5B02E00D91E2A /* UIElement+macOSExtension.swift */; };
+		D44C3AC228F5B05200D91E2A /* UIElement+iOSExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44C3AC128F5B05200D91E2A /* UIElement+iOSExtension.swift */; };
 		D4A6033029029E84003EBCC3 /* Element.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A6032F29029E84003EBCC3 /* Element.swift */; };
 		D4A6033129029E84003EBCC3 /* Element.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A6032F29029E84003EBCC3 /* Element.swift */; };
 		D4A6033329029EDB003EBCC3 /* XCUIElement+forceTouchExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A6033229029EDB003EBCC3 /* XCUIElement+forceTouchExtension.swift */; };
@@ -27,7 +27,7 @@
 		FAED64C228F0268E00C09F5F /* CoreElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0F567525C9EF4200DE7892 /* CoreElements.swift */; };
 		FAED64C328F026A000C09F5F /* MacCoreTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAED63E028F0026300C09F5F /* MacCoreTestCase.swift */; };
 		FAED64C428F026B100C09F5F /* ElementsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0F56D225C9F53100DE7892 /* ElementsProtocol.swift */; };
-		FAED64C528F026B500C09F5F /* UiElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0F56DB25C9F56F00DE7892 /* UiElement.swift */; };
+		FAED64C528F026B500C09F5F /* UIElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0F56DB25C9F56F00DE7892 /* UIElement.swift */; };
 		FAED64C628F026B900C09F5F /* XCUIElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0F56EA25C9F79E00DE7892 /* XCUIElement.swift */; };
 		FAED64C728F026BD00C09F5F /* InterruptionMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5775E226698196001AFFA1 /* InterruptionMonitor.swift */; };
 		FAED64C828F026C200C09F5F /* DateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0F566C25C9EF4200DE7892 /* DateUtils.swift */; };
@@ -39,7 +39,7 @@
 		FAED64CF28F026E700C09F5F /* Predicate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB883642649B44C00EDFCCB /* Predicate.swift */; };
 		FAED658428F042E400C09F5F /* CoreElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0F567525C9EF4200DE7892 /* CoreElements.swift */; };
 		FAED658528F042E400C09F5F /* ElementsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0F56D225C9F53100DE7892 /* ElementsProtocol.swift */; };
-		FAED658628F042E400C09F5F /* UiElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0F56DB25C9F56F00DE7892 /* UiElement.swift */; };
+		FAED658628F042E400C09F5F /* UIElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0F56DB25C9F56F00DE7892 /* UIElement.swift */; };
 		FAED658728F042E400C09F5F /* XCUIElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0F56EA25C9F79E00DE7892 /* XCUIElement.swift */; };
 		FAED658828F042E400C09F5F /* InterruptionMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5775E226698196001AFFA1 /* InterruptionMonitor.swift */; };
 		FAED658928F042E400C09F5F /* DateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0F566C25C9EF4200DE7892 /* DateUtils.swift */; };
@@ -51,7 +51,7 @@
 		FAED658F28F042E400C09F5F /* Predicate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB883642649B44C00EDFCCB /* Predicate.swift */; };
 		FAED659028F042E400C09F5F /* CoreTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4A3B16266F2B8500DBC4D1 /* CoreTestCase.swift */; };
 		FAED659128F042E400C09F5F /* CoreTestCase+XCUITestRecording.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D22A8927A4882E003F0651 /* CoreTestCase+XCUITestRecording.swift */; };
-		FAED659228F042E400C09F5F /* UiDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB5A467268E73410023D926 /* UiDevice.swift */; };
+		FAED659228F042E400C09F5F /* UIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB5A467268E73410023D926 /* UIDevice.swift */; };
 		FAED659328F042E400C09F5F /* XCUITestCaseRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240117B027A181F400B1DC61 /* XCUITestCaseRecorder.swift */; };
 		FAED659428F042E400C09F5F /* XCUITestCaseRecording.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240117AE27A1816000B1DC61 /* XCUITestCaseRecording.swift */; };
 		FAED659528F042E400C09F5F /* GifGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D22A8227A433E2003F0651 /* GifGenerator.swift */; };
@@ -80,18 +80,18 @@
 		8A0F566E25C9EF4200DE7892 /* Wait.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wait.swift; sourceTree = "<group>"; };
 		8A0F567525C9EF4200DE7892 /* CoreElements.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreElements.swift; sourceTree = "<group>"; };
 		8A0F56D225C9F53100DE7892 /* ElementsProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementsProtocol.swift; sourceTree = "<group>"; };
-		8A0F56DB25C9F56F00DE7892 /* UiElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UiElement.swift; sourceTree = "<group>"; };
+		8A0F56DB25C9F56F00DE7892 /* UIElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIElement.swift; sourceTree = "<group>"; };
 		8A0F56EA25C9F79E00DE7892 /* XCUIElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCUIElement.swift; sourceTree = "<group>"; };
 		8A4A3B16266F2B8500DBC4D1 /* CoreTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreTestCase.swift; sourceTree = "<group>"; };
 		8A5775DC266931CD001AFFA1 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		8A5775E226698196001AFFA1 /* InterruptionMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterruptionMonitor.swift; sourceTree = "<group>"; };
 		8A5775E4266AD130001AFFA1 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		8AB5A467268E73410023D926 /* UiDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UiDevice.swift; sourceTree = "<group>"; };
+		8AB5A467268E73410023D926 /* UIDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDevice.swift; sourceTree = "<group>"; };
 		8AB883642649B44C00EDFCCB /* Predicate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Predicate.swift; sourceTree = "<group>"; };
 		8AD7092525CC28100000C78F /* pmtest.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = pmtest.podspec; sourceTree = "<group>"; };
 		D44C3ABC28F5AFBD00D91E2A /* XCUIElement+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCUIElement+extension.swift"; sourceTree = "<group>"; };
-		D44C3ABE28F5B02E00D91E2A /* UiElement+macOSExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UiElement+macOSExtension.swift"; sourceTree = "<group>"; };
-		D44C3AC128F5B05200D91E2A /* UiElement+iOSExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UiElement+iOSExtension.swift"; sourceTree = "<group>"; };
+		D44C3ABE28F5B02E00D91E2A /* UIElement+macOSExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIElement+macOSExtension.swift"; sourceTree = "<group>"; };
+		D44C3AC128F5B05200D91E2A /* UIElement+iOSExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIElement+iOSExtension.swift"; sourceTree = "<group>"; };
 		D4A6032F29029E84003EBCC3 /* Element.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Element.swift; sourceTree = "<group>"; };
 		D4A6033229029EDB003EBCC3 /* XCUIElement+forceTouchExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XCUIElement+forceTouchExtension.swift"; sourceTree = "<group>"; };
 		D4C9B59E28FEBEF100C90E11 /* ElementsProtocol+iOSExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ElementsProtocol+iOSExtension.swift"; sourceTree = "<group>"; };
@@ -223,7 +223,7 @@
 			children = (
 				D4A6032F29029E84003EBCC3 /* Element.swift */,
 				8A0F56D225C9F53100DE7892 /* ElementsProtocol.swift */,
-				8A0F56DB25C9F56F00DE7892 /* UiElement.swift */,
+				8A0F56DB25C9F56F00DE7892 /* UIElement.swift */,
 				8A0F56EA25C9F79E00DE7892 /* XCUIElement.swift */,
 			);
 			path = Elements;
@@ -240,7 +240,7 @@
 		8AE339C6268D09AD0070311A /* Device */ = {
 			isa = PBXGroup;
 			children = (
-				8AB5A467268E73410023D926 /* UiDevice.swift */,
+				8AB5A467268E73410023D926 /* UIDevice.swift */,
 			);
 			path = Device;
 			sourceTree = "<group>";
@@ -248,7 +248,7 @@
 		D44C3ABB28F5AF9B00D91E2A /* Elements */ = {
 			isa = PBXGroup;
 			children = (
-				D44C3ABE28F5B02E00D91E2A /* UiElement+macOSExtension.swift */,
+				D44C3ABE28F5B02E00D91E2A /* UIElement+macOSExtension.swift */,
 				D44C3ABC28F5AFBD00D91E2A /* XCUIElement+extension.swift */,
 			);
 			path = Elements;
@@ -257,7 +257,7 @@
 		D44C3AC028F5B03600D91E2A /* Elements */ = {
 			isa = PBXGroup;
 			children = (
-				D44C3AC128F5B05200D91E2A /* UiElement+iOSExtension.swift */,
+				D44C3AC128F5B05200D91E2A /* UIElement+iOSExtension.swift */,
 				D4C9B59E28FEBEF100C90E11 /* ElementsProtocol+iOSExtension.swift */,
 				D4A6033229029EDB003EBCC3 /* XCUIElement+forceTouchExtension.swift */,
 			);
@@ -513,7 +513,7 @@
 			files = (
 				FAE30608291BF7770058A2B7 /* String+Extensions.swift in Sources */,
 				FAED64C928F026D000C09F5F /* StringUtils.swift in Sources */,
-				D44C3ABF28F5B02E00D91E2A /* UiElement+macOSExtension.swift in Sources */,
+				D44C3ABF28F5B02E00D91E2A /* UIElement+macOSExtension.swift in Sources */,
 				D4A6033029029E84003EBCC3 /* Element.swift in Sources */,
 				D44C3ABD28F5AFBD00D91E2A /* XCUIElement+extension.swift in Sources */,
 				FAED64C428F026B100C09F5F /* ElementsProtocol.swift in Sources */,
@@ -525,7 +525,7 @@
 				FAED64CD28F026E300C09F5F /* Wait.swift in Sources */,
 				FAE30602291BF7420058A2B7 /* CwlDemangle.swift in Sources */,
 				FAE305FF291BF7210058A2B7 /* CallStackParser.swift in Sources */,
-				FAED64C528F026B500C09F5F /* UiElement.swift in Sources */,
+				FAED64C528F026B500C09F5F /* UIElement.swift in Sources */,
 				FAED64CF28F026E700C09F5F /* Predicate.swift in Sources */,
 				FAE30605291BF7590058A2B7 /* NSObject+Logging.swift in Sources */,
 				FAED64CC28F026DE00C09F5F /* XCTestCaseUtils.swift in Sources */,
@@ -540,7 +540,7 @@
 			files = (
 				FAED658428F042E400C09F5F /* CoreElements.swift in Sources */,
 				FAED658528F042E400C09F5F /* ElementsProtocol.swift in Sources */,
-				FAED658628F042E400C09F5F /* UiElement.swift in Sources */,
+				FAED658628F042E400C09F5F /* UIElement.swift in Sources */,
 				FAED658728F042E400C09F5F /* XCUIElement.swift in Sources */,
 				FAE30609291BF7770058A2B7 /* String+Extensions.swift in Sources */,
 				FAED658828F042E400C09F5F /* InterruptionMonitor.swift in Sources */,
@@ -555,7 +555,7 @@
 				FAED658F28F042E400C09F5F /* Predicate.swift in Sources */,
 				FAED659028F042E400C09F5F /* CoreTestCase.swift in Sources */,
 				FAED659128F042E400C09F5F /* CoreTestCase+XCUITestRecording.swift in Sources */,
-				FAED659228F042E400C09F5F /* UiDevice.swift in Sources */,
+				FAED659228F042E400C09F5F /* UIDevice.swift in Sources */,
 				D4A6033129029E84003EBCC3 /* Element.swift in Sources */,
 				FAED659328F042E400C09F5F /* XCUITestCaseRecorder.swift in Sources */,
 				FAED659428F042E400C09F5F /* XCUITestCaseRecording.swift in Sources */,
@@ -566,7 +566,7 @@
 				FAED659828F042E400C09F5F /* VideoGenerationConfiguration.swift in Sources */,
 				FAED659928F042E400C09F5F /* VideoWriter.swift in Sources */,
 				FAE30600291BF7210058A2B7 /* CallStackParser.swift in Sources */,
-				D44C3AC228F5B05200D91E2A /* UiElement+iOSExtension.swift in Sources */,
+				D44C3AC228F5B05200D91E2A /* UIElement+iOSExtension.swift in Sources */,
 				FAED659A28F042E400C09F5F /* PixelBufferFactory.swift in Sources */,
 				D4A6033329029EDB003EBCC3 /* XCUIElement+forceTouchExtension.swift in Sources */,
 			);

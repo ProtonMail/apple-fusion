@@ -33,5 +33,12 @@ class IosUITests: CoreTestCase {
     func testExample() throws {
         let app = XCUIApplication(bundleIdentifier: "com.apple.mobilecal")
         app.launch()
+
+        inBundleIdentifier("com.apple.mobilecal").button("Today").tap()
+
+        let safari = XCUIApplication(bundleIdentifier: "com.apple.mobilesafari")
+        safari.launch()
+
+        inBundleIdentifier("com.apple.mobilesafari").button("Edit").tap()
     }
 }
