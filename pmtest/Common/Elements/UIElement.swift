@@ -281,6 +281,12 @@ open class UIElement {
     }
 
     @discardableResult
+    public func forcePress(_ timeInterval: TimeInterval = 2) -> UIElement {
+        uiElement()!.coordinate(withNormalizedOffset: .zero).press(forDuration: timeInterval)
+        return self
+    }
+
+    @discardableResult
     public func swipeDown() -> UIElement {
         uiElement()!.swipeDown()
         return self
