@@ -38,4 +38,10 @@ extension UIElement {
         uiElement()!.typeText(text)
         return self
     }
+
+    @discardableResult
+    public func tap(withNumberOfTaps numberOfTaps: Int, numberOfTouches: Int) -> UIElement {
+        uiElement()!.tap(withNumberOfTaps: numberOfTaps, numberOfTouches: numberOfTouches)
+        return self
+    }
 }
