@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4E9110002982A34C006376E5 /* RunLoopRunUntil.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E910FFE2982A34C006376E5 /* RunLoopRunUntil.m */; };
+		4E9110012982A34C006376E5 /* RunLoopRunUntil.h in Headers */ = {isa = PBXBuildFile; fileRef = 4E910FFF2982A34C006376E5 /* RunLoopRunUntil.h */; };
 		D44C3ABD28F5AFBD00D91E2A /* XCUIElement+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44C3ABC28F5AFBD00D91E2A /* XCUIElement+extension.swift */; };
 		D44C3ABF28F5B02E00D91E2A /* UIElement+macOSExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44C3ABE28F5B02E00D91E2A /* UIElement+macOSExtension.swift */; };
 		D44C3AC228F5B05200D91E2A /* UIElement+iOSExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44C3AC128F5B05200D91E2A /* UIElement+iOSExtension.swift */; };
@@ -72,6 +74,8 @@
 		24D22A8527A43436003F0651 /* GifGenerationConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifGenerationConfiguration.swift; sourceTree = "<group>"; };
 		24D22A8727A441F4003F0651 /* FileTypeUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileTypeUtils.swift; sourceTree = "<group>"; };
 		24D22A8927A4882E003F0651 /* CoreTestCase+XCUITestRecording.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreTestCase+XCUITestRecording.swift"; sourceTree = "<group>"; };
+		4E910FFE2982A34C006376E5 /* RunLoopRunUntil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RunLoopRunUntil.m; sourceTree = "<group>"; };
+		4E910FFF2982A34C006376E5 /* RunLoopRunUntil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunLoopRunUntil.h; sourceTree = "<group>"; };
 		8A0F566825C9EF4200DE7892 /* StringUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringUtils.swift; sourceTree = "<group>"; };
 		8A0F566C25C9EF4200DE7892 /* DateUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateUtils.swift; sourceTree = "<group>"; };
 		8A0F566E25C9EF4200DE7892 /* Wait.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wait.swift; sourceTree = "<group>"; };
@@ -207,8 +211,10 @@
 		8A0F566D25C9EF4200DE7892 /* Waits */ = {
 			isa = PBXGroup;
 			children = (
-				8A0F566E25C9EF4200DE7892 /* Wait.swift */,
 				8AB883642649B44C00EDFCCB /* Predicate.swift */,
+				8A0F566E25C9EF4200DE7892 /* Wait.swift */,
+				4E910FFF2982A34C006376E5 /* RunLoopRunUntil.h */,
+				4E910FFE2982A34C006376E5 /* RunLoopRunUntil.m */,
 			);
 			path = Waits;
 			sourceTree = "<group>";
@@ -332,6 +338,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E9110012982A34C006376E5 /* RunLoopRunUntil.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -428,6 +435,7 @@
 					};
 					FAED656C28F042A400C09F5F = {
 						CreatedOnToolsVersion = 13.4.1;
+						LastSwiftMigration = 1410;
 					};
 				};
 			};
@@ -540,6 +548,7 @@
 				FAED658A28F042E400C09F5F /* StringUtils.swift in Sources */,
 				FAE30606291BF7590058A2B7 /* NSObject+Logging.swift in Sources */,
 				FAED658B28F042E400C09F5F /* FileManagerUtils.swift in Sources */,
+				4E9110002982A34C006376E5 /* RunLoopRunUntil.m in Sources */,
 				FAED658C28F042E400C09F5F /* FileTypeUtils.swift in Sources */,
 				D4C9B59F28FEBEF100C90E11 /* ElementsProtocol+iOSExtension.swift in Sources */,
 				FAED658D28F042E400C09F5F /* XCTestCaseUtils.swift in Sources */,
@@ -855,6 +864,7 @@
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
