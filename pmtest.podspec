@@ -12,9 +12,9 @@ Pod::Spec.new do |spec|
 
     spec.source       = { :git => ".", :commit => "" }
     spec.ios.source_files  =  "pmtest/iOS/**/*.swift",
-                              "pmtest/Common/**/*.swift"
+                              "pmtest/Common/**/*.{swift,h,m}"
     spec.osx.source_files  =  "pmtest/Mac/**/*.swift",
-                              "pmtest/Common/**/*.swift"
+                              "pmtest/Common/**/*.{swift,h,m}"
     spec.frameworks = 'XCTest'
     spec.static_framework = true
     spec.pod_target_xcconfig = {
