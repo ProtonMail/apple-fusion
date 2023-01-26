@@ -8,7 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		4E9110002982A34C006376E5 /* RunLoopRunUntil.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E910FFE2982A34C006376E5 /* RunLoopRunUntil.m */; };
-		4E9110012982A34C006376E5 /* RunLoopRunUntil.h in Headers */ = {isa = PBXBuildFile; fileRef = 4E910FFF2982A34C006376E5 /* RunLoopRunUntil.h */; };
+		4E9110072982D3CC006376E5 /* RunLoopRunUntil.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E910FFE2982A34C006376E5 /* RunLoopRunUntil.m */; };
+		4E9110082982D3CF006376E5 /* RunLoopRunUntil.h in Headers */ = {isa = PBXBuildFile; fileRef = 4E910FFF2982A34C006376E5 /* RunLoopRunUntil.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4E9110092982D51D006376E5 /* RunLoopRunUntil.h in Headers */ = {isa = PBXBuildFile; fileRef = 4E910FFF2982A34C006376E5 /* RunLoopRunUntil.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4E91100A2982D51D006376E5 /* pmtest.h in Headers */ = {isa = PBXBuildFile; fileRef = 4E9110062982D2B2006376E5 /* pmtest.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D44C3ABD28F5AFBD00D91E2A /* XCUIElement+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44C3ABC28F5AFBD00D91E2A /* XCUIElement+extension.swift */; };
 		D44C3ABF28F5B02E00D91E2A /* UIElement+macOSExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44C3ABE28F5B02E00D91E2A /* UIElement+macOSExtension.swift */; };
 		D44C3AC228F5B05200D91E2A /* UIElement+iOSExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44C3AC128F5B05200D91E2A /* UIElement+iOSExtension.swift */; };
@@ -76,6 +79,7 @@
 		24D22A8927A4882E003F0651 /* CoreTestCase+XCUITestRecording.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreTestCase+XCUITestRecording.swift"; sourceTree = "<group>"; };
 		4E910FFE2982A34C006376E5 /* RunLoopRunUntil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RunLoopRunUntil.m; sourceTree = "<group>"; };
 		4E910FFF2982A34C006376E5 /* RunLoopRunUntil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunLoopRunUntil.h; sourceTree = "<group>"; };
+		4E9110062982D2B2006376E5 /* pmtest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = pmtest.h; sourceTree = "<group>"; };
 		8A0F566825C9EF4200DE7892 /* StringUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringUtils.swift; sourceTree = "<group>"; };
 		8A0F566C25C9EF4200DE7892 /* DateUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateUtils.swift; sourceTree = "<group>"; };
 		8A0F566E25C9EF4200DE7892 /* Wait.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wait.swift; sourceTree = "<group>"; };
@@ -304,6 +308,7 @@
 				8A5775E12669817F001AFFA1 /* Interruption */,
 				8A0F566625C9EF4200DE7892 /* Utils */,
 				8A0F566D25C9EF4200DE7892 /* Waits */,
+				4E9110062982D2B2006376E5 /* pmtest.h */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -331,6 +336,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E9110082982D3CF006376E5 /* RunLoopRunUntil.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -338,7 +344,8 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4E9110012982A34C006376E5 /* RunLoopRunUntil.h in Headers */,
+				4E9110092982D51D006376E5 /* RunLoopRunUntil.h in Headers */,
+				4E91100A2982D51D006376E5 /* pmtest.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -516,6 +523,7 @@
 				FAED64C928F026D000C09F5F /* StringUtils.swift in Sources */,
 				D44C3ABF28F5B02E00D91E2A /* UIElement+macOSExtension.swift in Sources */,
 				D44C3ABD28F5AFBD00D91E2A /* XCUIElement+extension.swift in Sources */,
+				4E9110072982D3CC006376E5 /* RunLoopRunUntil.m in Sources */,
 				FAED64C428F026B100C09F5F /* ElementsProtocol.swift in Sources */,
 				FAED64C828F026C200C09F5F /* DateUtils.swift in Sources */,
 				FAED64CA28F026D600C09F5F /* FileManagerUtils.swift in Sources */,
@@ -578,6 +586,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -645,6 +654,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
