@@ -39,12 +39,18 @@ open class Wait {
         defaultTimeout = time
     }
 
+    /**
+     Waits for the element to exist but does not fail the test when condition is not met.
+     */
     @discardableResult
     open func forElement(_ element: XCUIElement, _ file: StaticString = #file, _ line: UInt = #line) -> XCUIElement {
         waitSoftForCondition(element, Predicate.exists, file, line)
         return element
     }
 
+    /**
+     Waits for the element to be enabled and fails the test when condition is not met.
+     */
     @discardableResult
     open func forElementToBeEnabled(
         _ element: XCUIElement,
@@ -54,6 +60,9 @@ open class Wait {
         waitForCondition(element, Predicate.enabled, file, line)
     }
 
+    /**
+     Waits for the element to be disabled and fails the test when condition is not met.
+     */
     @discardableResult
     open func forElementToBeDisabled(
         _ element: XCUIElement,
@@ -63,6 +72,9 @@ open class Wait {
         waitForCondition(element, Predicate.disabled, file, line)
     }
 
+    /**
+     Waits for the element to be hittable and fails the test when condition is not met.
+     */
     @discardableResult
     open func forElementToBeHittable(
         _ element: XCUIElement,
@@ -72,6 +84,9 @@ open class Wait {
         waitForCondition(element, Predicate.hittable, file, line)
     }
 
+    /**
+     Waits for the element to disappear and fails the test when condition is not met.
+     */
     @discardableResult
     open func forElementToDisappear(
         _ element: XCUIElement,
@@ -81,6 +96,9 @@ open class Wait {
         waitForCondition(element, Predicate.doesNotExist, file, line)
     }
 
+    /**
+     Waits for the element having keyboard focus and fails the test when condition is not met.
+     */
     @discardableResult
     open func forHavingKeyboardFocus(
         _ element: XCUIElement,
@@ -90,6 +108,9 @@ open class Wait {
         waitForCondition(element, Predicate.hasKeyboardFocus, file, line)
     }
 
+    /**
+     Waits for the element having keyboard focus but does not fail the test when condition is not met.
+     */
     @discardableResult
     open func hasKeyboardFocus(
         _ element: XCUIElement,
@@ -136,7 +157,7 @@ open class Wait {
     }
 
     @discardableResult
-    func wait(
+    private func wait(
         for element: XCUIElement,
         with predicate: NSPredicate,
         file: StaticString,
