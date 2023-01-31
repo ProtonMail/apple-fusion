@@ -11,9 +11,9 @@ Pod::Spec.new do |spec|
     spec.osx.deployment_target = '11.0'
 
     spec.source       = { :git => ".", :commit => "" }
-    spec.ios.source_files  =  "pmtest/iOS/**/*.swift",
+    spec.ios.source_files  =  "pmtest/iOS/**/*.{swift,h,m}",
                               "pmtest/Common/**/*.{swift,h,m}"
-    spec.osx.source_files  =  "pmtest/Mac/**/*.swift",
+    spec.osx.source_files  =  "pmtest/Mac/**/*.{swift,h,m}",
                               "pmtest/Common/**/*.{swift,h,m}"
     spec.frameworks = 'XCTest'
     spec.static_framework = true
