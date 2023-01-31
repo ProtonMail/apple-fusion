@@ -285,6 +285,7 @@
 			children = (
 				D44C3ABB28F5AF9B00D91E2A /* Elements */,
 				FAED63E028F0026300C09F5F /* MacCoreTestCase.swift */,
+				4E03A6B92989664B009AE7D3 /* pmtestMac.h */,
 			);
 			path = Mac;
 			sourceTree = "<group>";
@@ -293,10 +294,11 @@
 			isa = PBXGroup;
 			children = (
 				D44C3AC028F5B03600D91E2A /* Elements */,
-				8A4A3B16266F2B8500DBC4D1 /* CoreTestCase.swift */,
-				24D22A8927A4882E003F0651 /* CoreTestCase+XCUITestRecording.swift */,
 				8AE339C6268D09AD0070311A /* Device */,
 				240117B427A1975A00B1DC61 /* Recording */,
+				8A4A3B16266F2B8500DBC4D1 /* CoreTestCase.swift */,
+				24D22A8927A4882E003F0651 /* CoreTestCase+XCUITestRecording.swift */,
+				4E9110062982D2B2006376E5 /* pmtest.h */,
 			);
 			path = iOS;
 			sourceTree = "<group>";
@@ -310,8 +312,6 @@
 				8A5775E12669817F001AFFA1 /* Interruption */,
 				8A0F566625C9EF4200DE7892 /* Utils */,
 				8A0F566D25C9EF4200DE7892 /* Waits */,
-				4E9110062982D2B2006376E5 /* pmtest.h */,
-				4E03A6B92989664B009AE7D3 /* pmtestMac.h */,
 			);
 			path = Common;
 			sourceTree = "<group>";
