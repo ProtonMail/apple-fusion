@@ -1,6 +1,6 @@
 //
 //  XCUIElement+extension.swift
-//  pmtestMac
+//  fusionMac
 //
 //  Created by Robert Patchett on 11.10.22.
 //

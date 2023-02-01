@@ -85,7 +85,7 @@
 		8A5775E4266AD130001AFFA1 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		8AB5A467268E73410023D926 /* UIDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDevice.swift; sourceTree = "<group>"; };
 		8AB883642649B44C00EDFCCB /* Predicate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Predicate.swift; sourceTree = "<group>"; };
-		8AD7092525CC28100000C78F /* pmtest.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = pmtest.podspec; sourceTree = "<group>"; };
+		8AD7092525CC28100000C78F /* fusion.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = fusion.podspec; sourceTree = "<group>"; };
 		D44C3ABC28F5AFBD00D91E2A /* XCUIElement+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCUIElement+extension.swift"; sourceTree = "<group>"; };
 		D44C3ABE28F5B02E00D91E2A /* UIElement+macOSExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIElement+macOSExtension.swift"; sourceTree = "<group>"; };
 		D44C3AC128F5B05200D91E2A /* UIElement+iOSExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIElement+iOSExtension.swift"; sourceTree = "<group>"; };
@@ -99,8 +99,8 @@
 		FAED63CC28F001A200C09F5F /* IosUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IosUITests.swift; sourceTree = "<group>"; };
 		FAED63D928F001B800C09F5F /* MacUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacUITests.swift; sourceTree = "<group>"; };
 		FAED63E028F0026300C09F5F /* MacCoreTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacCoreTestCase.swift; sourceTree = "<group>"; };
-		FAED64AB28F0264D00C09F5F /* pmtestMac.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = pmtestMac.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		FAED656D28F042A400C09F5F /* pmtest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = pmtest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FAED64AB28F0264D00C09F5F /* fusionMac.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = fusionMac.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FAED656D28F042A400C09F5F /* fusion.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = fusion.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,25 +171,25 @@
 			children = (
 				8A5775E4266AD130001AFFA1 /* README.md */,
 				8A5775DC266931CD001AFFA1 /* LICENSE */,
-				8AD7092525CC28100000C78F /* pmtest.podspec */,
-				8A0F563C25C9EC9B00DE7892 /* pmtest */,
+				8AD7092525CC28100000C78F /* fusion.podspec */,
+				8A0F563C25C9EC9B00DE7892 /* fusion */,
 				FAED63CB28F001A200C09F5F /* IosUITest */,
 				FAED63D828F001B800C09F5F /* MacUITest */,
-				FAED64AB28F0264D00C09F5F /* pmtestMac.framework */,
-				FAED656D28F042A400C09F5F /* pmtest.framework */,
+				FAED64AB28F0264D00C09F5F /* fusionMac.framework */,
+				FAED656D28F042A400C09F5F /* fusion.framework */,
 				FA3EBEF228F3FC3F00EDC86B /* MacUITest.xctest */,
 				FA3EBEF328F3FC3F00EDC86B /* IosUITest.xctest */,
 			);
 			sourceTree = "<group>";
 		};
-		8A0F563C25C9EC9B00DE7892 /* pmtest */ = {
+		8A0F563C25C9EC9B00DE7892 /* fusion */ = {
 			isa = PBXGroup;
 			children = (
 				FAED63C528F000BE00C09F5F /* Common */,
 				FAED63C428F000A400C09F5F /* iOS */,
 				FAED63C328F0009D00C09F5F /* Mac */,
 			);
-			path = pmtest;
+			path = fusion;
 			sourceTree = "<group>";
 		};
 		8A0F566625C9EF4200DE7892 /* Utils */ = {
@@ -351,7 +351,7 @@
 			dependencies = (
 			);
 			name = MacUITest;
-			productName = IosPmtest;
+			productName = MacUITest;
 			productReference = FA3EBEF228F3FC3F00EDC86B /* MacUITest.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
@@ -368,13 +368,13 @@
 			dependencies = (
 			);
 			name = IosUITest;
-			productName = OsxPmtest;
+			productName = IosUITest;
 			productReference = FA3EBEF328F3FC3F00EDC86B /* IosUITest.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
-		FAED64AA28F0264D00C09F5F /* pmtestMac */ = {
+		FAED64AA28F0264D00C09F5F /* fusionMac */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FAED64BC28F0264E00C09F5F /* Build configuration list for PBXNativeTarget "pmtestMac" */;
+			buildConfigurationList = FAED64BC28F0264E00C09F5F /* Build configuration list for PBXNativeTarget "fusionMac" */;
 			buildPhases = (
 				FAED64A628F0264D00C09F5F /* Headers */,
 				FAED64A728F0264D00C09F5F /* Sources */,
@@ -385,14 +385,14 @@
 			);
 			dependencies = (
 			);
-			name = pmtestMac;
-			productName = pmtestMac;
-			productReference = FAED64AB28F0264D00C09F5F /* pmtestMac.framework */;
+			name = fusionMac;
+			productName = fusionMac;
+			productReference = FAED64AB28F0264D00C09F5F /* fusionMac.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		FAED656C28F042A400C09F5F /* pmtest */ = {
+		FAED656C28F042A400C09F5F /* fusion */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FAED657E28F042A500C09F5F /* Build configuration list for PBXNativeTarget "pmtest" */;
+			buildConfigurationList = FAED657E28F042A500C09F5F /* Build configuration list for PBXNativeTarget "fusion" */;
 			buildPhases = (
 				FAED656828F042A400C09F5F /* Headers */,
 				FAED656928F042A400C09F5F /* Sources */,
@@ -403,9 +403,9 @@
 			);
 			dependencies = (
 			);
-			name = pmtest;
-			productName = pmtest;
-			productReference = FAED656D28F042A400C09F5F /* pmtest.framework */;
+			name = fusion;
+			productName = fusion;
+			productReference = FAED656D28F042A400C09F5F /* fusion.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -431,7 +431,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 8A0F563425C9EC9B00DE7892 /* Build configuration list for PBXProject "pmtest" */;
+			buildConfigurationList = 8A0F563425C9EC9B00DE7892 /* Build configuration list for PBXProject "fusion" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -446,8 +446,8 @@
 			targets = (
 				FAED63C928F001A200C09F5F /* MacUITest */,
 				FAED63D628F001B800C09F5F /* IosUITest */,
-				FAED64AA28F0264D00C09F5F /* pmtestMac */,
-				FAED656C28F042A400C09F5F /* pmtest */,
+				FAED64AA28F0264D00C09F5F /* fusionMac */,
+				FAED656C28F042A400C09F5F /* fusion */,
 			);
 		};
 /* End PBXProject section */
@@ -704,7 +704,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = me.proton.monkey.IosPmtest;
+				PRODUCT_BUNDLE_IDENTIFIER = me.proton.fusion.macuitest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SWIFT_EMIT_LOC_STRINGS = NO;
@@ -724,7 +724,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = me.proton.monkey.IosPmtest;
+				PRODUCT_BUNDLE_IDENTIFIER = me.proton.fusion.macuitest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SWIFT_EMIT_LOC_STRINGS = NO;
@@ -743,7 +743,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 12.3;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = me.proton.monkey.OsxPmtest;
+				PRODUCT_BUNDLE_IDENTIFIER = me.proton.fusion.iosuitest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SWIFT_EMIT_LOC_STRINGS = NO;
@@ -761,7 +761,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 12.3;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = me.proton.monkey.OsxPmtest;
+				PRODUCT_BUNDLE_IDENTIFIER = me.proton.fusion.iosuitest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SWIFT_EMIT_LOC_STRINGS = NO;
@@ -790,7 +790,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = me.proton.monkey.pmtestMac;
+				PRODUCT_BUNDLE_IDENTIFIER = me.proton.fusionMac;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
@@ -820,7 +820,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = me.proton.monkey.pmtestMac;
+				PRODUCT_BUNDLE_IDENTIFIER = me.proton.fusionMac;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
@@ -850,7 +850,7 @@
 					"@loader_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = me.proton.monkey.pmtest;
+				PRODUCT_BUNDLE_IDENTIFIER = me.proton.fusion;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = NO;
@@ -881,7 +881,7 @@
 					"@loader_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = me.proton.monkey.pmtest;
+				PRODUCT_BUNDLE_IDENTIFIER = me.proton.fusion;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = NO;
@@ -894,7 +894,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		8A0F563425C9EC9B00DE7892 /* Build configuration list for PBXProject "pmtest" */ = {
+		8A0F563425C9EC9B00DE7892 /* Build configuration list for PBXProject "fusion" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8A0F564025C9EC9B00DE7892 /* Debug */,
@@ -921,7 +921,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FAED64BC28F0264E00C09F5F /* Build configuration list for PBXNativeTarget "pmtestMac" */ = {
+		FAED64BC28F0264E00C09F5F /* Build configuration list for PBXNativeTarget "fusionMac" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FAED64BD28F0264E00C09F5F /* Debug */,
@@ -930,7 +930,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FAED657E28F042A500C09F5F /* Build configuration list for PBXNativeTarget "pmtest" */ = {
+		FAED657E28F042A500C09F5F /* Build configuration list for PBXNativeTarget "fusion" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FAED657F28F042A500C09F5F /* Debug */,
