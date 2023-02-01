@@ -1,5 +1,5 @@
 //
-//  IosPmtest.swift
+//  IosUITests.swift
 //
 //  ProtonMail - Created on 08.06.21.
 //
@@ -26,7 +26,7 @@
 //  THE SOFTWARE.
 
 import XCTest
-import pmtest
+import fusion
 
 class IosUITests: CoreTestCase {
 
