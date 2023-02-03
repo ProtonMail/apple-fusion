@@ -608,7 +608,7 @@ open class UIElement {
      */
     // swiftlint:disable cyclomatic_complexity
     // swiftlint:disable function_body_length
-    open func uiElement() -> XCUIElement? {
+    func uiElement() -> XCUIElement? {
         /// Return element instance if it was already located.
         if locatedElement != nil {
             shouldWaitForExistance = false

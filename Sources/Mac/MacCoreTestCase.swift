@@ -26,7 +26,5 @@
 //  THE SOFTWARE.
 
 import XCTest
-import fusion
 
 open class MacCoreTestCase: XCTestCase, ElementsProtocol {}
-

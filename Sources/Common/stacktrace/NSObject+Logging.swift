@@ -35,14 +35,14 @@ extension NSObject {
     }
 
     func d(_ string: String) {
-        let dt = Date().description
+        let date = Date().description
 
         for symbol in Thread.callStackSymbols[1...] {
             if let parsed = CallStackParser.parse(stackSymbol: symbol) {
-                print("\(dt) [\(parsed.0)] \(parsed.1) \(string)")
+                print("\(date) [\(parsed.0)] \(parsed.1) \(string)")
                 return
             }
         }
-        print("\(dt) [\(shortTypename)] \(string)")
+        print("\(date) [\(shortTypename)] \(string)")
     }
 }

@@ -8,7 +8,6 @@
 #if os(OSX)
 import XCTest
 import AppKit
-import fusion
 
 extension XCUIElement {
     /**

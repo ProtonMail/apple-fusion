@@ -28,7 +28,6 @@
 #if os(iOS)
 import UIKit
 import XCTest
-import fusion
 
 class XCUITestCaseRecorder {
 
