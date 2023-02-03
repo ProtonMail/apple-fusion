@@ -8,7 +8,6 @@
 #if os(iOS)
 import UIKit
 import Foundation
-import fusion
 
 public extension ElementsProtocol {
 

@@ -66,10 +66,12 @@ public extension LosslessStringConvertible {
 
 public extension BidirectionalCollection {
 
+    // swiftlint:disable all
     subscript(safe offset: Int) -> Element? {
         guard !isEmpty, let i = index(startIndex, offsetBy: offset, limitedBy: index(before: endIndex)) else {
             return nil
         }
         return self[i]
     }
+    // swiftlint:enable all
 }

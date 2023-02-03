@@ -27,7 +27,6 @@
 
 #if os(iOS)
 import XCTest
-import fusion
 
 open class CoreTestCase: XCTestCase, ElementsProtocol {
     lazy var testRecorder = XCUITestCaseRecorder(testName: getTestMethodName())
