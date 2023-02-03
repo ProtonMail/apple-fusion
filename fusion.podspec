@@ -11,10 +11,10 @@ Pod::Spec.new do |spec|
     spec.osx.deployment_target = '11.0'
 
     spec.source       = { :git => ".", :commit => "" }
-    spec.ios.source_files  =  "fusion/iOS/**/*.swift",
-                              "fusion/Common/**/*.swift"
-    spec.osx.source_files  =  "fusion/Mac/**/*.swift",
-                              "fusion/Common/**/*.swift"
+    spec.ios.source_files  =  "fusion/Sources/fusion/iOS/**/*.swift",
+                              "fusion/Sources/fusion/Common/**/*.swift"
+    spec.osx.source_files  =  "fusion/Sources/fusion/Mac/**/*.swift",
+                              "fusion/Sources/fusion/Common/**/*.swift"
     spec.frameworks = 'XCTest'
     spec.static_framework = true
     spec.pod_target_xcconfig = {
