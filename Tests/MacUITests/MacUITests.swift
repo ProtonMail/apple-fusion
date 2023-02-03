@@ -27,7 +27,6 @@
 
 #if os(OSX)
 import XCTest
-import fusionMac
 
 class MacUITests: MacCoreTestCase {
 

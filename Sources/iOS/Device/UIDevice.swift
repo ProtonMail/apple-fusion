@@ -26,6 +26,7 @@
 //  THE SOFTWARE.
 
 #if os(iOS)
+import UIKit
 import XCTest
 
 public enum ForegroundType {

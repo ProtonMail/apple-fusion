@@ -27,7 +27,7 @@
 
 #if os(iOS)
 import XCTest
-@testable import fusionIos
+import fusion
 
 class IosUITests: CoreTestCase {
     
