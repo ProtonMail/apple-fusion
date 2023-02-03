@@ -566,7 +566,7 @@ open class UIElement {
 
     /// Waits
     @discardableResult
-    public func wait(
+    public func waitUntilExists(
         time: TimeInterval = 10.0,
         file: StaticString = #filePath,
         line: UInt = #line
