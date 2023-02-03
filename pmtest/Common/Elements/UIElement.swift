@@ -564,7 +564,16 @@ open class UIElement {
         return self
     }
 
-    /// Waits
+    @available(*, deprecated, renamed: "waitUntilExists", message: "`wait` has been renamed to `waitUntilExists`.")
+    @discardableResult
+    public func wait(
+        time: TimeInterval = 10.0,
+        file: StaticString = #filePath,
+        line: UInt = #line
+    ) -> UIElement {
+        waitUntilExists(time: time, file: file, line: line)
+    }
+
     @discardableResult
     public func waitUntilExists(
         time: TimeInterval = 10.0,
