@@ -129,12 +129,12 @@ open class Wait {
         _ file: StaticString = #file,
         _ line: UInt = #line
     ) -> XCUIElement {
-        let result = wait(for: element, with: predicate, file: file, line: line)
+        let result = wait(for: element, with: predicate)
 
         if !result {
             let message = """
                           Condition: <\(predicate.predicateFormat)> was NOT met
-                          for Element: <\(element)> after \(defaultTimeout) seconds timeout.
+                          for element: <\(element)> after \(defaultTimeout) seconds timeout.
                           """
             XCTFail(message, file: file, line: line)
         }
@@ -153,16 +153,10 @@ open class Wait {
         _ file: StaticString = #file,
         _ line: UInt = #line
     ) -> Bool {
-        wait(for: element, with: predicate, file: file, line: line)
+        wait(for: element, with: predicate)
     }
 
-    @discardableResult
-    private func wait(
-        for element: XCUIElement,
-        with predicate: NSPredicate,
-        file: StaticString,
-        line: UInt
-    ) -> Bool {
+    private func wait(for element: XCUIElement, with predicate: NSPredicate) -> Bool {
         let isMatchingPredicate: () -> Bool = { predicate.evaluate(with: element) }
         let result = RunLoopRunUntil(defaultTimeout, isMatchingPredicate)
 
