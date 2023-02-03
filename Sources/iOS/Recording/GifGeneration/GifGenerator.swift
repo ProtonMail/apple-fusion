@@ -26,9 +26,9 @@
 //  THE SOFTWARE.
 
 #if os(iOS)
-import UIKit
 import UniformTypeIdentifiers
 import MobileCoreServices
+import UIKit
 
 final class GifGenerator {
     private let configuration: GifGenerationConfiguration

@@ -26,8 +26,8 @@
 //  THE SOFTWARE.
 
 #if os(iOS)
-import UIKit
 import AVFoundation
+import UIKit
 
 final class VideoWriter {
 

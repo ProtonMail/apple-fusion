@@ -7,7 +7,7 @@
 
 #if os(iOS)
 import XCTest
-import fusionCommon
+import fusion
 
 extension UIElement {
 

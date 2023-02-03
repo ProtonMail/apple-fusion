@@ -6,8 +6,9 @@
 //
 
 #if os(OSX)
-import AppKit
 import XCTest
+import AppKit
+import fusion
 
 extension XCUIElement {
     /**
@@ -17,6 +18,15 @@ extension XCUIElement {
         NSPasteboard.general.clearContents()
         NSPasteboard.general.setString(string, forType: .string)
         self.typeKey("v", modifierFlags: .command)
+    }
+}
+
+extension UIElement {
+
+    @discardableResult
+    public func pasteText(_ text: String) -> UIElement {
+        uiElement()!.pasteText(text)
+        return self
     }
 }
 #endif

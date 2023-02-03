@@ -6,8 +6,9 @@
 //
 
 #if os(iOS)
+import UIKit
 import Foundation
-import fusionCommon
+import fusion
 
 public extension ElementsProtocol {
 

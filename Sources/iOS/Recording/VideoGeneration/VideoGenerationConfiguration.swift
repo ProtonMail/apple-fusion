@@ -26,10 +26,10 @@
 //  THE SOFTWARE.
 
 #if os(iOS)
-import UIKit
 import AVFoundation
 import Photos
 import Foundation
+import UIKit
 
 struct VideoGenerationConfiguration {
 

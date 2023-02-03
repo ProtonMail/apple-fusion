@@ -26,8 +26,9 @@
 //  THE SOFTWARE.
 
 #if os(iOS)
+import UIKit
 import XCTest
-import fusionCommon
+import fusion
 
 class XCUITestCaseRecorder {
 
