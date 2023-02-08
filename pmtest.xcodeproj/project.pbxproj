@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		47E1BD172993ADE90027122A /* WaitUntil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E1BD162993ADE90027122A /* WaitUntil.swift */; };
 		4E03A6B5298965F4009AE7D3 /* RunLoopRunUntil.h in Headers */ = {isa = PBXBuildFile; fileRef = 4E910FFF2982A34C006376E5 /* RunLoopRunUntil.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4E03A6B72989661C009AE7D3 /* RunLoopRunUntil.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E910FFE2982A34C006376E5 /* RunLoopRunUntil.m */; };
 		4E03A6B82989661D009AE7D3 /* RunLoopRunUntil.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E910FFE2982A34C006376E5 /* RunLoopRunUntil.m */; };
@@ -78,6 +79,7 @@
 		24D22A8527A43436003F0651 /* GifGenerationConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifGenerationConfiguration.swift; sourceTree = "<group>"; };
 		24D22A8727A441F4003F0651 /* FileTypeUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileTypeUtils.swift; sourceTree = "<group>"; };
 		24D22A8927A4882E003F0651 /* CoreTestCase+XCUITestRecording.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreTestCase+XCUITestRecording.swift"; sourceTree = "<group>"; };
+		47E1BD162993ADE90027122A /* WaitUntil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitUntil.swift; sourceTree = "<group>"; };
 		4E03A6B92989664B009AE7D3 /* pmtestMac.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = pmtestMac.h; sourceTree = "<group>"; };
 		4E910FFE2982A34C006376E5 /* RunLoopRunUntil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RunLoopRunUntil.m; sourceTree = "<group>"; };
 		4E910FFF2982A34C006376E5 /* RunLoopRunUntil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunLoopRunUntil.h; sourceTree = "<group>"; };
@@ -218,6 +220,7 @@
 			isa = PBXGroup;
 			children = (
 				8AB883642649B44C00EDFCCB /* Predicate.swift */,
+				47E1BD162993ADE90027122A /* WaitUntil.swift */,
 				8A0F566E25C9EF4200DE7892 /* Wait.swift */,
 				4E910FFF2982A34C006376E5 /* RunLoopRunUntil.h */,
 				4E910FFE2982A34C006376E5 /* RunLoopRunUntil.m */,
@@ -561,6 +564,7 @@
 				FAE30606291BF7590058A2B7 /* NSObject+Logging.swift in Sources */,
 				FAED658B28F042E400C09F5F /* FileManagerUtils.swift in Sources */,
 				FAED658C28F042E400C09F5F /* FileTypeUtils.swift in Sources */,
+				47E1BD172993ADE90027122A /* WaitUntil.swift in Sources */,
 				D4C9B59F28FEBEF100C90E11 /* ElementsProtocol+iOSExtension.swift in Sources */,
 				FAED658D28F042E400C09F5F /* XCTestCaseUtils.swift in Sources */,
 				FAED658E28F042E400C09F5F /* Wait.swift in Sources */,
