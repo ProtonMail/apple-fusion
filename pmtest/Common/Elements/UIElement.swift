@@ -275,6 +275,13 @@ open class UIElement {
     }
 
     @discardableResult
+    public func tapOnCoordinate(withOffset offset: CGVector) -> UIElement {
+        let element = uiElement()!
+        element.coordinate(withNormalizedOffset: offset).tap()
+        return self
+    }
+
+    @discardableResult
     public func longPress(_ timeInterval: TimeInterval = 2) -> UIElement {
         uiElement()!.press(forDuration: timeInterval)
         return self
