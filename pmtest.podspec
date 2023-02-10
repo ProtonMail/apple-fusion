@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
     spec.name         = "pmtest"
-    spec.version      = "1.2.1"
+    spec.version      = "1.2.2"
     spec.summary      = "UI test library that simplifies XCTest syntax, reduces test flakiness and improves test code readability."
     spec.homepage     = "https://github.com/protonmail"
     spec.license      = "ProtonMail"
