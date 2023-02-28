@@ -4,6 +4,7 @@ disabled_rules: # rule identifiers to exclude from running
   - force_cast # https://github.com/realm/SwiftLint/blob/master/Rules.md#force-cast
 excluded: # paths to ignore during linting. Takes precedence over `included`.  
   - Pods
-  - pmtest/Common/stacktrace
+  - Common/stacktrace
 included:
-  - pmtest
+  - Sources
+  - Tests
