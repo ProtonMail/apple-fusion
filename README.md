@@ -1,6 +1,6 @@
-## pmtest
+## fusion
 
-**pmtest** is the lightweight and easy to use UI testing framework built on top of Apple [**xctest**](https://developer.apple.com/documentation/xctest). Developed with readability and reliability in mind it brings the following features:    
+**fusion** is the lightweight and easy to use UI testing framework built on top of Apple [**xctest**](https://developer.apple.com/documentation/xctest). Developed with readability and reliability in mind it brings the following features:    
 
 - Builder like syntax reduces the test code boilerplate.
 - Multiple `XCUIElement` matchers can be applied in a single line of code to locate desired element. 
@@ -22,10 +22,10 @@
 
 ### Installation <a name="installation"></a>
 #### CocoaPods
-**pmtest** is available through [CocoaPods](http://cocoapods.org). To install it, simply add the following line to your Podfile:
+**fusion** is available through [CocoaPods](http://cocoapods.org). To install it, simply add the following line to your Podfile:
 
 ```ruby
-pod 'pmtest'
+pod 'fusion'
 ```
 Then run `pod install` in the project directory to install.
 
@@ -33,10 +33,10 @@ Then run `pod install` in the project directory to install.
 
 #### Getting started <a name="getting_started"></a>
 
-To start using the `pmtest` you should select one of the below options:
+To start using the `fusion` you should select one of the below options:
 1. Extend your test class with `CoreTestCase` class which extends XCTestCase class and then access any element by its type.
    ```swift
-   import pmtest
+   import fusion
    
    class SampleTestCase: CoreTestCase {
    
@@ -79,10 +79,10 @@ To start using the `pmtest` you should select one of the below options:
    ```
 #### Getting started Mac <a name="getting_started_mac"></a>
 
-To start using the `pmtest` you should select one of the below options:
+To start using the `fusion` you should select one of the below options:
 1. Extend your test class with `MacCoreTestCase` class which extends XCTestCase class and then access any element by its type.
    ```swift
-   import pmtest
+   import fusion
 
    class SampleTestCase: MacCoreTestCase {
    
@@ -168,7 +168,7 @@ List of all available matchers:
 
 #### Performing actions on element <a name="act"></a>
 
-**pmtest** supports the majority of actions available in **xctest** framework. Actions should follow the element locator and can be bundled one after another. For example:
+**fusion** supports the majority of actions available in **xctest** framework. Actions should follow the element locator and can be bundled one after another. For example:
 
 ```swift
 secureTextField(passwordSecureTextFieldidentifier).tap().clearText().typeText("password")
@@ -176,7 +176,7 @@ secureTextField(passwordSecureTextFieldidentifier).tap().clearText().typeText("p
 
 Actions will be executed in the same order as they are applied to the element.
 
-Before each action **pmtest** framework explicitly waits for element existence up to 10 seconds timeout (adjustable). If element does not exist when timeout is reached an attempt to click non-existing element will be made and test will fail.
+Before each action **fusion** framework explicitly waits for element existence up to 10 seconds timeout (adjustable). If element does not exist when timeout is reached an attempt to click non-existing element will be made and test will fail.
 In case element exists - test will immediately proceed.
 
 List of available actions:
@@ -264,7 +264,7 @@ cell(cellIdentifier).waitUntilGone(5)
 From Apple [**xctest**](https://developer.apple.com/documentation/xctest) documentation:
 >A "UI interruption" is any element which unexpectedly blocks access to an element with which a UI test is trying to interact. Interrupting elements are most commonly alerts, dialogs, or other windows, but can be of other types as well. Interruptions are unexpected or at least not deterministic: the appearance of an alert in direct response to a test action such as clicking a button is not an interruption and should not be handled using a UI interruption monitor. Instead, it's simply part of the UI and should be found using standard queries and interacted with using standard event methods. Note that some interruptions are part of the app's own UI, others are presented on behalf of system apps and services, so queries for these elements must be constructed with the right process at their root.
 
-**pmtest** simplifies a way to register UI interruption monitor. You can add it in two ways:
+**fusion** simplifies a way to register UI interruption monitor. You can add it in two ways:
 1. `addUIMonitor(elementToTap: XCUIElement)` - register a single element to monitor for and tap on it when it blocks other element.
 2. `addUIMonitor(elementsQuery: XCUIElementQuery, identifiers: [String])` - register the type of the elements to monitor for together with an array of their locators (labels, accessibility identifiers) and tap on monitored element when it blocks test code execution.
 
