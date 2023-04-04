@@ -121,7 +121,7 @@ open class Wait {
     }
 
     /**
-     Waits for the condition and fails the test when condition is not met.
+     Waits for the predicate and fails the test when is not met.
      */
     private func waitForCondition(
         _ element: XCUIElement,
@@ -129,9 +129,9 @@ open class Wait {
         _ file: StaticString = #file,
         _ line: UInt = #line
     ) -> XCUIElement {
-        let result = wait(for: element, with: predicate)
+        let isPredicateMet = wait(for: element, with: predicate)
 
-        if !result {
+        if !isPredicateMet {
             let message = """
                           Condition: <\(predicate.predicateFormat)> was NOT met
                           for element: <\(element)> after \(defaultTimeout) seconds timeout.
@@ -143,8 +143,7 @@ open class Wait {
     }
 
     /**
-     Waits for the condition but don't fail the test to trigger an action on XCUIElement and initiate the UIInterruptionMonitor mechanism when action cannot be completed.
-     UIInterruptionMonitor is not triggered when waiting for the element.
+     Waits for the predicate and does not fail the test when is not met.
      */
     @discardableResult
     private func waitSoftForCondition(
