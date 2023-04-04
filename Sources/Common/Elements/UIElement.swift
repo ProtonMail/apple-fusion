@@ -270,8 +270,7 @@ open class UIElement {
 
     @discardableResult
     public func forceTap() -> UIElement {
-        uiElement()!.coordinate(withNormalizedOffset: .zero).tap()
-        return self
+        tapOnCoordinate(withOffset: .zero)
     }
 
     @discardableResult
