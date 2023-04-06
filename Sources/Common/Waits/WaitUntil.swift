@@ -31,7 +31,7 @@ private enum RunLoop {
     static func runUntil(timeout: TimeInterval, condition: @escaping () -> Bool) -> Bool {
         var fulfilled: Bool = false
 
-        let beforeWaiting: (CFRunLoopObserver?, CFRunLoopActivity) -> Void = { observer, activity in
+        let beforeWaiting: (CFRunLoopObserver?, CFRunLoopActivity) -> Void = { _, _ in
             if fulfilled {
                 return
             }
@@ -59,7 +59,7 @@ private enum RunLoop {
          that we fail the test just because we somehow failed to properly poll the condition, e.g. if
          the run loop didn't wake up.
          */
-        if (!fulfilled) {
+        if !fulfilled {
             fulfilled = condition()
         }
 
