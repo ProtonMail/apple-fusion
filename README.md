@@ -154,6 +154,8 @@ Waits can be used for validation purposes or when waiting for a specific element
 button(buttonIdentifier).waitForHittable().tap()
 
 cell(cellIdentifier).waitUntilGone(5)
+
+staticText(staticTextIdentifier).waitUntilExists().checkExists()
 ```
 
 #### Working with UI Interruption Monitor <a name="working-with-ui-interruption-monitor"></a>
