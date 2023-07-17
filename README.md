@@ -9,6 +9,14 @@
 - Easy-to-use `onChild()` and `onDescendant()` functions allow you to target actions or assertions to desired XCUIElement(s) that belong to the located ancestor.
 - A simplified UI interruption mechanism makes it easier to add UI interruption monitors for a single element or a group of elements of the same type.
 
+## Contributing
+If you would like to contribute, please keep in mind the following rules:
+
+Try to stick to the project's existing code style and naming conventions
+I assign any and all copyright related to the contribution to Proton Technologies AG;
+I certify that the contribution was created in whole by me;
+I understand and agree that this project and the contribution are public and that a record of the contribution (including all personal information I submit with it) is maintained indefinitely and may be redistributed with this project or the open source license(s) involved.
+
 ## Table of Contents
 
 - [Installation](#installation)
