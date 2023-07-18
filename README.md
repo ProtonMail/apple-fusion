@@ -34,12 +34,16 @@ By making a contribution to this project you agree to the following:
 ### Installation <a name="installation"></a>
 #### CocoaPods
 
-1) fusion is available through CocoaPods. To install it, simply add the following line to your Podfile:
+1) `fusion` is available through CocoaPods. To install it, simply add the following line to your Podfile:
 
 ```ruby
    pod 'fusion'
 ```
 Then run `pod install` in the project directory to install.
+
+#### Swift Package Manager
+
+2) `fusion` is available through SPM. To install it, simply add this github url to your project under the package dependencies. 
 
 ### Usage <a name="usage"></a>
 
