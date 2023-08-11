@@ -168,6 +168,16 @@ open class UIElement {
         return uiElement()!.children(matching: type).count
     }
 
+    public func childrenCountByPredicate(_ predicate: NSPredicate, _ type: XCUIElement.ElementType? = nil) -> Int {
+        let elementType = type ?? .any
+        return uiElement()!.children(matching: elementType).matching(predicate).count
+    }
+
+    public func descendantsCountByPredicate(_ predicate: NSPredicate, _ type: XCUIElement.ElementType? = nil) -> Int {
+        let elementType = type ?? .any
+        return uiElement()!.descendants(matching: elementType).matching(predicate).count
+    }
+
     /// Matchers
     public func byIndex(_ index: Int) -> UIElement {
         self.index = index
