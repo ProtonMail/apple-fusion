@@ -25,7 +25,6 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-#if os(iOS)
 import XCTest
 
 open class CoreTestCase: XCTestCase, ElementsProtocol {
@@ -51,4 +50,3 @@ open class CoreTestCase: XCTestCase, ElementsProtocol {
         try super.tearDownWithError()
     }
 }
-#endif

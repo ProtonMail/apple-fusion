@@ -25,7 +25,6 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-#if os(iOS)
 import AVFoundation
 import Photos
 import Foundation
@@ -47,4 +46,3 @@ struct VideoGenerationConfiguration {
           AVVideoHeightKey: NSNumber(value: Float(size.height)) ]
     }
 }
-#endif

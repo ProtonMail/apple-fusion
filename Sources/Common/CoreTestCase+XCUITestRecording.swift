@@ -25,7 +25,6 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-#if os(iOS)
 import XCTest
 
 /**
@@ -77,4 +76,3 @@ extension CoreTestCase: XCUITestCaseRecording {
         wait(for: [expectation], timeout: 50)
     }
 }
-#endif

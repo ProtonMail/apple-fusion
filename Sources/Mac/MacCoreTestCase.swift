@@ -27,4 +27,27 @@
 
 import XCTest
 
-open class MacCoreTestCase: XCTestCase, ElementsProtocol {}
+open class MacCoreTestCase: XCTestCase, ElementsProtocol {
+
+    lazy var testRecorder = XCUITestCaseRecorder(testName: getTestMethodName())
+
+    override open func setUp() {
+        super.setUp()
+        testRecorder.resumeRecording()
+    }
+
+    override open func setUpWithError() throws {
+        try super.setUpWithError()
+    }
+
+    override open func tearDownWithError() throws {
+        if self.testRun?.failureCount != 0 {
+            let attachment = testRecorder.generateGifAttachment()
+            if attachment != nil {
+                attachment!.lifetime = .keepAlways
+                self.add(attachment!)
+            }
+        }
+        try super.tearDownWithError()
+    }
+}
