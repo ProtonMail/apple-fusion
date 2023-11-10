@@ -1,5 +1,5 @@
 //
-//  UIElement+Actions.swift
+//  UIElement+Verifications.swift
 //
 //  ProtonMail - Created on 02.02.21.
 //
