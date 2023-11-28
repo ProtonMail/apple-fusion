@@ -40,7 +40,7 @@ class IosUITests: CoreTestCase {
         let safari = XCUIApplication(bundleIdentifier: "com.apple.mobilesafari")
         safari.launch()
 
-        inBundleIdentifier("com.apple.mobilesafari").button("Edit").tap()
+        inBundleIdentifier("com.apple.mobilesafari").button("Edit").isHittable().tap()
     }
 }
 #endif
