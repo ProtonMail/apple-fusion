@@ -3,7 +3,7 @@
 //  fusion
 //
 //  Created by Mateusz Szklarek on 03.04.23.
-// 
+//
 //  The MIT License
 //
 //  Copyright (c) 2020 Proton Technologies AG
@@ -41,7 +41,6 @@ public func waitUntil(timeout: TimeInterval, condition: @autoclosure @escaping (
     RunLoop.runUntil(timeout: timeout, condition: condition)
 }
 
-
 private enum RunLoop {
 
     /// Run the current RunLoop until `condition` returns true, at most for `timeout` seconds.
@@ -56,7 +55,7 @@ private enum RunLoop {
         let endTime = startTime + timeout
         let checkInterval: TimeInterval = 0.1
 
-        let beforeWaiting: (CFRunLoopObserver?, CFRunLoopActivity) -> Void = { observer, activity in
+        let beforeWaiting: (CFRunLoopObserver?, CFRunLoopActivity) -> Void = { _, _ in
             let currentTime = CFAbsoluteTimeGetCurrent()
 
             if fulfilled {
@@ -77,7 +76,6 @@ private enum RunLoop {
             0,
             beforeWaiting
         ).unsafelyUnwrapped
-
 
         CFRunLoopAddObserver(CFRunLoopGetCurrent(), observer, .defaultMode)
 
