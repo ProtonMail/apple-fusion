@@ -36,7 +36,7 @@ open class CoreTestCase: XCTestCase, ElementsProtocol {
         testRecorder.resumeRecording()
     }
 
-    open func setUpWithError() throws {
+    override open func setUpWithError() throws {
         try super.setUpWithError()
     }
 
