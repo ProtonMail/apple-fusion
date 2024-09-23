@@ -48,5 +48,12 @@ extension UIElement {
         uiElement()!.pasteText(text)
         return self
     }
+
+    @discardableResult
+    public func typeText(_ text: String) -> UIElement {
+        uiElement()!.tap()
+        uiElement()!.pasteText(text)
+        return self
+    }
 }
 #endif
