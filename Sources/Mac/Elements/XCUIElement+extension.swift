@@ -48,10 +48,16 @@ extension UIElement {
         uiElement()!.pasteText(text)
         return self
     }
-    
+
     @discardableResult
     public func typeKey(_ key: String, _ flags: XCUIElement.KeyModifierFlags) -> UIElement {
         uiElement()!.typeKey(key, modifierFlags: flags)
+        return self
+    }
+
+    @discardableResult
+    public func typeText(_ text: String) -> UIElement {
+        uiElement()!.pasteText(text)
         return self
     }
 }
