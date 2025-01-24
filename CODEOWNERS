@@ -1,0 +1,5 @@
+# ownership: loose
+*	@rbac/apple/inbox 
+/.swiftpm/	@rbac/apple/inbox 
+/Sources/	@rbac/apple/inbox 
+/Tests/	@rbac/apple/inbox 
