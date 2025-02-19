@@ -208,9 +208,9 @@ extension UIElement {
      Returns the current instance of `UIElement`.
      */
     @discardableResult
-    public func tapIfExists() -> UIElement {
+    public func tapIfExists(time: TimeInterval = 5.0) -> UIElement {
         return performAction { element in
-            if Wait().forElement(element).exists {
+            if Wait(time: time).forElement(element).exists {
                 element.tap()
             }
         }
@@ -281,5 +281,4 @@ extension UIElement {
         }
         return self
     }
-
 }
