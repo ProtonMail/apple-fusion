@@ -1,0 +1,5 @@
+# ownership: loose
+*	@tpe 
+/.swiftpm/  @tpe 
+/Sources/   @tpe 
+/Tests/     @tpe
