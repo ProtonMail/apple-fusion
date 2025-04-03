@@ -35,8 +35,8 @@ open class Wait {
 
     private let defaultTimeout: TimeInterval
 
-    public init(time: TimeInterval = 10.00) {
-        defaultTimeout = time
+    public init(time: TimeInterval = WaitConfig.defaultTimeout) {
+        self.defaultTimeout = time
     }
 
     /**
