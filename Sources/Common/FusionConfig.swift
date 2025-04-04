@@ -25,8 +25,22 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
+import XCTest
 import Foundation
 
-public struct WaitConfig {
-    public static var defaultTimeout: TimeInterval = 10.0
+public enum FusionConfig {
+
+    public enum Waits {
+        /// Default timeout for all Wait operations.
+        public static var defaultTimeout: TimeInterval = 10.0
+
+        /// Default interval between wait checks.
+        public static var watchInterval: TimeInterval = 0.1
+
+        /// Callback on failure (e.g., capture screenshot).
+        public static var onFailure: ((XCUIElement) -> Void)?
+
+        /// Callback on success (e.g., logging, metrics).
+        public static var onSuccess: ((XCUIElement) -> Void)?
+    }
 }
