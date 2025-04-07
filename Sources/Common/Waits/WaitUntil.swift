@@ -53,7 +53,7 @@ private enum RunLoop {
         var fulfilled = false
         let startTime = CFAbsoluteTimeGetCurrent()
         let endTime = startTime + timeout
-        let checkInterval: TimeInterval = 0.1
+        let checkInterval: TimeInterval = FusionConfig.Waits.watchInterval
 
         let beforeWaiting: (CFRunLoopObserver?, CFRunLoopActivity) -> Void = { _, _ in
             let currentTime = CFAbsoluteTimeGetCurrent()
