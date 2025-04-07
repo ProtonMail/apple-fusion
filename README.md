@@ -58,6 +58,12 @@ import fusion
 
 class SampleTestCase: CoreTestCase {
 
+    override class func setUp() {
+        super.setUp()
+        FusionConfig.Waits.defaultTimeout = 2.0
+        FusionConfig.Waits.watchInterval = 0.1
+    }
+
    func testLoginSample() {
       // Type text into TextField.
       textField(usernameTextFieldLocator).typeText("username")
