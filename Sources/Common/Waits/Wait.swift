@@ -33,10 +33,10 @@ import XCTest
  */
 open class Wait {
 
-    private let defaultTimeout: TimeInterval
+    private let time: TimeInterval
 
-    public init(time: TimeInterval = 10.00) {
-        defaultTimeout = time
+    public init(time: TimeInterval = FusionConfig.Waits.defaultTimeout) {
+        self.time = time
     }
 
     /**
@@ -146,7 +146,7 @@ open class Wait {
         if !isPredicateMet {
             let message = """
                           Condition: <\(predicate.predicateFormat)> was NOT met
-                          for element: <\(element)> after \(defaultTimeout) seconds timeout.
+                          for element: <\(element)> after \(time) seconds timeout.
                           """
             XCTFail(message, file: file, line: line)
         }
@@ -168,7 +168,15 @@ open class Wait {
     }
 
     private func wait(for element: XCUIElement, with predicate: NSPredicate) -> Bool {
-        waitUntil(timeout: defaultTimeout, condition: predicate.evaluate(with: element))
+        let result = waitUntil(timeout: time, condition: predicate.evaluate(with: element))
+
+        if result {
+            FusionConfig.Waits.onSuccess?(element)
+        } else {
+            FusionConfig.Waits.onFailure?(element)
+        }
+
+        return result
     }
 
 }
