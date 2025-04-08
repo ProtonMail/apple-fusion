@@ -278,7 +278,7 @@ extension UIElement {
     }
 
     /**
-     Swipes down on a designated swipe area until the located UI element is visible.
+     Swipes right on a designated swipe area until the located UI element is visible.
      Accepts an integer `maxAttempts` specifying the maximum number of swipe attempts.
      Returns the current instance
      */
