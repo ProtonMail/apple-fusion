@@ -264,12 +264,40 @@ extension UIElement {
     }
 
     /**
+     Swipes left on a designated swipe area until the located UI element is visible.
+     Accepts an integer `maxAttempts` specifying the maximum number of swipe attempts.
+     Returns the current instance
+     */
+    @discardableResult
+    public func swipeLeftUntilVisible(maxAttempts: Int = 5) -> UIElement {
+        let swipeArea = focusedTable ?? currentApp!
+        for _ in 0..<maxAttempts where !isVisible {
+            swipeArea.swipeLeft()
+        }
+        return self
+    }
+
+    /**
+     Swipes down on a designated swipe area until the located UI element is visible.
+     Accepts an integer `maxAttempts` specifying the maximum number of swipe attempts.
+     Returns the current instance
+     */
+    @discardableResult
+    public func swipeRightUntilVisible(maxAttempts: Int = 5) -> UIElement {
+        let swipeArea = focusedTable ?? currentApp!
+        for _ in 0..<maxAttempts where !isVisible {
+            swipeArea.swipeRight()
+        }
+        return self
+    }
+
+    /**
      A computed property that determines whether the located UI element is visible in the current UI context.
      Checks if the element exists and its frame is not empty.
      Then, it verifies if the element's frame is within the bounds of the current application's main window.
      Returns `true` if the element is visible; otherwise, returns `false`.
      */
-    private var isVisible: Bool {
+    public var isVisible: Bool {
         guard uiElement()!.exists && !uiElement()!.frame.isEmpty else { return false }
         return currentApp!.windows.element(boundBy: 0).frame.contains(uiElement()!.frame)
     }
