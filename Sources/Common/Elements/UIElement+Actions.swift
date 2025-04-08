@@ -105,8 +105,8 @@ extension UIElement {
      Returns the current instance of `UIElement`.
      */
     @discardableResult
-    public func swipeDown() -> UIElement {
-        return performAction { $0.swipeDown() }
+    public func swipeDown(velocity: XCUIGestureVelocity = .default) -> UIElement {
+        return performAction { $0.swipeDown(velocity: velocity) }
     }
 
     /**
@@ -114,8 +114,8 @@ extension UIElement {
      Returns the current instance of `UIElement`.
      */
     @discardableResult
-    public func swipeLeft() -> UIElement {
-        return performAction { $0.swipeLeft() }
+    public func swipeLeft(velocity: XCUIGestureVelocity = .default) -> UIElement {
+        return performAction { $0.swipeLeft(velocity: velocity) }
     }
 
     /**
@@ -123,9 +123,8 @@ extension UIElement {
      Returns the current instance of `UIElement`.
      */
     @discardableResult
-    public func swipeRight() -> UIElement {
-        uiElement()!.swipeRight()
-        return self
+    public func swipeRight(velocity: XCUIGestureVelocity = .default) -> UIElement {
+        return performAction { $0.swipeRight(velocity: velocity) }
     }
 
     /**
@@ -133,8 +132,8 @@ extension UIElement {
      Returns the current instance of `UIElement`.
      */
     @discardableResult
-    public func swipeUp() -> UIElement {
-        return performAction { $0.swipeUp() }
+    public func swipeUp(velocity: XCUIGestureVelocity = .default) -> UIElement {
+        return performAction { $0.swipeUp(velocity: velocity) }
     }
 
     /**
@@ -241,10 +240,10 @@ extension UIElement {
      Returns the current instance
      */
     @discardableResult
-    public func swipeUpUntilVisible(maxAttempts: Int = 5) -> UIElement {
+    public func swipeUpUntilVisible(maxAttempts: Int = 5, velocity: XCUIGestureVelocity = .default) -> UIElement {
         let swipeArea = focusedTable ?? currentApp!
         for _ in 0..<maxAttempts where !isVisible {
-            swipeArea.swipeUp()
+            swipeArea.swipeUp(velocity: velocity)
         }
         return self
     }
@@ -255,10 +254,38 @@ extension UIElement {
      Returns the current instance
      */
     @discardableResult
-    public func swipeDownUntilVisible(maxAttempts: Int = 5) -> UIElement {
+    public func swipeDownUntilVisible(maxAttempts: Int = 5, velocity: XCUIGestureVelocity = .default) -> UIElement {
         let swipeArea = focusedTable ?? currentApp!
         for _ in 0..<maxAttempts where !isVisible {
-            swipeArea.swipeDown()
+            swipeArea.swipeDown(velocity: velocity)
+        }
+        return self
+    }
+
+    /**
+     Swipes left on a designated swipe area until the located UI element is visible.
+     Accepts an integer `maxAttempts` specifying the maximum number of swipe attempts.
+     Returns the current instance
+     */
+    @discardableResult
+    public func swipeLeftUntilVisible(maxAttempts: Int = 5, velocity: XCUIGestureVelocity = .default) -> UIElement {
+        let swipeArea = focusedTable ?? currentApp!
+        for _ in 0..<maxAttempts where !isVisible {
+            swipeArea.swipeLeft(velocity: velocity)
+        }
+        return self
+    }
+
+    /**
+     Swipes right on a designated swipe area until the located UI element is visible.
+     Accepts an integer `maxAttempts` specifying the maximum number of swipe attempts.
+     Returns the current instance
+     */
+    @discardableResult
+    public func swipeRightUntilVisible(maxAttempts: Int = 5, velocity: XCUIGestureVelocity = .default) -> UIElement {
+        let swipeArea = focusedTable ?? currentApp!
+        for _ in 0..<maxAttempts where !isVisible {
+            swipeArea.swipeRight(velocity: velocity)
         }
         return self
     }
@@ -269,7 +296,7 @@ extension UIElement {
      Then, it verifies if the element's frame is within the bounds of the current application's main window.
      Returns `true` if the element is visible; otherwise, returns `false`.
      */
-    private var isVisible: Bool {
+    public var isVisible: Bool {
         guard uiElement()!.exists && !uiElement()!.frame.isEmpty else { return false }
         return currentApp!.windows.element(boundBy: 0).frame.contains(uiElement()!.frame)
     }
