@@ -28,10 +28,12 @@
 import XCTest
 import Foundation
 
+@MainActor
 public enum FusionConfig {
 
+    @MainActor
     public enum Waits {
-        /// Default timeout for all Wait operations.
+        /// Default timeout for all wait operations.
         public static var defaultTimeout: TimeInterval = 10.0
 
         /// Default interval between wait checks.
@@ -42,5 +44,13 @@ public enum FusionConfig {
 
         /// Callback on success (e.g., logging, metrics).
         public static var onSuccess: ((XCUIElement) -> Void)?
+
+        /// Asynchronous callback on failure, supporting async operations.
+        @available(iOS 15.0, *)
+        public static var asyncOnFailure: ((XCUIElement) async -> Void)?
+
+        /// Asynchronous callback on success, supporting async operations.
+        @available(iOS 15.0, *)
+        public static var asyncOnSuccess: ((XCUIElement) async -> Void)?
     }
 }

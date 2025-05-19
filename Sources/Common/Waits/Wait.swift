@@ -31,6 +31,7 @@ import XCTest
 /**
  * Contains wait functions and wait conditions that are used to wait for the elements.
  */
+@MainActor
 open class Wait {
 
     private let time: TimeInterval

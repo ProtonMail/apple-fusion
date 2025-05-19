@@ -20,4 +20,4 @@ Pod::Spec.new do |spec|
     spec.pod_target_xcconfig = {
         "ENABLE_TESTING_SEARCH_PATHS" => "YES" # Required for Xcode 12.5
     }
-  end
+end

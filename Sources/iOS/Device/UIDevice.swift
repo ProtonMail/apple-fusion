@@ -40,6 +40,7 @@ typealias UiDevice = UIDevice
 /**
  Contains functions related to the device or system actions.
  */
+@MainActor
 open class UIDevice {
 
     /**
@@ -48,7 +49,7 @@ open class UIDevice {
      - Parameters:
      - app: The `XCUIApplication` instance to be sent to the background. Defaults to the shared instance.
      */
-    public func backgroundApp(app: XCUIApplication = XCUIApplication()) {
+    public func backgroundApp(app: XCUIApplication) {
         XCUIDevice.shared.press(.home)
         app.wait(forState: .runningBackground, timeout: 5.0)
     }
@@ -60,7 +61,7 @@ open class UIDevice {
      - foregroundType: Determines whether to activate or launch the app. Defaults to `.activate`.
      - app: The `XCUIApplication` instance to be brought to the foreground. Defaults to the shared instance.
      */
-    public func foregroundApp(_ foregroundType: ForegroundType = ForegroundType.activate, app: XCUIApplication = XCUIApplication()) {
+    public func foregroundApp(_ foregroundType: ForegroundType = ForegroundType.activate, app: XCUIApplication) {
         switch foregroundType {
         case .activate:
             app.activate()
@@ -77,7 +78,7 @@ open class UIDevice {
      - text: The voice recognition text used to activate Siri.
      - app: The `XCUIApplication` instance to be brought to the foreground. Defaults to the shared instance.
      */
-    public func foregroundAppBySiri(_ text: String, app: XCUIApplication = XCUIApplication()) {
+    public func foregroundAppBySiri(_ text: String, app: XCUIApplication) {
         XCUIDevice.shared.siriService.activate(voiceRecognitionText: text)
         app.wait(forState: .runningForeground, timeout: 5.0)
     }
@@ -120,6 +121,7 @@ open class UIDevice {
 
 }
 
+@MainActor
 extension XCUIApplication {
 
     @discardableResult

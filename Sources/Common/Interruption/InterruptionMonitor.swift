@@ -27,6 +27,7 @@
 
 import XCTest
 
+@MainActor
 extension XCTestCase {
 
     /**
