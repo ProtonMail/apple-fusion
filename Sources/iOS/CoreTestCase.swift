@@ -33,7 +33,12 @@ open class CoreTestCase: XCTestCase, ElementsProtocol {
 
     override open func setUp() {
         super.setUp()
-        testRecorder.resumeRecording()
+
+        Task {
+            await MainActor.run {
+                testRecorder.resumeRecording()
+            }
+        }
     }
 
     override open func setUpWithError() throws {
@@ -42,13 +47,20 @@ open class CoreTestCase: XCTestCase, ElementsProtocol {
 
     override open func tearDownWithError() throws {
         if self.testRun?.failureCount != 0 {
-            let attachment = testRecorder.generateGifAttachment()
-            if attachment != nil {
-                attachment!.lifetime = .keepAlways
-                self.add(attachment!)
-            }
+            awaitAttachmentIfNeeded()
         }
         try super.tearDownWithError()
+    }
+
+    private func awaitAttachmentIfNeeded() {
+        Task {
+            await MainActor.run {
+                if let attachment = testRecorder.generateGifAttachment() {
+                    attachment.lifetime = .keepAlways
+                    self.add(attachment)
+                }
+            }
+        }
     }
 }
 #endif

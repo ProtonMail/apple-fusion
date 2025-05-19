@@ -31,6 +31,7 @@ import Photos
 import Foundation
 import UIKit
 
+@MainActor
 struct VideoGenerationConfiguration {
 
     var outputUrl: URL

@@ -27,6 +27,7 @@
 
 import XCTest
 
+@MainActor
 public protocol XCUITestCaseRecording: XCTestCase {
     func setRecorderTimeInterval(timeInterval: TimeInterval)
     func resumeRecording()

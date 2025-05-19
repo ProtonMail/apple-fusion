@@ -36,6 +36,7 @@ import XCTest
 @available(*, deprecated, message: "`UiElement` has been renamed to `UIElement`.")
 typealias UiElement = UIElement
 
+@MainActor
 open class UIElement {
 
     init(_ query: XCUIElementQuery, _ elementType: XCUIElement.ElementType) {

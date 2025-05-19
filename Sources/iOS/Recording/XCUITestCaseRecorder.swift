@@ -29,9 +29,10 @@
 import UIKit
 import XCTest
 
-class XCUITestCaseRecorder {
+@MainActor
+final class XCUITestCaseRecorder {
 
-    struct Constants {
+    private struct Constants {
         static let minimumRequiredScreenshotSize: CGSize = .init(width: 10, height: 10)
         static let fallbackMp4Extension = "mp4"
         static let fallbackGifExtension = "gif"
@@ -39,7 +40,7 @@ class XCUITestCaseRecorder {
 
     private let testName: String
     private var screenshotTimer: Timer?
-    private var screenshots = [UIImage]()
+    private let screenshotStore = ScreenshotStoreActor()
     var timeInterval: TimeInterval = 0.3
 
     // MARK: - Initialization
@@ -51,60 +52,73 @@ class XCUITestCaseRecorder {
     // MARK: - Public
 
     func resumeRecording() {
-        self.screenshotTimer = Timer.scheduledTimer(timeInterval: timeInterval,
-                                                    target: self, selector: #selector(saveScreenshot),
-                                                    userInfo: nil, repeats: true)
+        screenshotTimer = Timer.scheduledTimer(withTimeInterval: timeInterval, repeats: true) { [weak self] _ in
+            guard let self = self else { return }
+            Task {
+                await MainActor.run {
+                    self.saveScreenshot()
+                }
+            }
+        }
     }
 
     func pauseRecording() {
-        self.screenshotTimer?.invalidate()
-        self.screenshotTimer = nil
+        screenshotTimer?.invalidate()
+        screenshotTimer = nil
     }
 
-    func generateGifAttachment() -> XCTAttachment? {
+    func generateGifAttachment() async -> XCTAttachment? {
         pauseRecording()
         guard let directoryUrl = FileManagerUtils.createFolderInDocumentsDirectory(folderName: testName) else {
-            self.screenshots.removeAll()
+            await screenshotStore.clear()
             return nil
         }
-        let result = self.createGIF(from: self.screenshots, directoryPath: directoryUrl.path)
-        self.screenshots.removeAll()
+
+        let screenshots = await screenshotStore.flush()
+        let result = createGIF(from: screenshots, directoryPath: directoryUrl.path)
+
         if let fileURL = result.fileUrl, result.success {
             let attachment = XCTAttachment(contentsOfFile: fileURL)
             attachment.lifetime = .keepAlways
             return attachment
-        } else {
-            return nil
         }
+        return nil
     }
 
     func generateVideoAttachment(completion: @escaping (XCTAttachment?) -> Void) {
         pauseRecording()
         guard let directoryUrl = FileManagerUtils.createFolderInDocumentsDirectory(folderName: testName) else {
-            self.screenshots.removeAll()
+            Task { await screenshotStore.clear() }
             completion(nil)
             return
         }
-        self.createVideo(from: self.screenshots, directoryPath: directoryUrl.path) { success, fileURL in
-            self.screenshots.removeAll()
-            if let fileURL = fileURL, success {
-                let attachment = XCTAttachment(contentsOfFile: fileURL)
-                attachment.lifetime = .keepAlways
-                completion(attachment)
-            } else {
-                completion(nil)
+
+        Task {
+            let screenshots = await screenshotStore.flush()
+            createVideo(from: screenshots, directoryPath: directoryUrl.path) { success, fileURL in
+                if let fileURL = fileURL, success {
+                    let attachment = XCTAttachment(contentsOfFile: fileURL)
+                    attachment.lifetime = .keepAlways
+                    completion(attachment)
+                } else {
+                    completion(nil)
+                }
             }
         }
     }
 
     // MARK: - Private
 
-    @objc private func saveScreenshot() {
+    private func saveScreenshot() {
         let screenshotImage = XCUIScreen.main.screenshot().image
         let imageSize = screenshotImage.size
         let minimumSize = Constants.minimumRequiredScreenshotSize
-        if imageSize.height > minimumSize.height && imageSize.width > minimumSize.width {
-            self.screenshots.append(screenshotImage)
+
+        guard imageSize.height > minimumSize.height,
+              imageSize.width > minimumSize.width else { return }
+
+        Task {
+            await screenshotStore.add(screenshotImage)
         }
     }
 
@@ -115,8 +129,8 @@ class XCUITestCaseRecorder {
         let fileUrl = URL(fileURLWithPath: "\(directoryPath)/\(testName).\(fileExtension)")
         try? FileManager.default.removeItem(atPath: fileUrl.path)
 
-        let configuration = GifGenerationConfiguration(utType: utTypeGif as CFString, outputUrl: fileUrl)
-        let gifGenerator = GifGenerator(configuration: configuration, images: images)
+        let config = GifGenerationConfiguration(utType: utTypeGif as CFString, outputUrl: fileUrl)
+        let gifGenerator = GifGenerator(configuration: config, images: images)
         return (gifGenerator.generate(), fileUrl)
     }
 
@@ -129,14 +143,33 @@ class XCUITestCaseRecorder {
         let fileUrl = URL(fileURLWithPath: "\(directoryPath)/\(testName).\(fileExtension)")
         try? FileManager.default.removeItem(atPath: fileUrl.path)
 
-        let configuration = VideoGenerationConfiguration(outputUrl: fileUrl, fileType: fileType)
-        if let videoGenerator = VideoGenerator(configuration: configuration, images: images) {
-            videoGenerator.generate(completion: { success in
+        let config = VideoGenerationConfiguration(outputUrl: fileUrl, fileType: fileType)
+        if let videoGenerator = VideoGenerator(configuration: config, images: images) {
+            videoGenerator.generate { success in
                 completion(success, fileUrl)
-            })
+            }
         } else {
             completion(false, nil)
         }
+    }
+}
+
+// MARK: - ScreenshotStoreActor
+
+actor ScreenshotStoreActor {
+    private var screenshots: [UIImage] = []
+
+    func add(_ image: UIImage) {
+        screenshots.append(image)
+    }
+
+    func flush() -> [UIImage] {
+        defer { screenshots.removeAll() }
+        return screenshots
+    }
+
+    func clear() {
+        screenshots.removeAll()
     }
 }
 #endif

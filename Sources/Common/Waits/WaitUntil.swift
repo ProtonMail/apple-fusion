@@ -36,11 +36,13 @@ import Foundation
  - parameter condition: condition that has to be met to finish `waitUntil` execution before timeout
  - Returns: `Bool` which determines whether the condition is met or not
  */
+@MainActor
 @discardableResult
 public func waitUntil(timeout: TimeInterval, condition: @autoclosure @escaping () -> Bool) -> Bool {
     RunLoop.runUntil(timeout: timeout, condition: condition)
 }
 
+@MainActor
 private enum RunLoop {
 
     /// Run the current RunLoop until `condition` returns true, at most for `timeout` seconds.
