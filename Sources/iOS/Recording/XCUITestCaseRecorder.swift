@@ -40,7 +40,7 @@ final class XCUITestCaseRecorder {
 
     private let testName: String
     private var screenshotTimer: Timer?
-    private let screenshotStore = ScreenshotStoreActor()
+    private var screenshots: [UIImage] = []
     var timeInterval: TimeInterval = 0.3
 
     // MARK: - Initialization
@@ -55,9 +55,7 @@ final class XCUITestCaseRecorder {
         screenshotTimer = Timer.scheduledTimer(withTimeInterval: timeInterval, repeats: true) { [weak self] _ in
             guard let self = self else { return }
             Task {
-                await MainActor.run {
-                    self.saveScreenshot()
-                }
+                await saveScreenshot()
             }
         }
     }
@@ -67,15 +65,15 @@ final class XCUITestCaseRecorder {
         screenshotTimer = nil
     }
 
-    func generateGifAttachment() async -> XCTAttachment? {
+    func generateGifAttachment() -> XCTAttachment? {
         pauseRecording()
         guard let directoryUrl = FileManagerUtils.createFolderInDocumentsDirectory(folderName: testName) else {
-            await screenshotStore.clear()
+            screenshots.removeAll()
             return nil
         }
 
-        let screenshots = await screenshotStore.flush()
-        let result = createGIF(from: screenshots, directoryPath: directoryUrl.path)
+
+        let result = createGIF(from: &screenshots, directoryPath: directoryUrl.path)
 
         if let fileURL = result.fileUrl, result.success {
             let attachment = XCTAttachment(contentsOfFile: fileURL)
@@ -85,24 +83,21 @@ final class XCUITestCaseRecorder {
         return nil
     }
 
-    func generateVideoAttachment(completion: @escaping (XCTAttachment?) -> Void) {
+    func generateVideoAttachment(completion: @Sendable @escaping (XCTAttachment?) -> Void) {
         pauseRecording()
         guard let directoryUrl = FileManagerUtils.createFolderInDocumentsDirectory(folderName: testName) else {
-            Task { await screenshotStore.clear() }
+            screenshots.removeAll()
             completion(nil)
             return
         }
 
-        Task {
-            let screenshots = await screenshotStore.flush()
-            createVideo(from: screenshots, directoryPath: directoryUrl.path) { success, fileURL in
-                if let fileURL = fileURL, success {
-                    let attachment = XCTAttachment(contentsOfFile: fileURL)
-                    attachment.lifetime = .keepAlways
-                    completion(attachment)
-                } else {
-                    completion(nil)
-                }
+        createVideo(from: &screenshots, directoryPath: directoryUrl.path) { success, fileURL in
+            if let fileURL = fileURL, success {
+                let attachment = XCTAttachment(contentsOfFile: fileURL)
+                attachment.lifetime = .keepAlways
+                completion(attachment)
+            } else {
+                completion(nil)
             }
         }
     }
@@ -116,13 +111,12 @@ final class XCUITestCaseRecorder {
 
         guard imageSize.height > minimumSize.height,
               imageSize.width > minimumSize.width else { return }
-
-        Task {
-            await screenshotStore.add(screenshotImage)
-        }
+        screenshots.append(screenshotImage)
     }
 
-    private func createGIF(from images: [UIImage], directoryPath: String) -> (success: Bool, fileUrl: URL?) {
+    private func createGIF(from images: inout [UIImage],
+                           directoryPath: String) -> (success: Bool, fileUrl: URL?) {
+        defer { images.removeAll() }
         let utTypeGif = UTTypeProvider.provideGifUTTypeIdentifier()
         let fileExtension = FileExtensionProvider.provideFileExtension(utTypeIdentifier: utTypeGif) ?? Constants.fallbackGifExtension
 
@@ -134,9 +128,10 @@ final class XCUITestCaseRecorder {
         return (gifGenerator.generate(), fileUrl)
     }
 
-    private func createVideo(from images: [UIImage],
+    private func createVideo(from images: inout [UIImage],
                              directoryPath: String,
-                             completion: @escaping ((_ success: Bool, _ fileUrl: URL?) -> Void)) {
+                             completion: @Sendable @escaping (_ success: Bool, _ fileUrl: URL?) -> Void) {
+        defer { images.removeAll() }
         let fileType = AVFileTypeProvider.provideMp4AVFileType()
         let fileExtension = FileExtensionProvider.provideFileExtension(avFileType: fileType) ?? Constants.fallbackMp4Extension
 
@@ -151,25 +146,6 @@ final class XCUITestCaseRecorder {
         } else {
             completion(false, nil)
         }
-    }
-}
-
-// MARK: - ScreenshotStoreActor
-
-actor ScreenshotStoreActor {
-    private var screenshots: [UIImage] = []
-
-    func add(_ image: UIImage) {
-        screenshots.append(image)
-    }
-
-    func flush() -> [UIImage] {
-        defer { screenshots.removeAll() }
-        return screenshots
-    }
-
-    func clear() {
-        screenshots.removeAll()
     }
 }
 #endif

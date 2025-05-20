@@ -29,10 +29,12 @@
 import UIKit
 import Photos
 
+@MainActor
 protocol PixelBufferAppending {
     func appendPixelBuffers(writer: VideoWriter) -> (isFinished: Bool, success: Bool)
 }
 
+@MainActor
 final class VideoGenerator {
 
     private let configuration: VideoGenerationConfiguration
@@ -54,7 +56,7 @@ final class VideoGenerator {
 
     // MARK: - Public
 
-    func generate(completion: @escaping ((Bool) -> Void)) {
+    func generate(completion: @escaping @Sendable (Bool) -> Void) {
         guard videoWriter.start() == true else {
             completion(false)
             return

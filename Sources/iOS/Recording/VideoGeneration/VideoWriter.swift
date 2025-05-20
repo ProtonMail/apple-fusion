@@ -26,15 +26,16 @@
 //  THE SOFTWARE.
 
 #if os(iOS)
-import AVFoundation
+@preconcurrency import AVFoundation
 import UIKit
 
+@MainActor
 final class VideoWriter {
 
     private let configuration: VideoGenerationConfiguration
-    private let videoWriter: AVAssetWriter!
-    private var videoWriterInput: AVAssetWriterInput!
-    private var pixelBufferAdaptor: AVAssetWriterInputPixelBufferAdaptor!
+    private let videoWriter: AVAssetWriter
+    private let videoWriterInput: AVAssetWriterInput
+    private let pixelBufferAdaptor: AVAssetWriterInputPixelBufferAdaptor
 
     var isReadyForData: Bool {
         return videoWriterInput.isReadyForMoreMediaData
@@ -76,7 +77,7 @@ final class VideoWriter {
     }
 
     func render(appendPixelBuffers: @escaping ((VideoWriter) -> (isFinished: Bool, success: Bool)),
-                completion: @escaping (Bool) -> Void) {
+                completion: @Sendable @escaping (Bool) -> Void) {
         let queue = DispatchQueue(label: String(describing: VideoWriter.self))
         videoWriterInput.requestMediaDataWhenReady(on: queue) {
             let output = appendPixelBuffers(self)
@@ -85,10 +86,12 @@ final class VideoWriter {
                 return
             }
             if output.isFinished {
-                self.videoWriterInput.markAsFinished()
-                self.videoWriter.finishWriting {
-                    DispatchQueue.main.async {
-                        completion(true)
+                Task {
+                    await self.videoWriterInput.markAsFinished()
+                    await self.videoWriter.finishWriting {
+                        DispatchQueue.main.async {
+                            completion(true)
+                        }
                     }
                 }
             }
