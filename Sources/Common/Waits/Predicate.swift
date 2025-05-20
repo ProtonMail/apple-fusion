@@ -30,25 +30,26 @@ import XCTest
 /**
  * Predicates that are used by Wait functions.
  */
+@MainActor
 internal struct Predicate {
 
-    static var enabled: NSPredicate { NSPredicate(format: "isEnabled == true") }
-    static var disabled: NSPredicate { NSPredicate(format: "isEnabled == false") }
-    static var hittable: NSPredicate { NSPredicate(format: "hittable == true") }
-    static var doesNotHittable: NSPredicate { NSPredicate(format: "hittable == false") }
-    static var doesNotExist: NSPredicate { NSPredicate(format: "exists == false") }
-    static var exists: NSPredicate { NSPredicate(format: "exists == true") }
-    static var hasKeyboardFocus: NSPredicate { NSPredicate(format: "hasKeyboardFocus == true") }
+    static let enabled = NSPredicate(format: "isEnabled == true")
+    static let disabled = NSPredicate(format: "isEnabled == false")
+    static let hittable = NSPredicate(format: "hittable == true")
+    static let doesNotHittable = NSPredicate(format: "hittable == false")
+    static let doesNotExist = NSPredicate(format: "exists == false")
+    static let exists = NSPredicate(format: "exists == true")
+    static let hasKeyboardFocus = NSPredicate(format: "hasKeyboardFocus == true")
 
     static func labelEquals(_ label: String) -> NSPredicate {
-        NSPredicate(format: "label == %@", label)
+       return NSPredicate(format: "label == '\(label)'")
     }
 
     static func titleEquals(_ title: String) -> NSPredicate {
-        NSPredicate(format: "title == %@", title)
+       return NSPredicate(format: "title == '\(title)'")
     }
 
     static func valueEquals(_ value: String) -> NSPredicate {
-        NSPredicate(format: "value == %@", value)
+       return NSPredicate(format: "value == '\(value)'")
     }
 }
