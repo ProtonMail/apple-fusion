@@ -241,7 +241,7 @@ extension UIElement {
      */
     @discardableResult
     public func swipeUpUntilVisible(maxAttempts: Int = 5, velocity: XCUIGestureVelocity = .default) -> UIElement {
-        let swipeArea = focusedTable ?? currentApp!
+        let swipeArea = focusedTable ?? currentApp
         for _ in 0..<maxAttempts where !isVisible {
             swipeArea.swipeUp(velocity: velocity)
         }
@@ -255,7 +255,7 @@ extension UIElement {
      */
     @discardableResult
     public func swipeDownUntilVisible(maxAttempts: Int = 5, velocity: XCUIGestureVelocity = .default) -> UIElement {
-        let swipeArea = focusedTable ?? currentApp!
+        let swipeArea = focusedTable ?? currentApp
         for _ in 0..<maxAttempts where !isVisible {
             swipeArea.swipeDown(velocity: velocity)
         }
@@ -269,7 +269,7 @@ extension UIElement {
      */
     @discardableResult
     public func swipeLeftUntilVisible(maxAttempts: Int = 5, velocity: XCUIGestureVelocity = .default) -> UIElement {
-        let swipeArea = focusedTable ?? currentApp!
+        let swipeArea = focusedTable ?? currentApp
         for _ in 0..<maxAttempts where !isVisible {
             swipeArea.swipeLeft(velocity: velocity)
         }
@@ -283,7 +283,7 @@ extension UIElement {
      */
     @discardableResult
     public func swipeRightUntilVisible(maxAttempts: Int = 5, velocity: XCUIGestureVelocity = .default) -> UIElement {
-        let swipeArea = focusedTable ?? currentApp!
+        let swipeArea = focusedTable ?? currentApp
         for _ in 0..<maxAttempts where !isVisible {
             swipeArea.swipeRight(velocity: velocity)
         }
@@ -298,7 +298,7 @@ extension UIElement {
      */
     public var isVisible: Bool {
         guard uiElement()!.exists && !uiElement()!.frame.isEmpty else { return false }
-        return currentApp!.windows.element(boundBy: 0).frame.contains(uiElement()!.frame)
+        return currentApp.windows.element(boundBy: 0).frame.contains(uiElement()!.frame)
     }
 
     @discardableResult
