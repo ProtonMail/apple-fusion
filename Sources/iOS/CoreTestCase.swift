@@ -53,13 +53,12 @@ open class CoreTestCase: XCTestCase, ElementsProtocol {
     }
 
     private func awaitAttachmentIfNeeded() {
-        Task {
-            await MainActor.run {
-                if let attachment = testRecorder.generateGifAttachment() {
-                    attachment.lifetime = .keepAlways
-                    self.add(attachment)
-                }
+        Task { @MainActor in
+            if let attachment = await testRecorder.generateGifAttachment() {
+                attachment.lifetime = .keepAlways
+                self.add(attachment)
             }
+
         }
     }
 }
