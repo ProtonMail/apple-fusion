@@ -71,7 +71,7 @@ extension SwiftSymbol: CustomStringConvertible {
 // MARK: Demangle.h
 
 /// These options mimic those used in the Swift project. Check that project for details.
-public struct SymbolPrintOptions: OptionSet {
+public struct SymbolPrintOptions: OptionSet, Sendable {
     public let rawValue: Int
 
     public static let synthesizeSugarOnTypes = SymbolPrintOptions(rawValue: 1 << 0)

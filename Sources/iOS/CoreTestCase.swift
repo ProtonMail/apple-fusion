@@ -26,18 +26,17 @@
 //  THE SOFTWARE.
 
 #if os(iOS)
-import XCTest
+@preconcurrency import XCTest
 
-open class CoreTestCase: XCTestCase, ElementsProtocol {
+@MainActor
+open class CoreTestCase: XCTestCase, ElementsProtocol, @unchecked Sendable {
     lazy var testRecorder = XCUITestCaseRecorder(testName: getTestMethodName())
 
     override open func setUp() {
         super.setUp()
-
-        Task {
-            await MainActor.run {
-                testRecorder.resumeRecording()
-            }
+        Task { [weak self] in
+            guard let self else { return }
+            await testRecorder.resumeRecording()
         }
     }
 
@@ -47,19 +46,18 @@ open class CoreTestCase: XCTestCase, ElementsProtocol {
 
     override open func tearDownWithError() throws {
         if self.testRun?.failureCount != 0 {
-            awaitAttachmentIfNeeded()
+            Task { [weak self] in
+                guard let self else { return }
+                await awaitAttachmentIfNeeded()
+            }
         }
         try super.tearDownWithError()
     }
 
     private func awaitAttachmentIfNeeded() {
-        Task {
-            await MainActor.run {
-                if let attachment = testRecorder.generateGifAttachment() {
-                    attachment.lifetime = .keepAlways
-                    self.add(attachment)
-                }
-            }
+        if let attachment = testRecorder.generateGifAttachment() {
+            attachment.lifetime = .keepAlways
+            self.add(attachment)
         }
     }
 }

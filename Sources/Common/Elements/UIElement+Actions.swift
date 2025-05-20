@@ -242,7 +242,7 @@ extension UIElement {
      */
     @discardableResult
     public func swipeUpUntilVisible(maxAttempts: Int = 5) -> UIElement {
-        let swipeArea = focusedTable ?? currentApp!
+        let swipeArea = focusedTable ?? currentApp
         for _ in 0..<maxAttempts where !isVisible {
             swipeArea.swipeUp()
         }
@@ -256,7 +256,7 @@ extension UIElement {
      */
     @discardableResult
     public func swipeDownUntilVisible(maxAttempts: Int = 5) -> UIElement {
-        let swipeArea = focusedTable ?? currentApp!
+        let swipeArea = focusedTable ?? currentApp
         for _ in 0..<maxAttempts where !isVisible {
             swipeArea.swipeDown()
         }
@@ -271,7 +271,7 @@ extension UIElement {
      */
     private var isVisible: Bool {
         guard uiElement()!.exists && !uiElement()!.frame.isEmpty else { return false }
-        return currentApp!.windows.element(boundBy: 0).frame.contains(uiElement()!.frame)
+        return currentApp.windows.element(boundBy: 0).frame.contains(uiElement()!.frame)
     }
 
     @discardableResult

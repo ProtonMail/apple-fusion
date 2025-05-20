@@ -38,6 +38,9 @@ typealias UiElement = UIElement
 
 @MainActor
 open class UIElement {
+    var currentApp: XCUIApplication {
+        CurrentAppProvider.shared.getCurrentApp()
+    }
 
     init(_ query: XCUIElementQuery, _ elementType: XCUIElement.ElementType) {
         self.uiElementQuery = query
@@ -436,6 +439,6 @@ open class UIElement {
      */
     private func focusedTableQuery() -> XCUIElementQuery? {
         guard let focusedTable = focusedTable else { return nil }
-        return currentApp!.tables[focusedTable.identifier].descendants(matching: self.elementType)
+        return currentApp.tables[focusedTable.identifier].descendants(matching: self.elementType)
     }
 }

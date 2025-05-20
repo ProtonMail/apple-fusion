@@ -26,23 +26,18 @@
 //  THE SOFTWARE.
 
 #if os(iOS)
-import XCTest
+@preconcurrency import XCTest
 
 /**
  * Extension for  CoreTestCase to adopt the XCUITestCaseRecording protocol.
  */
-@MainActor
 extension CoreTestCase: XCUITestCaseRecording {
 
     /**
      Set the interval between the testrecorder's screenshots.
      */
     public func setRecorderTimeInterval(timeInterval: TimeInterval) {
-        Task {
-            await MainActor.run {
-                testRecorder.timeInterval = timeInterval
-            }
-        }
+        testRecorder.timeInterval = timeInterval
     }
 
 
@@ -50,34 +45,22 @@ extension CoreTestCase: XCUITestCaseRecording {
      Start/resume test recording.
      */
     public func resumeRecording() {
-        Task {
-            await MainActor.run {
-                testRecorder.resumeRecording()
-            }
-        }
+        testRecorder.resumeRecording()
     }
 
     /**
      Pause test recording.
      */
     public func pauseRecording() {
-        Task {
-            await MainActor.run {
-                testRecorder.pauseRecording()
-            }
-        }
+        testRecorder.pauseRecording()
     }
 
     /**
      Add recorded test as a gif attachment. Will be available in the .xcresult file.
      */
     public func addGifAttachment() {
-        Task {
-            await MainActor.run {
-                if let gifAttachment = testRecorder.generateGifAttachment() {
-                    add(gifAttachment) // safe inside MainActor.run
-                }
-            }
+        if let gifAttachment = testRecorder.generateGifAttachment() {
+            add(gifAttachment)
         }
     }
 
@@ -88,17 +71,12 @@ extension CoreTestCase: XCUITestCaseRecording {
     public func addVideoAttachment() {
         let expectation = XCTestExpectation(description: "\(XCUITestCaseRecording.self).video")
 
-        Task {
-            await MainActor.run {
-                testRecorder.generateVideoAttachment { videoAttachment in
-                    if let videoAttachment = videoAttachment {
-                        self.add(videoAttachment)
-                    }
-                    expectation.fulfill()
-                }
+        testRecorder.generateVideoAttachment { videoAttachment in
+            if let videoAttachment = videoAttachment {
+                self.add(videoAttachment)
             }
+            expectation.fulfill()
         }
-
         wait(for: [expectation], timeout: 50)
     }
 }

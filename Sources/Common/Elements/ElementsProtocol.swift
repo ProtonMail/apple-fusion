@@ -28,31 +28,47 @@
 import Foundation
 import XCTest
 
-var currentApp: XCUIApplication?
+@MainActor
+final class CurrentAppProvider {
+    private var app: XCUIApplication?
+
+    static let shared = CurrentAppProvider()
+
+    func getCurrentApp() -> XCUIApplication {
+        if let app {
+            return app
+        } else {
+            let app = XCUIApplication()
+            self.app = app
+            return app
+        }
+    }
+
+    func update(_ newApp: XCUIApplication) {
+        app = newApp
+    }
+}
 
 /**
  * Collection of all XCUIElement types that can be used in UI testing.
  */
+@MainActor
 public protocol ElementsProtocol: AnyObject {
     var app: XCUIApplication { get }
 }
 
+@MainActor
 public extension ElementsProtocol {
 
     var app: XCUIApplication {
-        if let app = currentApp {
-            return app
-        } else {
-            currentApp = XCUIApplication()
-            return currentApp!
-        }
+        CurrentAppProvider.shared.getCurrentApp()
     }
 
     /**
      Specify which bundle to use when locating the element.
      */
     func inBundleIdentifier(_ bundleIdentifier: String) -> ElementsProtocol {
-        currentApp = XCUIApplication(bundleIdentifier: bundleIdentifier)
+        CurrentAppProvider.shared.update(XCUIApplication(bundleIdentifier: bundleIdentifier))
         return self
     }
 
