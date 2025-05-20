@@ -72,25 +72,30 @@ extension CoreTestCase: XCUITestCaseRecording {
      Add recorded test as a gif attachment. Will be available in the .xcresult file.
      */
     public func addGifAttachment() {
-        Task { @MainActor in
-            if let gifAttachment = await testRecorder.generateGifAttachment() {
-                add(gifAttachment) // safe inside MainActor.run
+        Task {
+            await MainActor.run {
+                if let gifAttachment = testRecorder.generateGifAttachment() {
+                    add(gifAttachment) // safe inside MainActor.run
+                }
             }
         }
     }
-    
+
 
     /**
      Add recorded test as a video attachment. Will be available in the .xcresult file. Returns after video is added.
      */
     public func addVideoAttachment() {
         let expectation = XCTestExpectation(description: "\(XCUITestCaseRecording.self).video")
-        Task { @MainActor in
-            testRecorder.generateVideoAttachment { videoAttachment in
-                if let videoAttachment = videoAttachment {
-                    self.add(videoAttachment)
+
+        Task {
+            await MainActor.run {
+                testRecorder.generateVideoAttachment { videoAttachment in
+                    if let videoAttachment = videoAttachment {
+                        self.add(videoAttachment)
+                    }
+                    expectation.fulfill()
                 }
-                expectation.fulfill()
             }
         }
 
