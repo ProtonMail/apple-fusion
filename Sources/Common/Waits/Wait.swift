@@ -44,7 +44,7 @@ open class Wait {
      Waits for the element to exist but does not fail the test when condition is not met.
      */
     @discardableResult
-    open func forElement(_ element: XCUIElement, _ file: StaticString = #file, _ line: UInt = #line) -> XCUIElement {
+    open func forElement(_ element: XCUIElement, _ file: StaticString = #filePath, _ line: UInt = #line) -> XCUIElement {
         waitSoftForCondition(element, Predicate.exists, file, line)
         return element
     }
@@ -55,7 +55,7 @@ open class Wait {
     @discardableResult
     open func forElementToBeEnabled(
         _ element: XCUIElement,
-        _ file: StaticString = #file,
+        _ file: StaticString = #filePath,
         _ line: UInt = #line
     ) -> XCUIElement {
         waitForCondition(element, Predicate.enabled, file, line)
@@ -67,7 +67,7 @@ open class Wait {
     @discardableResult
     open func forElementToBeDisabled(
         _ element: XCUIElement,
-        _ file: StaticString = #file,
+        _ file: StaticString = #filePath,
         _ line: UInt = #line
     ) -> XCUIElement {
         waitForCondition(element, Predicate.disabled, file, line)
@@ -79,7 +79,7 @@ open class Wait {
     @discardableResult
     open func forElementToBeHittable(
         _ element: XCUIElement,
-        _ file: StaticString = #file,
+        _ file: StaticString = #filePath,
         _ line: UInt = #line
     ) -> XCUIElement {
         waitForCondition(element, Predicate.hittable, file, line)
@@ -91,7 +91,7 @@ open class Wait {
     @discardableResult
     open func forElementToBeNotHittable(
         _ element: XCUIElement,
-        _ file: StaticString = #file,
+        _ file: StaticString = #filePath,
         _ line: UInt = #line
     ) -> XCUIElement {
         waitForCondition(element, Predicate.doesNotHittable, file, line)
@@ -103,7 +103,7 @@ open class Wait {
     @discardableResult
     open func forElementToDisappear(
         _ element: XCUIElement,
-        _ file: StaticString = #file,
+        _ file: StaticString = #filePath,
         _ line: UInt = #line
     ) -> XCUIElement {
         waitForCondition(element, Predicate.doesNotExist, file, line)
@@ -115,7 +115,7 @@ open class Wait {
     @discardableResult
     open func forHavingKeyboardFocus(
         _ element: XCUIElement,
-        _ file: StaticString = #file,
+        _ file: StaticString = #filePath,
         _ line: UInt = #line
     ) -> XCUIElement {
         waitForCondition(element, Predicate.hasKeyboardFocus, file, line)
@@ -127,7 +127,7 @@ open class Wait {
     @discardableResult
     open func hasKeyboardFocus(
         _ element: XCUIElement,
-        _ file: StaticString = #file,
+        _ file: StaticString = #filePath,
         _ line: UInt = #line
     ) -> Bool {
         waitSoftForCondition(element, Predicate.hasKeyboardFocus, file, line)
@@ -139,7 +139,7 @@ open class Wait {
     private func waitForCondition(
         _ element: XCUIElement,
         _ predicate: NSPredicate,
-        _ file: StaticString = #file,
+        _ file: StaticString = #filePath,
         _ line: UInt = #line
     ) -> XCUIElement {
         let isPredicateMet = wait(for: element, with: predicate)
@@ -162,7 +162,7 @@ open class Wait {
     private func waitSoftForCondition(
         _ element: XCUIElement,
         _ predicate: NSPredicate,
-        _ file: StaticString = #file,
+        _ file: StaticString = #filePath,
         _ line: UInt = #line
     ) -> Bool {
         wait(for: element, with: predicate)
@@ -173,8 +173,117 @@ open class Wait {
 
         if result {
             FusionConfig.Waits.onSuccess?(element)
+            // Handle async callback if available
+            if #available(iOS 15.0, macOS 12.0, *) {
+                if let asyncOnSuccess = FusionConfig.Waits.asyncOnSuccess {
+                    Task { @MainActor in
+                        await asyncOnSuccess(element)
+                    }
+                }
+            }
         } else {
             FusionConfig.Waits.onFailure?(element)
+            // Handle async callback if available
+            if #available(iOS 15.0, macOS 12.0, *) {
+                if let asyncOnFailure = FusionConfig.Waits.asyncOnFailure {
+                    Task { @MainActor in
+                        await asyncOnFailure(element)
+                    }
+                }
+            }
+        }
+
+        return result
+    }
+
+    // MARK: - Async/Await Support for Swift 6
+
+    /**
+     Async version of forElement that properly handles Swift 6 concurrency.
+     */
+    @available(iOS 15.0, macOS 12.0, *)
+    @discardableResult
+    open func forElementAsync(_ element: XCUIElement, _ file: StaticString = #filePath, _ line: UInt = #line) async -> XCUIElement {
+        await waitSoftForConditionAsync(element, Predicate.exists, file, line)
+        return element
+    }
+
+    /**
+     Async version of forElementToBeEnabled that properly handles Swift 6 concurrency.
+     */
+    @available(iOS 15.0, macOS 12.0, *)
+    @discardableResult
+    open func forElementToBeEnabledAsync(
+        _ element: XCUIElement,
+        _ file: StaticString = #filePath,
+        _ line: UInt = #line
+    ) async -> XCUIElement {
+        await waitForConditionAsync(element, Predicate.enabled, file, line)
+    }
+
+    /**
+     Async version of forElementToBeHittable that properly handles Swift 6 concurrency.
+     */
+    @available(iOS 15.0, macOS 12.0, *)
+    @discardableResult
+    open func forElementToBeHittableAsync(
+        _ element: XCUIElement,
+        _ file: StaticString = #filePath,
+        _ line: UInt = #line
+    ) async -> XCUIElement {
+        await waitForConditionAsync(element, Predicate.hittable, file, line)
+    }
+
+    /**
+     Async version of waitForCondition that properly handles Swift 6 concurrency.
+     */
+    @available(iOS 15.0, macOS 12.0, *)
+    private func waitForConditionAsync(
+        _ element: XCUIElement,
+        _ predicate: NSPredicate,
+        _ file: StaticString = #filePath,
+        _ line: UInt = #line
+    ) async -> XCUIElement {
+        let isPredicateMet = await waitAsync(for: element, with: predicate)
+
+        if !isPredicateMet {
+            let message = """
+                          Condition: <\(predicate.predicateFormat)> was NOT met
+                          for element: <\(element)> after \(time) seconds timeout.
+                          """
+            XCTFail(message, file: file, line: line)
+        }
+
+        return element
+    }
+
+    /**
+     Async version of waitSoftForCondition that properly handles Swift 6 concurrency.
+     */
+    @available(iOS 15.0, macOS 12.0, *)
+    @discardableResult
+    private func waitSoftForConditionAsync(
+        _ element: XCUIElement,
+        _ predicate: NSPredicate,
+        _ file: StaticString = #filePath,
+        _ line: UInt = #line
+    ) async -> Bool {
+        await waitAsync(for: element, with: predicate)
+    }
+
+    /**
+     Async version of wait that properly handles Swift 6 concurrency and async callbacks.
+     */
+    @available(iOS 15.0, macOS 12.0, *)
+    private func waitAsync(for element: XCUIElement, with predicate: NSPredicate) async -> Bool {
+        let result = waitUntil(timeout: time, condition: predicate.evaluate(with: element))
+
+        if result {
+            FusionConfig.Waits.onSuccess?(element)
+            await FusionConfig.Waits.asyncOnSuccess?(element)
+        } else {
+            FusionConfig.Waits.onFailure?(element)
+            await FusionConfig.Waits.asyncOnFailure?(element)
         }
 
         return result

@@ -51,11 +51,11 @@ final class XCUITestCaseRecorder {
 
     // MARK: - Public
 
-    func resumeRecording() {
+    func resumeRecording() async {
         screenshotTimer = Timer.scheduledTimer(withTimeInterval: timeInterval, repeats: true) { [weak self] _ in
             guard let self = self else { return }
-            Task {
-                await saveScreenshot()
+            Task { @MainActor in
+                await self.saveScreenshot()
             }
         }
     }
@@ -102,9 +102,37 @@ final class XCUITestCaseRecorder {
         }
     }
 
+    // MARK: - Async/Await Support for Swift 6
+
+    @available(iOS 15.0, *)
+    func generateVideoAttachmentAsync() async -> XCTAttachment? {
+        // Create the attachment synchronously on MainActor to avoid Sendable issues
+        pauseRecording()
+        guard let directoryUrl = FileManagerUtils.createFolderInDocumentsDirectory(folderName: testName) else {
+            screenshots.removeAll()
+            return nil
+        }
+
+        // Use async/await pattern that stays on MainActor
+        return await withCheckedContinuation { continuation in
+            createVideo(from: &screenshots, directoryPath: directoryUrl.path) { success, fileURL in
+                // Create attachment on MainActor where it's safe
+                Task { @MainActor in
+                    if let fileURL = fileURL, success {
+                        let attachment = XCTAttachment(contentsOfFile: fileURL)
+                        attachment.lifetime = .keepAlways
+                        continuation.resume(returning: attachment)
+                    } else {
+                        continuation.resume(returning: nil)
+                    }
+                }
+            }
+        }
+    }
+
     // MARK: - Private
 
-    private func saveScreenshot() {
+    private func saveScreenshot() async {
         let screenshotImage = XCUIScreen.main.screenshot().image
         let imageSize = screenshotImage.size
         let minimumSize = Constants.minimumRequiredScreenshotSize

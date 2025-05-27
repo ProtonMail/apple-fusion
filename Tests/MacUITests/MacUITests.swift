@@ -27,8 +27,10 @@
 
 #if os(OSX)
 import XCTest
+import fusion
 
-class MacUITests: MacCoreTestCase {
+@MainActor
+class MacUITests: MacCoreTestCase, @unchecked Sendable {
 
     func testExample() throws {
         let app = XCUIApplication(bundleIdentifier: "com.apple.finder")

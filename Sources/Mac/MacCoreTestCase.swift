@@ -27,4 +27,5 @@
 
 import XCTest
 
-open class MacCoreTestCase: XCTestCase, ElementsProtocol {}
+@MainActor
+open class MacCoreTestCase: XCTestCase, ElementsProtocol, @unchecked Sendable {}

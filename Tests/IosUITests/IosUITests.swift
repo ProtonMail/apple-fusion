@@ -29,7 +29,8 @@
 import XCTest
 import fusion
 
-class IosUITests: CoreTestCase {
+@MainActor
+class IosUITests: CoreTestCase, @unchecked Sendable {
 
     func testExample() throws {
         let app = XCUIApplication(bundleIdentifier: "com.apple.mobilecal")

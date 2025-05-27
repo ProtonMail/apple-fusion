@@ -34,9 +34,9 @@ open class CoreTestCase: XCTestCase, ElementsProtocol, @unchecked Sendable {
 
     override open func setUp() {
         super.setUp()
-        Task { [weak self] in
+        Task { @MainActor [weak self] in
             guard let self else { return }
-            await testRecorder.resumeRecording()
+            await self.testRecorder.resumeRecording()
         }
     }
 
@@ -46,15 +46,15 @@ open class CoreTestCase: XCTestCase, ElementsProtocol, @unchecked Sendable {
 
     override open func tearDownWithError() throws {
         if self.testRun?.failureCount != 0 {
-            Task { [weak self] in
+            Task { @MainActor [weak self] in
                 guard let self else { return }
-                await awaitAttachmentIfNeeded()
+                await self.awaitAttachmentIfNeeded()
             }
         }
         try super.tearDownWithError()
     }
 
-    private func awaitAttachmentIfNeeded() {
+    private func awaitAttachmentIfNeeded() async {
         if let attachment = testRecorder.generateGifAttachment() {
             attachment.lifetime = .keepAlways
             self.add(attachment)

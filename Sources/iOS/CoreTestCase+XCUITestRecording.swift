@@ -45,7 +45,17 @@ extension CoreTestCase: XCUITestCaseRecording {
      Start/resume test recording.
      */
     public func resumeRecording() {
-        testRecorder.resumeRecording()
+        Task { @MainActor in
+            await testRecorder.resumeRecording()
+        }
+    }
+
+    /**
+     Start/resume test recording asynchronously.
+     */
+    @available(iOS 15.0, *)
+    public func resumeRecordingAsync() async {
+        await testRecorder.resumeRecording()
     }
 
     /**
@@ -78,6 +88,16 @@ extension CoreTestCase: XCUITestCaseRecording {
             expectation.fulfill()
         }
         wait(for: [expectation], timeout: 50)
+    }
+
+    /**
+     Add recorded test as a video attachment asynchronously. Will be available in the .xcresult file.
+     */
+    @available(iOS 15.0, *)
+    public func addVideoAttachmentAsync() async {
+        if let videoAttachment = await testRecorder.generateVideoAttachmentAsync() {
+            add(videoAttachment)
+        }
     }
 }
 #endif

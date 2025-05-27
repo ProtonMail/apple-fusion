@@ -425,7 +425,7 @@ open class UIElement {
      */
     private func checkForConflictingParameters() {
         if let elementDisabled = elementDisabled, let elementEnabled = elementEnabled, elementDisabled && elementEnabled {
-            XCTFail("Conflicting isEnabled and isDisabled parameters.", file: #file, line: #line)
+            XCTFail("Conflicting isEnabled and isDisabled parameters.", file: #filePath, line: #line)
         }
     }
 
