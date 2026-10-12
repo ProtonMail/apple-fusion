@@ -41,6 +41,12 @@ public func waitUntil(timeout: TimeInterval, condition: @autoclosure @escaping (
     RunLoop.runUntil(timeout: timeout, condition: condition)
 }
 
+/// Records whether `waitUntil` is running. While it is, the test code that called it is lower on the main thread's
+/// stack than anything the run loop calls, so the test recorder can safely take a synchronous screenshot.
+enum WaitUntilState {
+    static var isWaiting = false
+}
+
 private enum RunLoop {
 
     /// Run the current RunLoop until `condition` returns true, at most for `timeout` seconds.
@@ -50,6 +56,10 @@ private enum RunLoop {
     /// - https://pspdfkit.com/blog/2016/running-ui-tests-with-ludicrous-speed/
     /// - https://bou.io/CTTRunLoopRunUntil.html
     static func runUntil(timeout: TimeInterval, condition: @escaping () -> Bool) -> Bool {
+        let wasWaiting = WaitUntilState.isWaiting
+        WaitUntilState.isWaiting = true
+        defer { WaitUntilState.isWaiting = wasWaiting }
+
         var fulfilled = false
         let startTime = CFAbsoluteTimeGetCurrent()
         let endTime = startTime + timeout

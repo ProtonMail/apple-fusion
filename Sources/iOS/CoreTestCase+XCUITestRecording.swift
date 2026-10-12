@@ -41,7 +41,7 @@ extension CoreTestCase: XCUITestCaseRecording {
     }
 
     /**
-     Start/resume test recording.
+     Start/resume test recording. Screenshots are only taken while a fusion wait such as `waitUntilExists()` runs.
      */
     public func resumeRecording() {
         testRecorder.resumeRecording()

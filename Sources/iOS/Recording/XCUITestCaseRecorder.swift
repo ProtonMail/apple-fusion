@@ -100,6 +100,9 @@ class XCUITestCaseRecorder {
     // MARK: - Private
 
     @objc private func saveScreenshot() {
+        // XCTest can fire this timer while it waits on an async test. A screenshot taken then would run the test body
+        // inside the screenshot call, and XCTest interrupts every wait in the body when that call times out.
+        guard WaitUntilState.isWaiting else { return }
         let screenshotImage = XCUIScreen.main.screenshot().image
         let imageSize = screenshotImage.size
         let minimumSize = Constants.minimumRequiredScreenshotSize
