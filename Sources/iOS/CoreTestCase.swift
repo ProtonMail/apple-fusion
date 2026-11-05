@@ -36,10 +36,6 @@ open class CoreTestCase: XCTestCase, ElementsProtocol {
         testRecorder.resumeRecording()
     }
 
-    override open func setUpWithError() throws {
-        try super.setUpWithError()
-    }
-
     override open func tearDownWithError() throws {
         if self.testRun?.failureCount != 0 {
             let attachment = testRecorder.generateGifAttachment()
